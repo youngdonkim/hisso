@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>하이쏘 최저갸 비교견적서</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script> -->
+    <style>
+html {
+        scroll-behavior: smooth;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "NEXON Lv1 Gothic OTF", sans-serif;
+      }
+
+      /* 상단 고정 내브 바 */
+      .navbar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 48px;
+          background-color: white;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          z-index: 100;
+          display: flex;
+          justify-content: center; /* 가로 중앙 정렬 */
+          align-items: center; /* 세로 중앙 정렬 */
+      }
+
+      .logo {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+      }
+
+      .logo img {
+          display: block;
+          width: 104px; /* 로고 이미지의 너비 */
+          height: 42px; /* 로고 이미지의 높이 */
+      }
+
+      .menu-icon {
+          position: absolute;
+          left: 0;
+          padding:10px 40px 10px 10px ;
+          font-size: 24px;
+          cursor: pointer;
+      }
+
+      /* 불투명 레이어 */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .overlay.show {
+        display: block;
+        opacity: 1;
+      }
+
+      /* 사이드 메뉴 */
+      .side-menu {
+        position: fixed;
+        top: 0;
+        left: -250px; /* 기본으로는 화면 밖에 숨겨둠 */
+        width: 250px;
+        height: 100%;
+        background-color: white;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        transition: 0.3s ease;
+        padding-top: 60px; /* 내브 바와 겹치지 않도록 패딩 */
+        z-index: 1001;
+      }
+
+      .side-menu.open {
+        left: 0; /* 메뉴를 열면 화면에 나타남 */
+      }
+
+      .side-menu a {
+        display: block;
+        padding: 15px 20px;
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        transition: background 0.3s ease;
+      }
+
+      .side-menu a:hover {
+        background-color: #f0f0f0;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .mo-container {
+        max-width: 460px;
+        min-width: 350px;
+
+        padding: 68px 20px 20px 20px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .mo-header,
+      .mo-subheader,
+      .mo-goodbye {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+      }
+
+      .mo-goodbye {
+        color: var(--Gray-red4, #888);
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+      }
+
+      .mo-goodbye span {
+        color: var(--BI-color-main1, #ff4081);
+
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+        text-decoration-line: underline;
+      }
+
+      .mo-header {
+        font-family: Montserrat;
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 33.8px;
+        text-align: left;
+
+        display: flex;
+        flex-direction: column;
+      }
+
+      .mo-header .mo-highlight {
+        color: #ff5e80;
+      }
+
+      .mo-highlight {
+        font-family: Montserrat;
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 33.8px;
+        text-align: left;
+      }
+
+      .mo-subheader {
+        margin-top: 10px;
+
+        color: #888888;
+        margin-bottom: 15px;
+
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 22.4px;
+        text-align: left;
+      }
+
+      .mo-content {
+        margin-top: 20px;
+
+        color: #888888;
+        margin-bottom: 20px;
+
+        font-size: 16px;
+
+        line-height: 22.4px;
+        text-align: left;
+        font-style: normal;
+        font-weight: 400;
+      }
+
+      .mo-image-title-container {
+        text-align: left;
+        margin-top: 20px;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+        /* 16.8px */
+      }
+
+      .mo-image-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .mo-image-divider {
+        width: 100%;
+        height: 1px;
+        background-color: #000;
+        margin: 0 auto;
+        margin-bottom: 15px;
+      }
+
+      .mo-image-container {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .mo-product-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+      }
+
+      .mo-table-container {
+        margin-top: 20px;
+        overflow-x: auto;
+        display: flex;
+        margin-bottom: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        white-space: nowrap;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+        font-size: 17px;
+      }
+
+      th:first-child,
+      td:first-child {
+        position: sticky;
+        left: 0;
+        background-color: #f4f4f4;
+        border-right: 2px solid #ccc;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .mo-footer {
+        margin-top: 20px;
+        font-size: 16px;
+        color: #777;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .mo-highlight {
+        color: #ff5e80;
+      }
+
+      .mo-white-background {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+
+      .mo-vertical-line {
+        border-left: 1px solid #ccc;
+        height: 50px;
+        margin: 20px 0;
+      }
+
+      .mo-custom-header {
+        margin-bottom: 10px;
+
+        color: #090909;
+        font-family: Pretendard;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 160%;
+        /* 22.4px */
+      }
+
+      .mo-custom-content {
+        margin-top: 10px;
+
+        margin-bottom: 20px;
+
+        color: var(--Gray-red4, #888);
+        font-family: Pretendard;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+        /* 22.4px */
+      }
+
+      .mo-white-background .mo-custom-button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px 0;
+        color: #fff;
+        background-color: #000;
+        text-decoration: none;
+        border-radius: 2px;
+        text-align: center;
+        width: 85%;
+        max-width: 88%;
+        margin-left: auto;
+        margin-right: auto;
+
+        font-size: 19px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%;
+        /* 24px */
+      }
+
+      .mo-separator {
+        text-align: center;
+        margin: 20px 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .mo-separator-text {
+        font-size: 18px;
+        margin-top: 10px;
+        color: #888;
+        text-align: left;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+        /* 22.4px */
+      }
+
+      .mo_numbering {
+        display: inline;
+        border: 1px solid #000;
+        padding: 2px 8px;
+        margin-right: 2px;
+      }
+
+      .mo-qna-container {
+        display: flex;
+        justify-content: center;
+        background-color: #f2f2f2;
+        width: 100%;
+      }
+
+      .mo-qna {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 92%;
+        padding: 20px;
+        margin-bottom: 80px;
+      }
+
+      .mo-qna-title-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .mo-qna-title {
+        margin-top: 80px;
+        color: var(--BI-color-main1, #ff4081);
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 16px !important;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 140%;
+        /* 22.4px */
+        letter-spacing: -0.32px;
+      }
+
+      .mo-qna-subtitle {
+        margin-bottom: 20px;
+        color: var(--Black-red, #111);
+        text-align: center;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        /* 31.2px */
+        letter-spacing: -1.4px;
+      }
+
+      .mo-qna-item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 12px 16px;
+        align-items: flex-start;
+        flex-shrink: 0;
+        border-radius: 26px;
+        background: #fff;
+        margin-bottom: 24px;
+      }
+
+      .mo-qna-question {
+        width: 100%;
+        padding: 16px;
+        border: none;
+        background-color: #fff;
+        text-align: left;
+        font-weight: 400;
+        cursor: pointer;
+        outline: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #000;
+        font-style: normal;
+        line-height: 140%;
+        letter-spacing: -0.4px;
+        font-size: 16px;
+        font-style: normal;
+        line-height: 140%;
+        letter-spacing: -0.4px;
+      }
+
+      .mo-qna-answer {
+        display: none;
+        padding: 15px;
+        background-color: #fff;
+        border-top: 1px solid #eee;
+        font-size: 16px;
+        line-height: 160%;
+        text-align: justify;
+        color: #888;
+      }
+
+      .mo-arrow {
+        transition: transform 0.3s ease;
+      }
+
+      .mo-qna-question.mo-active .mo-arrow {
+        transform: rotate(90deg);
+      }
+
+      .watermark_bg_color {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #f7f7f7;
+        z-index: -2;
+      }
+
+      .mo_footer-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 240px;
+        color: #666;
+        font-size: 12px;
+        line-height: 1.6;
+      }
+
+      .watermark {
+        display: inline-flex;
+        padding: 8px 36px;
+        justify-content: center;
+        align-items: center;
+
+        position: fixed;
+        margin-top: 80px;
+        margin-left: -20px;
+        top: 15%;
+        /* Adjust position from the top */
+        left: 55%;
+        transform: translateX(-50%) rotate(-15deg);
+        /* Rotate the text by -45 degrees */
+        font-size: 2.6em;
+        z-index: 1;
+        white-space: nowrap;
+        pointer-events: none;
+        user-select: none;
+        color: rgba(0, 0, 0, 0.05);
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 130%;
+        /* 62.4px */
+        border: 2px solid #ebebeb;
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+        /* Ensure content appears above the watermark */
+        padding: 20px;
+      }
+
+      .product_img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 20px;
+      }
+
+      .shop-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      #shop-buttons {
+        scroll-margin-top: 56px;
+      }
+
+      .shop-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        border: 2px solid #000;
+        border-radius: 16px;
+        text-decoration: none;
+        color: #000;
+        font-size: 14px;
+        transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+      }
+
+      .shop-button:hover {
+        background-color: #ff4081;
+        color: #fff;
+      }
+
+      .shop_button_tag {
+        color: #ff4081;
+      }
+
+      .shop-button:hover .shop_button_tag {
+        color: #fff;
+        /* 호버 시 색상을 변경 */
+      }
+
+      .shop-button:hover .shop_button_text {
+        color: #fff;
+        /* 호버 시 색상을 변경 */
+      }
+
+      .shop-button:active {
+        background-color: #e83771;
+        border-color: #e83771;
+        color: #fff;
+      }
+
+      .shop-button:active .shop_button_tag {
+        background-color: #e83771;
+        border-color: #e83771;
+        color: #fff;
+      }
+
+      .shop-button:active .shop_button_text {
+        background-color: #e83771;
+        border-color: #e83771;
+        color: #fff;
+      }
+
+      .shop-logo {
+        height: 40px;
+        margin-right: 16px;
+        mix-blend-mode: multiply;
+        /* 이미지와 배경이 섞이는 방식 */
+      }
+
+      .shop-button span {
+        flex-grow: 1;
+        text-align: right;
+      }
+
+      /* CTA 버튼 애니메이션 */
+      .mo_floCtaPc_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 8px 0 0 0;
+        position: fixed;
+        bottom: -10px;
+        z-index: 998;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.7) 76%, #fff 100%);
+        transition: all 0.5s ease-in-out;
+        opacity: 0;
+      }
+
+      .mo_floCtaPc_container.show_cta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0;
+        opacity: 1;
+      }
+
+      .mo_floCtaPc {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 78%;
+        padding: 14px 0 10px 0;
+        border-radius: 12px;
+        background: #ff4081;
+        margin-bottom: 7px;
+        cursor: pointer;
+      }
+
+      .mo_floCtaPcwidth {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .mo_cta_text {
+        color: #fff;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+        margin-left: 14px;
+      }
+
+      .badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: rgb(64, 63, 63);
+        color: white;
+        border-radius: 50%;
+        width: 20px; /* 원의 고정된 가로 크기 */
+        height: 20px; /* 원의 고정된 세로 크기 */
+        display: flex;
+        justify-content: center;
+        align-items: center; /* 텍스트를 중앙에 수직/수평 정렬 */
+        font-size: 12px;
+        line-height: 20px; /* 숫자를 중앙에 정확히 위치시키기 위한 line-height */
+        text-align: center;
+        padding: 0; /* 패딩 제거 */
+        margin: 0; /* 마진 제거 */
+        display: none; /* 처음에는 보이지 않음 */
+        white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+        overflow: hidden; /* 원 크기를 넘지 않도록 설정 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+      <div class="logo">
+        <img src="https://cdn.imweb.me/thumbnail/20240914/4b9457f7ca91f.png" alt="하이쏘 로고" />
+      </div>
+    </div>
+
+    <!-- 불투명한 배경 레이어 -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- 사이드 메뉴 -->
+    <div id="sideMenu" class="side-menu">
+      <a href="#" class="close-btn" onclick="toggleMenu()">&times;</a>
+      <a href="#">쇼룸찾기</a>
+      <a href="#">조명추천 리포트 샘플</a>
+      <a href="#">비교견적 리포트 샘플</a>
+    </div>
+
+    <div class="watermark_bg_color"></div>
+    <div class="watermark">SAMPLE</div>
+    <div class="mo-container">
+      <div class="mo-header">
+        <div>
+          <span class="mo-highlight">Tolomeo</span>
+          <span style="margin-left: -5px">님을 위한</span>
+        </div>
+        구매조건별<br />
+        최저가 비교 견적 제안<br />
+      </div>
+
+      <p class="mo-content">
+        요청하신
+        <span style="color: #888; font-size: 16px; font-style: normal; font-weight: 800; line-height: 160%"
+          >Artemide Tolomeo Mega Floor Lamp 42 파이+ 갓(양피지) + 디머</span
+        >
+        비교 견적을 보내드립니다. <br /><br />
+      </p>
+      <p style="font-size: 14px; color: #888888">
+        * 약 30여개의 하이엔드 조명 쇼핑몰의 견적을 비교해서 구매조건별 최저가만을 선별했습니다.
+      </p>
+      <div class="mo-white-background">
+        <div class="mo-image-title-container">
+          <div class="mo-image-title">
+            Artemide Tolomeo<br />
+            Mega Floor Lamp_42
+          </div>
+          <div class="mo-image-divider"></div>
+        </div>
+        <div class="mo-image-container">
+          <img
+            class="product_img"
+            src="https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/LIFE/22/12/07/GQJP22120783802_0_ORGINL_20221207174315289.jpg"
+            alt="Artemide Tolomeo Mega Floor Lamp"
+            class="mo-product-image"
+          />
+        </div>
+        <div class="mo-table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>쇼핑몰</th>
+                <th>가격 (만원)</th>
+                <th>배송기간</th>
+                <th>설치</th>
+                <th>AS</th>
+                <th>BNPL(할부)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a
+                    href="https://ativ.co.kr/product/detail.html?product_no=2076&cate_no=67&display_group=1&cafe_mkt=naver_ks&mkt_in=Y&ghost_mall_id=naver&ref=naver_open&n_media=11068&n_query=%22TOLOMEOMEGA%22&n_rank=5&n_ad_group=grp-a001-02-000000041336033&n_ad=nad-a001-02-000000294004003&n_campaign_type=2&n_mall_id=kindspace&n_mall_pid=2076&n_ad_group_type=2&n_match=3&NaPm=ct%3Dm0ulq7f4%7Cci%3D0zi0003%2DybTANIrJQviW%7Ctr%3Dpla%7Chk%3Dff8928e7954a3b01919836e4e975c7f2abf0392e%7Cnacn%3DadliBMA2Cd0T"
+                    >ativ</a
+                  >
+                </td>
+                <td>133.1</td>
+                <td>1주 이내</td>
+                <td>서울/경기만</td>
+                <td>1년</td>
+                <td>안됨</td>
+              </tr>
+              <tr>
+                <td><a href="https://lomad.co.kr/shop/detail?product_id=31&installment_value=36">로마드</a></td>
+                <td>149.4</td>
+                <td>1주 이내</td>
+                <td>쇼핑몰 문의필요</td>
+                <td>1년</td>
+                <td>최장60개월 할부</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div
+          style="
+            color: var(--Gray-red4, #888);
+            font-family: Pretendard;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 160%;
+            margin-bottom: 12px;
+          "
+        >
+          *표를 좌우로 움직여서 비교해보세요!
+        </div>
+
+        <div class="shop-buttons" id="shop-buttons">
+          <a
+            href="https://ativ.co.kr/product/detail.html?product_no=2076&cate_no=67&display_group=1&cafe_mkt=naver_ks&mkt_in=Y&ghost_mall_id=naver&ref=naver_open&n_media=11068&n_query=%22TOLOMEOMEGA%22&n_rank=5&n_ad_group=grp-a001-02-000000041336033&n_ad=nad-a001-02-000000294004003&n_campaign_type=2&n_mall_id=kindspace&n_mall_pid=2076&n_ad_group_type=2&n_match=3&NaPm=ct%3Dm0ulq7f4%7Cci%3D0zi0003%2DybTANIrJQviW%7Ctr%3Dpla%7Chk%3Dff8928e7954a3b01919836e4e975c7f2abf0392e%7Cnacn%3DadliBMA2Cd0T"
+            class="shop-button"
+            style="display: flex; justify-content: space-between; align-items: center"
+          >
+            <img
+              src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/dcf26434a7467.png"
+              alt="ativ 로고"
+              class="shop-logo"
+              style="display: block; width: 100px; height: auto"
+            />
+            <div style="display: flex; justify-content: space-between">
+              <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0">
+                <div class="shop_button_tag">#공식수입사최저가</div>
+                <div class="shop_button_text" style="font-size: 16px"><strong>구매하러 가기</strong></div>
+              </div>
+              <p class="shop_button_text" style="margin: 0 0 0 10px; font-size: 30px">&gt;</p>
+            </div>
+          </a>
+
+          <a
+            href="https://lomad.co.kr/shop/detail?product_id=31&installment_value=36"
+            class="shop-button"
+            style="display: flex; justify-content: space-between; align-items: center"
+          >
+            <img
+              src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/23252043a5fc9.png"
+              alt="로마드 로고"
+              class="shop-logo"
+              style="display: block; width: 100px; height: auto"
+            />
+            <div style="display: flex; justify-content: space-between">
+              <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0">
+                <div class="shop_button_tag">#BNPL장기할부</div>
+                <div class="shop_button_text" style="font-size: 16px"><strong>구매하러 가기</strong></div>
+              </div>
+              <p class="shop_button_text" style="margin: 0 0 0 10px; font-size: 30px">&gt;</p>
+            </div>
+          </a>
+          <div
+            style="
+              color: var(--Gray-red4, #888);
+              font-family: Pretendard;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 160%;
+              margin-bottom: 12px;
+            "
+          >
+            *구매 페이지로 이동하신 후 구매하고자 하는 옵션을 선택해서 가격을 살펴보세요. 가격은 환율에 따라 자주 변동되니 안내드린 가격과
+            다소 다를 수 있습니다.
+          </div>
+
+          <div style="margin-top: 50px">
+            <p style="color: var(--Gray-red4, #888); font-size: 15px; font-style: normal; font-weight: 400; line-height: 160%; padding: 0">
+              * 디머 대신 on/off 스위치 옵션도 괜찮으시면 "LIGH O" 라는 쇼핑몰에서 아래와 같은 조건으로 판매하고 있습니다. 참고하시면 좋을
+              것 같습니다.
+            </p>
+          </div>
+
+          <div class="mo-table-container" style="margin-top: 0">
+            <table>
+              <thead>
+                <tr>
+                  <th>쇼핑몰</th>
+                  <th>가격 (만원)</th>
+                  <th>배송기간</th>
+                  <th>설치</th>
+                  <th>AS</th>
+                  <th>BNPL(할부)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="https://smartstore.naver.com/ohgil/products/6775568633">LIGH O</a></td>
+                  <td>119.4</td>
+                  <td>2주 이내</td>
+                  <td>안됨</td>
+                  <td>AS 없음</td>
+                  <td>안됨</td>
+                </tr>
+                <tr></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <a
+            href="https://smartstore.naver.com/ohgil/products/6775568633"
+            class="shop-button"
+            style="display: flex; justify-content: space-between; align-items: center"
+          >
+            <img
+              src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/2f00ad8da2acc.png"
+              alt="LIGH O 구매 버튼"
+              class="shop-logo"
+              style="display: block; width: 100px; height: auto"
+            />
+            <div style="display: flex; justify-content: space-between">
+              <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0">
+                <div class="shop_button_tag">#해외현지구매대행</div>
+                <div class="shop_button_text" style="font-size: 16px"><strong>구매하러 가기</strong></div>
+              </div>
+              <p class="shop_button_text" style="margin: 0 0 0 10px; font-size: 30px">&gt;</p>
+            </div>
+          </a>
+
+          <div style="margin: 50px 0 30px 0">
+            <p class="mo-goodbye">
+              하이쏘는 고객님의 구매 여정에 함께하는 쇼핑메이트가 되면 좋겠습니다. 궁금하신 점이 있으시면 아래 "무료 쇼핑 컨시어지 신청하기"
+              버튼을 클릭하셔서 물어봐주세요.<br /><br />
+            </p>
+            <p class="mo-goodbye">감사합니다.😍</p>
+          </div>
+          <div class="mo-image-divider"></div>
+        </div>
+      </div>
+      <div>
+        <div class="mo-qna-container">
+          <div class="mo-qna">
+            <div class="mo-qna-title-container">
+              <h1 class="mo-qna-title">check list</h1>
+              <h2 class="mo-qna-subtitle" style="margin-top: 0">구매 전 <br />꼭 체크해보세요!</h2>
+            </div>
+
+            <div class="mo-qna-item">
+              <button class="mo-qna-question">
+                서울/경기 아닌데 설치를 해주는 곳이 있나요? <br />
+                <span class="mo-arrow">></span>
+              </button>
+              <div class="mo-qna-answer">
+                <p>
+                  숨고같은 사이트를 찾아보면 있기도 하구요. 000같은 전문 설치 업체도 있습니다. 대략 00만원이면 기사님이 출장 오셔서
+                  설치해주십니다. 종종 비싼 펜던트 조명은 설치경험 없는 분들에게 맡기면 고생하기도 하니 가급적 사용자 리뷰가 있는 업체나
+                  기사분들에게 요청하시 것을 추천드려요. 직접 찾기 어려우시면 무료 쇼핑 콘시어지 신청하기 버튼을 눌러 하이쏘 쇼핑메이트와
+                  상담해보세요 😀
+                </p>
+              </div>
+            </div>
+
+            <div class="mo-qna-item">
+              <button class="mo-qna-question">
+                컬러나 재질에 따라 가격이 다른가요? <br />
+                <span class="mo-arrow">></span>
+              </button>
+              <div class="mo-qna-answer">
+                <p>
+                  하이엔드 조명은 컬러에 따라 가격차가 많이 나요. 특히 황동, 알루미늄, 합성수지 등등 재질은 더 많은 가격차가 있으니 어떤
+                  브랜드 제품을 사시기로 하셨더라도 옵션별 가격차를 꼭 확인해보시는 것이 좋아요. 또 옵션별로 파는 곳이 다르니 원하는 옵션을
+                  손품, 발품을 종종 팔기애 해야 합니다.😀
+                </p>
+              </div>
+            </div>
+            <div class="mo-qna-item">
+              <button class="mo-qna-question">
+                디머/조광기 vs on/off 스위치. <br />
+                어느걸 살까?
+                <span class="mo-arrow">></span>
+              </button>
+              <div class="mo-qna-answer">
+                <p>
+                  조명의 밝기와 분위기를 취향에 따라 조절하고 싶으시다면<br />
+                  디머(조광기)가 달린 조명등을 선택하거나 기존의 on/off 스위치에 스마트 전구를 사용하는 두 가지 방법이 있어요. <br /><br />
+                  디머에 스마트 전구(LED)를 사용하는 것은 호환성 문제 때문에 작동 불량이나 손상의 가능성이 있어 권해드리지 않아요.
+                  <br /><br />
+                  그래서, 디머가 달린 조명등을 구매하실 경우에는 일반전구나 디밍용 LED 중 선택하실 수 있고, 스마트 전구를 사용하시려면 꼭
+                  on/off 스위치가 달린 조명등을 구매하시는 것을 추천드려요.🔆
+                </p>
+              </div>
+            </div>
+            <div class="mo-qna-item">
+              <button class="mo-qna-question">
+                갓의 사이즈는 최종 체크하셨나요?
+                <span class="mo-arrow">></span>
+              </button>
+              <div class="mo-qna-answer">
+                <p>
+                  조명 갓(shade)에 따라서 가격차가 나는 것도 있지만 우리 집에 들여놓았을 때 적절한 불빛과 크기인지 다시 한 번 생각해보시는게
+                  사고 나서 후회하는 것보다 좋으니 꼭 한 번 더 체크해보세요.🛋️
+                </p>
+              </div>
+            </div>
+            <div class="mo-qna-item">
+              <button class="mo-qna-question">전구선택은 어느게 좋을까요? <span class="mo-arrow">></span></button>
+              <div class="mo-qna-answer">
+                <p>
+                  <strong>유럽 조명등은 LED가 기본!!</strong>
+                  <br />
+                  유럽은 2010년대부터 백열전구와 할로겐 전구의 생산을 금지했고 2023년부터 CFL (삼파장/형광등) 생산을 금지했으므로 유럽 모든
+                  조명등의 설계 및 표시정격은 LED가 기준이에요.
+                  <br /><br />
+                  예를 들어, 아르떼미데 톨로메오 메가 플로어램프는 E27규격, 소비전력 21W, 최대 밝기 2100lm 정도의 LED 전구 사용을 염두에
+                  두고 디자인 되었습니다.
+                  <br /><br />
+                  한국에서 이 조명등에 맞는 전구를 찾는다면<br />
+                  E26규격, 18W, 2020lm 정도의 스펙을을 가진 오스람 LED18W 제품 중에서 색온도 2700K를 배송비 포함 4천원 정도에 사거나 15W,
+                  1600lm, 3000K 전구인데 색재현율(CRI)이 90으로 높은 수준인 루미트론 HD LED Bulb 15W를 1만원 가량에 사는 것을
+                  추천해드려요.💡
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <!-- CTA -->
+     <div class="mo_floCtaPc_container" id="cta-button">
+        <div class="mo_floCtaPc">
+            <div class="mo_floCtaPcwidth">
+            <svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="icn_talk">
+                <g id="icn_talk_2">
+                    <path id="Union" fill-rule="evenodd" clip-rule="evenodd"
+                    d="M13.3417 23C19.1407 23 23.8417 18.299 23.8417 12.5C23.8417 6.70101 19.1407 2 13.3417 2C7.54275 2 2.84174 6.70101 2.84174 12.5C2.84174 14.3773 3.33438 16.1394 4.19743 17.6643L1.68092 21.3249C1.12323 22.1361 1.94992 23.1802 2.86742 22.8234L7.30998 21.0957C9.01671 22.2956 11.097 23 13.3417 23Z"
+                    fill="white" />
+                    <circle id="Ellipse 11" cx="8.3418" cy="12.5" r="1.5" fill="#FF4081" />
+                    <circle id="Ellipse 12" cx="13.3418" cy="12.5" r="1.5" fill="#FF4081" />
+                    <circle id="Ellipse 13" cx="18.3418" cy="12.5" r="1.5" fill="#FF4081" />
+                </g>
+                </g>
+
+            </svg>
+            <span class="badge"></span> <!-- 뱃지를 표시할 공간 -->
+            <div class="mo_cta_text">무료 쇼핑 컨시어지 신청하기</div>
+            
+            </div>
+            
+
+    <script>
+      function toggleMenu() {
+        const sideMenu = document.getElementById("sideMenu");
+        const overlay = document.getElementById("overlay");
+        sideMenu.classList.toggle("open");
+        overlay.classList.toggle("show");
+      }
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        $(".mo-qna-question").click(function () {
+          // Toggle the clicked answer
+          $(this).next(".mo-qna-answer").slideToggle();
+          $(this).toggleClass("active");
+        });
+      });
+    </script>
+
+    <!-- CTA -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var ctaButton = document.getElementById("cta-button");
+
+        setTimeout(function () {
+          ctaButton.classList.add("show_cta");
+        }, 1000); // 1000ms = 1초
+      });
+    </script>
+  </body>
+</html>

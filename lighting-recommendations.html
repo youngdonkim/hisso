@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>하이쏘 조명 추천 | Lighting Recommendations</title>
+    <style>
+      @font-face {
+        font-family: "NEXON Lv1 Gothic OTF";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        font-family: "NEXON Lv1 Gothic OTF", sans-serif;
+      }
+
+      /* 상단 고정 내브 바 */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 48px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        display: flex;
+        justify-content: center; /* 가로 중앙 정렬 */
+        align-items: center; /* 세로 중앙 정렬 */
+      }
+
+      .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .logo img {
+        display: block;
+        width: 104px; /* 로고 이미지의 너비 */
+        height: 42px; /* 로고 이미지의 높이 */
+      }
+
+      .menu-icon {
+        position: absolute;
+        left: 0;
+        padding: 10px 40px 10px 10px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      /* 불투명 레이어 */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .overlay.show {
+        display: block;
+        opacity: 1;
+      }
+
+      /* 사이드 메뉴 */
+      .side-menu {
+        position: fixed;
+        top: 0;
+        left: -250px; /* 기본으로는 화면 밖에 숨겨둠 */
+        width: 250px;
+        height: 100%;
+        background-color: white;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        transition: 0.3s ease;
+        padding-top: 60px; /* 내브 바와 겹치지 않도록 패딩 */
+        z-index: 1001;
+      }
+
+      .side-menu.open {
+        left: 0; /* 메뉴를 열면 화면에 나타남 */
+      }
+
+      .side-menu a {
+        display: block;
+        padding: 15px 20px;
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        transition: background 0.3s ease;
+      }
+
+      .side-menu a:hover {
+        background-color: #f0f0f0;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .watermark_bg_color {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #f7f7f7;
+        z-index: -2;
+      }
+
+      .watermark {
+        display: inline-flex;
+        padding: 8px 36px;
+        justify-content: center;
+        align-items: center;
+
+        position: fixed;
+        margin-top: 80px;
+        margin-left: -20px;
+        top: 15%;
+        /* Adjust position from the top */
+        left: 55%;
+        transform: translateX(-50%) rotate(-15deg);
+        /* Rotate the text by -45 degrees */
+        font-size: 2.6em;
+        z-index: 1;
+        white-space: nowrap;
+        pointer-events: none;
+        user-select: none;
+        color: rgba(0, 0, 0, 0.05);
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 130%;
+        /* 62.4px */
+        border: 2px solid #ebebeb;
+      }
+
+      .body_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 720px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 16px;
+        margin: 0 auto;
+        padding-top: 48px;
+      }
+
+      .header {
+        background: #f7f7f7;
+        padding: 20px 0;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+        background-color: #f7f7f7;
+      }
+
+      .header .container {
+        width: 90%;
+        position: relative;
+      }
+
+      #highlight {
+        font-family: "Montserrat", sans-serif;
+        font-size: 26px;
+        font-weight: 800;
+        line-height: 33.8px;
+        text-align: left;
+        color: #ff4081;
+      }
+
+      .header h1 {
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 1.3;
+        text-align: left;
+        margin-bottom: 60px;
+      }
+
+      .header p {
+        font-size: 14px;
+        font-weight: 800;
+        line-height: 1.6;
+        text-align: left;
+        color: #666666;
+      }
+
+      .container {
+        width: 100%;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      .main-content {
+        width: 100%;
+        padding: 3px 0 6px 0;
+      }
+
+      .product {
+        width: 100%;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 20px;
+        margin-bottom: 20px;
+        /* 마진을 px 단위로 변경 */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* 음영을 px 단위로 변경 */
+        box-sizing: border-box;
+      }
+
+      .product h2 {
+        font-family: "pretendard", sans-serif;
+        font-size: 24px;
+        /* 24px으로 변경 */
+        font-weight: 900;
+        color: #000000;
+        border-bottom: 1px solid #333;
+        /* 2px으로 변경 */
+        padding-bottom: 5px;
+        /* 5px으로 변경 */
+
+        line-height: 28px;
+        letter-spacing: -0.02em;
+      }
+
+      .product img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        padding-bottom: 10px;
+      }
+
+      .dotted-line {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 20px 0;
+        overflow: hidden;
+      }
+
+      .dotted-line::before {
+        content: "*********************************************************************************************************************************";
+        color: #8c898a;
+        font-size: 16px;
+        /* 별표 크기 조절 */
+        letter-spacing: 1px;
+        font-size: 16px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: clip;
+      }
+
+      .product h1,
+      .product h3 {
+        margin: 0;
+        font-family: "Montserrat";
+        font-size: 16px;
+        /* 16px으로 변경 */
+        font-weight: 800;
+        line-height: 1.3;
+        /* 20.8px으로 변경 */
+        text-align: left;
+        color: #666666;
+      }
+
+      .product p {
+        font-family: "NEXON Lv1 Gothic Low OTF", sans-serif;
+        font-size: 24px;
+        /* 24px으로 변경 */
+        font-weight: 700;
+        line-height: 1.3;
+        /* 31.2px으로 변경 */
+        text-align: left;
+        color: #000000;
+      }
+
+      #product_tag {
+        font-family: "Pretendard", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19.6px;
+        /* 19.6px으로 변경 */
+        text-align: justify;
+        color: #666666;
+        margin: 0 0 10px 0;
+      }
+
+      #product_price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+        /* 16px으로 변경 */
+        font-weight: 800;
+        line-height: 22.4px;
+        /* 22.4px으로 변경 */
+        color: #ff4081;
+        padding-top: 10px;
+        /* 10px으로 변경 */
+        margin-top: 10px;
+        /* 10px으로 변경 */
+      }
+
+      #product_price .small_text {
+        font-family: "Pretendard", sans-serif;
+        font-size: 18px;
+        /* 10px으로 변경 */
+        font-weight: 400;
+        line-height: 14px;
+        /* 14px으로 변경 */
+        text-align: left;
+        color: #666666;
+      }
+
+      .product ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .product ul li {
+        font-size: 14px;
+        /* 16px으로 변경 */
+        color: #666;
+        margin: 5px 0;
+        /* 5px으로 변경 */
+      }
+
+      .product .video {
+        margin: 20px 0;
+        border-bottom: 1px solid #000000;
+        /* 1px으로 변경 */
+        padding-top: 10px;
+        padding-bottom: 20px;
+      }
+
+      .product iframe {
+        width: 100%;
+        height: 200px;
+        /* 200px으로 변경 */
+      }
+
+      .additional-order {
+        text-align: center;
+        padding: 10px 0 100px 0;
+        /* 패딩을 px 단위로 변경 */
+        width: 100%;
+        margin: 0 auto;
+        color: #666666;
+      }
+
+      /* CTA 버튼 */
+      .floCtaPc_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        position: fixed;
+        bottom: -10px;
+        z-index: 999;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.7) 76%, #fff 100%);
+        transition: all 0.5s ease-in-out;
+        opacity: 0;
+      }
+
+      .floCtaPc_container.show_cta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0;
+        opacity: 1;
+      }
+
+      .floCtaPc {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 78%;
+        padding: 14px 0 10px 0;
+        border-radius: 12px;
+        background: #ff4081;
+        margin-bottom: 7px;
+        cursor: pointer;
+      }
+
+      .floCtaPcwidth {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .cta_text {
+        color: #fff;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+        margin-left: 14px;
+      }
+
+      .badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: rgb(64, 63, 63);
+        color: white;
+        border-radius: 50%;
+        width: 20px; /* 원의 고정된 가로 크기 */
+        height: 20px; /* 원의 고정된 세로 크기 */
+        display: flex;
+        justify-content: center;
+        align-items: center; /* 텍스트를 중앙에 수직/수평 정렬 */
+        font-size: 12px;
+        line-height: 20px; /* 숫자를 중앙에 정확히 위치시키기 위한 line-height */
+        text-align: center;
+        padding: 0; /* 패딩 제거 */
+        margin: 0; /* 마진 제거 */
+        display: none; /* 처음에는 보이지 않음 */
+        white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+        overflow: hidden; /* 원 크기를 넘지 않도록 설정 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="watermark_bg_color"></div>
+    <div class="watermark">SAMPLE</div>
+
+    <div class="navbar">
+      <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+      <div class="logo">
+        <img src="https://cdn.imweb.me/thumbnail/20240914/4b9457f7ca91f.png" alt="하이쏘 로고" />
+      </div>
+    </div>
+
+    <!-- 불투명한 배경 레이어 -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- 사이드 메뉴 -->
+    <div id="sideMenu" class="side-menu">
+      <a href="#" class="close-btn" onclick="toggleMenu()">&times;</a>
+      <a href="#">쇼룸찾기</a>
+      <a href="#">조명추천 리포트 샘플</a>
+      <a href="#">비교견적 리포트 샘플</a>
+    </div>
+
+    <div class="body_container">
+      <header class="header">
+        <div class="container">
+          <h1>
+            <span id="highlight">Artemide</span>
+            님을 위한 <br />맞춤형 조명 제안
+          </h1>
+          <p>*서재 데스크/테이블 램프 / 업무 효율향상목적 / 실용적 디자인 / 40~70만원 가격대*</p>
+          <p style="font-weight: 500">고객님께서 제공하신 이야기와 기준으로 맞춤 조명 세가지를 준비하였어요 😊</p>
+        </div>
+      </header>
+      <main class="main-content">
+        <div class="container">
+          <section class="product">
+            <h2>01</h2>
+            <img src="https://img.dplot.co.kr/img/item/68/1668P_1662618449030.png" alt="톨로메오 마이크로, 실버" />
+            <div class="dotted-line"></div>
+            <h3>Artemide 톨로메오 마이크로, 실버</h3>
+            <p>"자유로운 각도 조절, 스타일과 기능을 한 번에"</p>
+            <div id="product_tag"># 조절 가능한 팔 #실용적 디자인</div>
+            <ul>
+              <li>- 조절 가능 (Adjustable)</li>
+              <li>- 슬림한 디자인 (Sleek Design)</li>
+              <li>- 알루미늄 소재 (Aluminum Material)</li>
+              <li>- 모던 스타일 (Modern Style)</li>
+              <li>- 다양한 색상 옵션 (Multiple Color Options)</li>
+            </ul>
+            <div id="product_price">
+              <div class="small_text">가격대:</div>
+              <div>30~40만원</div>
+            </div>
+            <div class="dotted-line"></div>
+            <div class="video">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/-vEPTXxjE0M?si=dIS6l4KYQQys4Uis"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </section>
+          <section class="product">
+            <h2>02</h2>
+            <img
+              src="https://trdst.com/cdn/shop/products/kelvin-led-base-table-citterio-nguyen-flos-F3311009-product-still-life-big-1.jpg?v=1687323709"
+              alt="플로스 Kelvin LED"
+            />
+            <div class="dotted-line"></div>
+            <h1>플로스 Kelvin LED</h1>
+            <p>"미니멀한 디자인에 터치 한 번으로 밝기까지!"</p>
+            <p id="product_tag"># 미니멀리스트 디자인 # 에너지 효율적 LED</p>
+            <ul>
+              <li>- 미니멀리스트 (Minimalist)</li>
+              <li>- 에너지 효율 (Energy Efficient)</li>
+              <li>- 슬림한 형태 (Slim Profile)</li>
+              <li>- 조절 가능한 팔 (Adjustable Arm)</li>
+              <li>- 현대적 디자인 (Contemporary Design)</li>
+            </ul>
+            <div id="product_price">
+              <div class="small_text">가격대:</div>
+              <div>70~90만원</div>
+            </div>
+            <div class="dotted-line"></div>
+            <div class="video">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/2x2yKPna5pY?si=XvQywHFNoFBuigli"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </section>
+          <section class="product">
+            <h2>03</h2>
+            <img src="https://img.dplot.co.kr/img/item/15/115P_1663059783863.png" alt="ANGLEPOISE Type 75" />
+            <div class="dotted-line"></div>
+            <h3>ANGLEPOISE Type 75</h3>
+            <p>영국을 대표하는 아이코닉 디자인(100 Great British Designs)"</p>
+            <p id="product_tag"># 다양한 컬러옵셥 # 조절 가능한 램프</p>
+            <ul>
+              <li>- 조절 가능 (Adjustable)</li>
+              <li>- 미니멀리스트 (Minimalist)</li>
+              <li>- 내구성 (Durable)</li>
+              <li>- 클래식 디자인 (Classic Design)</li>
+              <li>- 에너지 효율적 (Energy Efficient)</li>
+            </ul>
+            <div id="product_price">
+              <div class="small_text">가격대:</div>
+              <div>30~40만원</div>
+            </div>
+            <div class="dotted-line"></div>
+            <div class="video">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/0OpEwqnzi5U?si=p-PDajmg7wepyV8O"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </section>
+        </div>
+      </main>
+      <div class="additional-order">
+        <div class="container">
+          <p>
+            추천받은 조명이 마음에 쏙 들지 않으신가요?<br /><br />
+            아래 "무료 쇼핑컨시어지 신청하기"<br />
+            버튼을 눌러서 새롭게 요청해보세요.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA 버튼 -->
+    <div class="floCtaPc_container" id="cta-button">
+      <div class="floCtaPc">
+        <div class="floCtaPcwidth">
+          <svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="icn_talk">
+              <g id="icn_talk_2">
+                <path
+                  id="Union"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M13.3417 23C19.1407 23 23.8417 18.299 23.8417 12.5C23.8417 6.70101 19.1407 2 13.3417 2C7.54275 2 2.84174 6.70101 2.84174 12.5C2.84174 14.3773 3.33438 16.1394 4.19743 17.6643L1.68092 21.3249C1.12323 22.1361 1.94992 23.1802 2.86742 22.8234L7.30998 21.0957C9.01671 22.2956 11.097 23 13.3417 23Z"
+                  fill="white"
+                />
+                <circle id="Ellipse 11" cx="8.3418" cy="12.5" r="1.5" fill="#FF4081" />
+                <circle id="Ellipse 12" cx="13.3418" cy="12.5" r="1.5" fill="#FF4081" />
+                <circle id="Ellipse 13" cx="18.3418" cy="12.5" r="1.5" fill="#FF4081" />
+              </g>
+            </g>
+          </svg>
+          <span class="badge"></span>
+          <!-- 뱃지를 표시할 공간 -->
+          <div class="cta_text">무료 쇼핑 컨시어지 신청하기</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        const sideMenu = document.getElementById("sideMenu");
+        const overlay = document.getElementById("overlay");
+        sideMenu.classList.toggle("open");
+        overlay.classList.toggle("show");
+      }
+    </script>
+
+    <!-- CTA -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var ctaButton = document.getElementById("cta-button");
+
+        setTimeout(function () {
+          ctaButton.classList.add("show_cta");
+        }, 1000); // 1000ms = 1초
+      });
+    </script>
+  </body>
+</html>
