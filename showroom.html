@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>쇼룸 페이지</title>
+    <title>하이쏘 쇼룸찾기</title>
     <style>
       @font-face {
         font-family: "NEXON Lv1 Gothic OTF";
@@ -14,22 +14,27 @@
       @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
       * {
+        margin: 0;
+        padding: 0;
         box-sizing: border-box;
       }
 
       body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
         font-family: "NEXON Lv1 Gothic OTF", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 500px;
+        margin: 0 auto;
       }
 
       /* 상단 고정 내브 바 */
-      .navbar {
+      nav {
         position: fixed;
         top: 0;
-        left: 0;
         width: 100%;
+        max-width: 500px;
         height: 48px;
         background-color: white;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -1020,6 +1025,7 @@
         justify-content: center;
         align-items: center;
         width: 100%;
+        max-width: 500px;
         position: fixed;
         bottom: -10px;
         z-index: 999;
@@ -1089,111 +1095,104 @@
     </style>
   </head>
   <body>
-    <div class="navbar">
+    <!-- 네비게이션 바 -->
+    <nav>
       <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
       <div class="logo">
-        <img src="https://cdn.imweb.me/thumbnail/20240914/4b9457f7ca91f.png" alt="하이쏘 로고" />
+        <a href="#">
+          <img src="https://cdn.imweb.me/thumbnail/20240914/4b9457f7ca91f.png" alt="하이쏘 로고" />
+        </a>
       </div>
-    </div>
-
-    <!-- 불투명한 배경 레이어 -->
-    <div id="overlay" class="overlay"></div>
-
-    <!-- 사이드 메뉴 -->
-    <div id="sideMenu" class="side-menu">
-      <a href="#" class="close-btn" onclick="toggleMenu()">&times;</a>
-      <a href="#">쇼룸찾기</a>
-      <a href="#">조명추천 리포트 샘플</a>
-      <a href="#">비교견적 리포트 샘플</a>
-    </div>
-    <div class="container_mo">
-      <div class="search-bar">
-        <input type="text" id="search_input_mo" placeholder="주소, 쇼룸명, 쇼룸 타입, 브랜드 검색" enterkeyhint="쇼룸 찾기" />
-        <div id="autocomplete-results" class="autocomplete-results"></div>
-        <div id="clear_btn_mo">
-          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 12 12" fill="none">
-            <path d="M1 1L11 11M11 1L1 11" stroke="#C4C4C4" stroke-width="2" />
-          </svg>
-        </div>
-        <div class="search_icon_btn">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="search-icon">
-            <g class="icn_find">
-              <path
-                class="ellipse"
-                d="M14.5882 14.5882L19 19M16.3529 10.1765C16.3529 13.5876 13.5876 16.3529 10.1765 16.3529C6.7653 16.3529 4 13.5876 4 10.1765C4 6.7653 6.7653 4 10.1765 4C13.5876 4 16.3529 6.7653 16.3529 10.1765Z"
-                class="ellipse"
-                stroke="#D4D4D4"
-                stroke-width="2"
-              ></path>
-            </g>
-          </svg>
-        </div>
-
-        <div class="recommended" id="recommended">
-          <div class="keywords">추천 태그</div>
-          <div class="chips">
-            <div class="keyword">신세계</div>
-            <div class="keyword">소공로</div>
-            <div class="keyword">주차가능</div>
-            <div class="keyword">칼한센앤선</div>
-            <div class="keyword">방문 전 예약필수</div>
-            <div class="keyword">아르테미데</div>
-            <div class="keyword">루이스폴센</div>
-            <div class="keyword">플로스</div>
+    </nav>
+    <main>
+      <div class="container_mo">
+        <div class="search-bar">
+          <input type="text" id="search_input_mo" placeholder="주소, 쇼룸명, 쇼룸 타입, 브랜드 검색" enterkeyhint="쇼룸 찾기" />
+          <div id="autocomplete-results" class="autocomplete-results"></div>
+          <div id="clear_btn_mo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 12 12" fill="none">
+              <path d="M1 1L11 11M11 1L1 11" stroke="#C4C4C4" stroke-width="2" />
+            </svg>
           </div>
-        </div>
-      </div>
-      <button id="find-nearby-stores" class="find-nearby-stores">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path
-            class="finder_icon"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M11 14.9C10.6769 14.9656 10.3425 15 10 15C9.65753 15 9.32311 14.9656 9 14.9V20H11V14.9ZM14.9 11C14.9656 10.6769 15 10.3425 15 10C15 9.65753 14.9656 9.32311 14.9 9H20V11H14.9ZM11 5.10002V0H9V5.10002C9.32311 5.03443 9.65753 5 10 5C10.3425 5 10.6769 5.03443 11 5.10002ZM5.10002 9H0V11H5.10002C5.03443 10.6769 5 10.3425 5 10C5 9.65753 5.03443 9.32311 5.10002 9Z"
-            fill="#C4C4C4"
-          />
-          <circle cx="10" cy="10" r="8" stroke="#C3C3C3" stroke-width="2" />
-        </svg>
-        가까운 쇼룸 찾기
-      </button>
-      <div class="find_section">
-        <div class="dropdown-container">
-          <div class="dropdown-1" id="dropdown-sido">
-            <button class="dropdown-button-1">시도 선택 <span>&#9662;</span></button>
-            <div class="dropdown-content" id="dropdown-sido-content">
-              <a href="#">전체</a>
-              <a href="#">서울</a>
-              <a href="#">부산</a>
-              <a href="#">대전</a>
-              <a href="#">인천</a>
-              <a href="#">대구</a>
-              <a href="#">광주</a>
-              <a href="#">울산</a>
-              <a href="#">경기</a>
-              <a href="#">경남</a>
-              <a href="#">전북</a>
-              <a href="#">제주</a>
+          <div class="search_icon_btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="search-icon">
+              <g class="icn_find">
+                <path
+                  class="ellipse"
+                  d="M14.5882 14.5882L19 19M16.3529 10.1765C16.3529 13.5876 13.5876 16.3529 10.1765 16.3529C6.7653 16.3529 4 13.5876 4 10.1765C4 6.7653 6.7653 4 10.1765 4C13.5876 4 16.3529 6.7653 16.3529 10.1765Z"
+                  class="ellipse"
+                  stroke="#D4D4D4"
+                  stroke-width="2"
+                ></path>
+              </g>
+            </svg>
+          </div>
+
+          <div class="recommended" id="recommended">
+            <div class="keywords">추천 태그</div>
+            <div class="chips">
+              <div class="keyword">신세계</div>
+              <div class="keyword">소공로</div>
+              <div class="keyword">주차가능</div>
+              <div class="keyword">칼한센앤선</div>
+              <div class="keyword">방문 전 예약필수</div>
+              <div class="keyword">아르테미데</div>
+              <div class="keyword">루이스폴센</div>
+              <div class="keyword">플로스</div>
             </div>
           </div>
-          <div class="dropdown-1" id="dropdown-gwonyeok" style="display: none">
-            <button class="dropdown-button-1">권역 선택 <span>&#9662;</span></button>
-            <div class="dropdown-content" id="dropdown-gwonyeok-content"></div>
+        </div>
+        <button id="find-nearby-stores" class="find-nearby-stores">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path
+              class="finder_icon"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M11 14.9C10.6769 14.9656 10.3425 15 10 15C9.65753 15 9.32311 14.9656 9 14.9V20H11V14.9ZM14.9 11C14.9656 10.6769 15 10.3425 15 10C15 9.65753 14.9656 9.32311 14.9 9H20V11H14.9ZM11 5.10002V0H9V5.10002C9.32311 5.03443 9.65753 5 10 5C10.3425 5 10.6769 5.03443 11 5.10002ZM5.10002 9H0V11H5.10002C5.03443 10.6769 5 10.3425 5 10C5 9.65753 5.03443 9.32311 5.10002 9Z"
+              fill="#C4C4C4"
+            />
+            <circle cx="10" cy="10" r="8" stroke="#C3C3C3" stroke-width="2" />
+          </svg>
+          가까운 쇼룸 찾기
+        </button>
+        <div class="find_section">
+          <div class="dropdown-container">
+            <div class="dropdown-1" id="dropdown-sido">
+              <button class="dropdown-button-1">시도 선택 <span>&#9662;</span></button>
+              <div class="dropdown-content" id="dropdown-sido-content">
+                <a href="#">전체</a>
+                <a href="#">서울</a>
+                <a href="#">부산</a>
+                <a href="#">대전</a>
+                <a href="#">인천</a>
+                <a href="#">대구</a>
+                <a href="#">광주</a>
+                <a href="#">울산</a>
+                <a href="#">경기</a>
+                <a href="#">경남</a>
+                <a href="#">전북</a>
+                <a href="#">제주</a>
+              </div>
+            </div>
+            <div class="dropdown-1" id="dropdown-gwonyeok" style="display: none">
+              <button class="dropdown-button-1">권역 선택 <span>&#9662;</span></button>
+              <div class="dropdown-content" id="dropdown-gwonyeok-content"></div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="tags">
-        <div class="hashtags">
-          <span>#백화점</span>
-          <span>#브랜드쇼룸</span>
-          <span>#편집샵</span>
-          <span>#빈티지샵</span>
-          <span>#리빙샵</span>
-          <span>#방문 전 예약필수</span>
-          <span>#기타</span>
+        <div class="tags">
+          <div class="hashtags">
+            <span>#백화점</span>
+            <span>#브랜드쇼룸</span>
+            <span>#편집샵</span>
+            <span>#빈티지샵</span>
+            <span>#리빙샵</span>
+            <span>#방문 전 예약필수</span>
+            <span>#기타</span>
+          </div>
         </div>
-      </div>
 
-      <!-- <div class="warning">
+        <!-- <div class="warning">
         <div style="
                 display: flex;
                 justify-content: space-between;
@@ -1213,9 +1212,22 @@
         </p>
       </div> -->
 
-      <div id="showroom-results"></div>
-      <div id="loading-spinner" class="loading-spinner" style="display: none"></div>
+        <div id="showroom-results"></div>
+        <div id="loading-spinner" class="loading-spinner" style="display: none"></div>
+      </div>
+    </main>
+
+    <!-- 불투명한 배경 레이어 -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- 사이드 메뉴 -->
+    <div id="sideMenu" class="side-menu">
+      <a href="#" class="close-btn" onclick="toggleMenu()">&times;</a>
+      <a href="#">쇼룸찾기</a>
+      <a href="#">조명추천 리포트 샘플</a>
+      <a href="#">비교견적 리포트 샘플</a>
     </div>
+
     <div class="floCtaPc_container" id="cta-button">
       <div class="floCtaPc">
         <div class="floCtaPcwidth">
