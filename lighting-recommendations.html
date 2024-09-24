@@ -2,7 +2,7 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>하이쏘 조명 추천 | Lighting Recommendations</title>
     <style>
       @font-face {
@@ -14,14 +14,14 @@
       @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
       @media screen and (max-width: 500px) {
-  .body_container {
-    padding: 0 8px;
-  }
+        .body_container {
+          padding: 0 8px;
+        }
 
-  .product {
-    padding: 10px;
-  }
-}
+        .product {
+          padding: 10px;
+        }
+      }
 
       * {
         margin: 0;
@@ -44,7 +44,7 @@
         position: fixed;
         top: 0;
         width: 100%;
-        /*max-width: 500px;*/
+        max-width: 500px;
         height: 48px;
         background-color: white;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -63,7 +63,7 @@
       .logo img {
         display: block;
         width: 104px; /* 로고 이미지의 너비 */
-        height: 42px; /* 로고 이미지의 높이 */
+        height: 42px; /* 로고 이미지의 이 */
       }
 
       .menu-icon {
@@ -96,18 +96,20 @@
       .side-menu {
         position: fixed;
         top: 0;
-        left: -250px; /* 기본으로는 화면 밖에 숨겨둠 */
-        width: 250px;
+        left: 0;
+        width: 70%; /* 화면 크기에 따라 너비를 유동적으로 설정 */
+        max-width: 250px; /* 최대 너비를 250px로 제한 */
         height: 100%;
         background-color: white;
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-        transition: 0.3s ease;
-        padding-top: 60px; /* 내브 바와 겹치지 않도록 패딩 */
+        transition: transform 0.3s ease;
+        padding-top: 60px;
         z-index: 1001;
+        transform: translateX(-100%); /* 화면 밖으로 숨김 */
       }
 
       .side-menu.open {
-        left: 0; /* 메뉴를 열면 화면에 나타남 */
+        transform: translateX(0); /* 메뉴를 열면 화면에 나타남 */
       }
 
       .side-menu a {
@@ -174,6 +176,7 @@
         justify-content: center;
         align-items: center;
         max-width: 500px;
+        min-width: 320px;
         width: 100%;
         box-sizing: border-box;
         padding: 0 16px;
@@ -222,7 +225,7 @@
 
       .container {
         width: 100%;
-        margin: 0 auto;
+        padding: 0 16px;
         text-align: left;
       }
 
@@ -238,7 +241,7 @@
         border-radius: 4px;
         padding: 20px;
         margin-bottom: 20px;
-        /* 마진을 px 단위로 변경 */
+        /* 마진을 px 단위로 경 */
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         /* 음영을 px 단위로 변경 */
         box-sizing: border-box;
@@ -262,13 +265,13 @@
       .product img {
         width: 100%;
         height: auto;
-        object-fit: cover;
+
         padding-bottom: 10px;
       }
 
       .dotted-line {
         display: flex;
-        justify-content: center;
+        justify-content: start;
         align-items: center;
         width: 100%;
         margin: 20px 0;
@@ -276,16 +279,15 @@
       }
 
       .dotted-line::before {
-        content: "*********************************************************************************************************************************";
-        color: #8c898a;
-        font-size: 16px;
-        /* 별표 크기 조절 */
-        letter-spacing: 1px;
-        font-size: 16px;
+        content: "******************************************************************";
+        font-size: 12px;
+        letter-spacing: 0.5px;
+        max-width: 500px;
+        min-width: 320px;
         overflow: hidden;
-        white-space: nowrap;
-        text-overflow: clip;
       }
+
+
 
       .product h1,
       .product h3 {
@@ -458,6 +460,22 @@
         white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
         overflow: hidden; /* 원 크기를 넘지 않도록 설정 */
       }
+
+      .video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 비율 유지 */
+        height: 0;
+        overflow: hidden;
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
     </style>
   </head>
   <body>
@@ -506,15 +524,14 @@
                 <div>30~40만원</div>
               </div>
               <div class="dotted-line"></div>
-              <div class="video">
+              <div class="video-container">
                 <iframe
-                  width="560"
-                  height="315"
+                  width="100%"
+                  height="auto"
                   src="https://www.youtube.com/embed/-vEPTXxjE0M?si=dIS6l4KYQQys4Uis"
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-                  referrerpolicy="strict-origin-when-cross-origin"
                   allowfullscreen
                 ></iframe>
               </div>
@@ -543,8 +560,8 @@
               <div class="dotted-line"></div>
               <div class="video">
                 <iframe
-                  width="560"
-                  height="315"
+                  width="100%"
+                  height="auto"
                   src="https://www.youtube.com/embed/2x2yKPna5pY?si=XvQywHFNoFBuigli"
                   title="YouTube video player"
                   frameborder="0"
@@ -575,8 +592,8 @@
               <div class="dotted-line"></div>
               <div class="video">
                 <iframe
-                  width="560"
-                  height="315"
+                  width="100%"
+                  height="auto"
                   src="https://www.youtube.com/embed/0OpEwqnzi5U?si=p-PDajmg7wepyV8O"
                   title="YouTube video player"
                   frameborder="0"
@@ -611,19 +628,24 @@
     </div>
     <!-- CTA -->
     <div class="floCtaPc_container" id="cta-button">
-      <a style="text-decoration: none;" href="https://43l86.channel.io/workflows/686208" class="floCtaPc">
+      <a style="text-decoration: none" href="43l86.channel.io" class="floCtaPc">
         <div class="floCtaPcwidth">
           <svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="icn_talk">
-              <path id="Union" fill-rule="evenodd" clip-rule="evenodd"
+              <path
+                id="Union"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
                 d="M13.3417 23C19.1407 23 23.8417 18.299 23.8417 12.5C23.8417 6.70101 19.1407 2 13.3417 2C7.54275 2 2.84174 6.70101 2.84174 12.5C2.84174 14.3773 3.33438 16.1394 4.19743 17.6643L1.68092 21.3249C1.12323 22.1361 1.94992 23.1802 2.86742 22.8234L7.30998 21.0957C9.01671 22.2956 11.097 23 13.3417 23Z"
-                fill="white" />
+                fill="white"
+              />
               <circle id="Ellipse 11" cx="8.3418" cy="12.5" r="1.5" fill="#FF4081" />
               <circle id="Ellipse 12" cx="13.3418" cy="12.5" r="1.5" fill="#FF4081" />
               <circle id="Ellipse 13" cx="18.3418" cy="12.5" r="1.5" fill="#FF4081" />
             </g>
           </svg>
-          <span class="badge"></span> <!-- 뱃지를 표시할 공간   -->
+          <span class="badge"></span>
+          <!-- 뱃지를 표시할 공간   -->
           <div class="cta_text">무료 쇼핑 컨시어지 신청하기</div>
         </div>
       </a>
