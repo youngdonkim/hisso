@@ -29,7 +29,6 @@
         font-family: "NEXON Lv1 Gothic OTF", sans-serif;
       }
 
-
       /* 상단 고정 내브 바 */
       nav {
         position: fixed;
@@ -129,6 +128,10 @@
         padding: 68px 20px 20px 20px;
         display: flex;
         flex-direction: column;
+      }
+
+      .mo-container p {
+        margin-bottom: 10px;
       }
 
       .mo-header,
@@ -612,23 +615,22 @@
         text-align: right;
       }
 
-      /* CTA 버튼 애니메이션 */
-      .mo_floCtaPc_container {
+      /* CTA 버튼 */
+      .floCtaPc_container {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
         max-width: 500px;
-        padding: 8px 0 0 0;
         position: fixed;
         bottom: -10px;
-        z-index: 998;
+        z-index: 999;
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.7) 76%, #fff 100%);
         transition: all 0.5s ease-in-out;
         opacity: 0;
       }
 
-      .mo_floCtaPc_container.show_cta {
+      .floCtaPc_container.show_cta {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -636,7 +638,7 @@
         opacity: 1;
       }
 
-      .mo_floCtaPc {
+      .floCtaPc {
         position: relative;
         display: flex;
         justify-content: center;
@@ -649,13 +651,13 @@
         cursor: pointer;
       }
 
-      .mo_floCtaPcwidth {
+      .floCtaPcwidth {
         display: flex;
         justify-content: center;
         width: 100%;
       }
 
-      .mo_cta_text {
+      .cta_text {
         color: #fff;
         text-align: center;
         font-size: 16px;
@@ -1012,19 +1014,24 @@
     <div class="watermark">SAMPLE</div>
     <!-- CTA -->
     <div class="floCtaPc_container" id="cta-button">
-      <a style="text-decoration: none;" href="https://43l86.channel.io" class="floCtaPc">
+      <a style="text-decoration: none" href="https://43l86.channel.io" class="floCtaPc">
         <div class="floCtaPcwidth">
           <svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="icn_talk">
-              <path id="Union" fill-rule="evenodd" clip-rule="evenodd"
+              <path
+                id="Union"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
                 d="M13.3417 23C19.1407 23 23.8417 18.299 23.8417 12.5C23.8417 6.70101 19.1407 2 13.3417 2C7.54275 2 2.84174 6.70101 2.84174 12.5C2.84174 14.3773 3.33438 16.1394 4.19743 17.6643L1.68092 21.3249C1.12323 22.1361 1.94992 23.1802 2.86742 22.8234L7.30998 21.0957C9.01671 22.2956 11.097 23 13.3417 23Z"
-                fill="white" />
+                fill="white"
+              />
               <circle id="Ellipse 11" cx="8.3418" cy="12.5" r="1.5" fill="#FF4081" />
               <circle id="Ellipse 12" cx="13.3418" cy="12.5" r="1.5" fill="#FF4081" />
               <circle id="Ellipse 13" cx="18.3418" cy="12.5" r="1.5" fill="#FF4081" />
             </g>
           </svg>
-          <span class="badge"></span> <!-- 뱃지를 표시할 공간   -->
+          <span class="badge"></span>
+          <!-- 뱃지를 표시할 공간   -->
           <div class="cta_text">무료 쇼핑 컨시어지 신청하기</div>
         </div>
       </a>

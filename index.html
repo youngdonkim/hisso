@@ -8,14 +8,52 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <!-- Slick JS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=NEXON Lv1 Gothic Low OTF:wght@700&display=swap" />
+
     
 
     <style>
-      @font-face {
-        font-family: 'NEXON Lv1 Gothic OTF';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
+        .spacer {
+      height: 8px;
+      visibility: hidden; /* 또는 opacity: 0; */
+  }
+        .p {
+            margin: 0;
+        }
+        .title_maintop {
+            position: relative;
+            font-size: 26px;
+            letter-spacing: -0.07em;
+            line-height: 130%;
+            font-family: 'NEXON Lv1 Gothic Low OTF';
+            color: #111;
+            text-align: center;
+        }
+
+
+        .b {
+            width: 316px;
+            position: relative;
+            font-size: 22px;
+            letter-spacing: -1px;
+            line-height: 130%;
+            display: flex;
+            font-family: 'NEXON Lv1 Gothic Low OTF';
+            color: #111;
+            text-align: left;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
         }
         
         * {
@@ -32,6 +70,8 @@
             justify-content: center;
             max-width: 500px;
             margin: 0 auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
           }
 
         main {
@@ -96,7 +136,7 @@
         .side-menu {
             position: fixed;
             top: 0;
-            left: -250px; /* 기본으로는 화면 밖에 숨겨둠 */
+            left: -270px; /* 기본으로는 화면 밖에 숨겨둠 */
             width: 250px;
             height: 100%;
             background-color: white;
@@ -107,7 +147,7 @@
         }
 
         .side-menu.open {
-            left: 0; /* 메뉴를 열면 화면에 나타남 */
+            left: 0px; /* 메뉴를 열면 화면에 나타남 */
         }
 
         .side-menu a {
@@ -213,15 +253,19 @@
 
       .hero-title {
         width: 100%;
-        padding: 0 30px 68px 30px;
+        padding: 26px 30px 82px 30px;
         text-align: center;
+        
       }
 
       .hero-title h1 {
         font-size: 26px;
         font-weight: 700;
-        line-height: 130%;
-        letter-spacing: -1.6px;
+        line-height: calc(1.15 * var(--current-line-height, 1.2));
+        margin-bottom: 2px;
+
+        letter-spacing: -0.02em;   /* 자간 살짝 줄이기 */
+        word-spacing: -0.1em;   /* 띄어쓰기 너비 살짝 줄이기 */
         color: #000;
         text-align: center;
         font-style: normal;
@@ -234,6 +278,8 @@
         font-style: normal;
         font-weight: 500;
         line-height: 160%;
+        letter-spacing: 0.005em;
+        word-spacing: -0.1em; 
       }
 
       /* 하이쏘 사용 가이드 */
@@ -251,7 +297,7 @@
         /* 수직 정렬 */
         justify-content: start;
         width: 92%;
-        padding: 40px 20px 20px 20px;
+        padding: 60px 20px 20px 20px;
         background-color: #f7f7f7;
         margin-top: 40px;
         margin-bottom: 40px;
@@ -274,7 +320,9 @@
         font-style: normal;
         font-weight: 900;
         line-height: 130%;
-        letter-spacing: -1.4px;
+        padding-top: 12px;
+        letter-spacing: 0.03em;
+        word-spacing: -0.08em;
       }
 
       .service-1-shopping-cart-icon {
@@ -308,7 +356,7 @@
         align-items: flex-start;
         width: 90%;
         padding-left: 20px;
-        margin-top: 10px;
+        margin-top: 32px;
       }
 
       .step01-title-container h2 {
@@ -444,7 +492,7 @@
         align-items: flex-start;
         width: 90%;
         padding-left: 20px;
-        margin-top: 10px;
+        margin-top: 32px;
       }
 
       .step02-title-container h2 {
@@ -571,7 +619,7 @@
         align-items: flex-start;
         width: 90%;
         padding-left: 20px;
-        margin-top: 10px;
+        margin-top: 32px;
       }
 
       .step03-title-container h2 {
@@ -734,7 +782,7 @@
         display: flex;
         justify-content: center;
         width: 100%;
-        background-color: #f2f2f2;
+        background-color: #f7f7f7;
       }
 
       .step04-card {
@@ -756,7 +804,8 @@
         align-items: flex-start;
         width: 90%;
         padding-left: 20px;
-        margin-top: 10px;
+        margin-top: 32px;
+        margin-bottom: 0px;
       }
 
       .step04-title-container h2 {
@@ -879,7 +928,7 @@
         align-items: flex-start;
         width: 90%;
         padding-left: 20px;
-        margin-top: 10px;
+        margin-top: 32px;
       }
 
       .step05-title-container h2 {
@@ -1011,7 +1060,7 @@
             line-height: 140%;
 
             text-align: center;
-            font-size: 16px;
+            font-size: 24px;
             font-style: normal;
             font-weight: 900;
             line-height: 140%;
@@ -1035,7 +1084,8 @@
             font-weight: 700;
             line-height: 130%;
             /* 31.2px */
-            letter-spacing: -1.4px;
+            letter-spacing: -0.8px;
+            word-spacing: -1px;
         }
 
         .faq-item {
@@ -1135,12 +1185,13 @@
 
 
             text-align: center;
-            font-size: 16px;
+            font-size: 24px;
             font-style: normal;
             font-weight: 900;
             line-height: 140%;
             /* 22.4px */
             letter-spacing: -0.32px;
+            margin-bottom: 10px;
         }
 
         .user-review-subtitle {
@@ -1159,7 +1210,8 @@
             font-weight: 700;
             line-height: 130%;
             /* 31.2px */
-            letter-spacing: -1.4px;
+            letter-spacing: 0px;
+            word-spacing: -1px;
         }
 
         .user-review-card-container {
@@ -1529,10 +1581,10 @@
       <!-- 히어로 배너 타이틀 -->
       <div class="hero-title-container">
         <div class="hero-title">
-          <h1>
+          <b class="title_maintop">
             럭셔리 디자인 조명<br />
             실패없이 구매하는 법
-          </h1>
+          </b>
           <p class="hero-subtitle">"조명 추천부터 최저가 구매까지"</p>
         </div>
       </div>
@@ -1577,11 +1629,12 @@
               </clipPath>
             </defs>
           </svg>
-          <p class="service-1-description">
+          <div class="spacer"></div> <!-- 새로 추가된 여백용 div -->
+          <b class="title_maintop">
             구매여정에 맞는<br />
             <span style="font-weight: bolder">쇼핑 컨시어지 서비스를</span><br />
             신청해보세요!
-          </p>
+          </b>
         </div>
       </div>
 
@@ -1590,7 +1643,7 @@
         <div class="step01-card">
           <div class="step01-title-container">
             <h2>STEP <span>01</span></h2>
-            <h3>조명, 함께 골라드려요</h3>
+            <b class="b">조명, 함께 골라드려요</b>
           </div>
           <div class="step01-image-container">
             <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/3e1e971a113e0.png" alt="조명 이미지" />
@@ -1611,7 +1664,7 @@
         <div class="step02-card">
           <div class="step02-title-container">
             <h2>STEP <span style="font-family: Pretendard; font-weight: 900"> 02</span></h2>
-            <h3>가까운 쇼룸을 알려드려요</h3>
+            <b class="b">가까운 쇼룸을 알려드려요</b>
           </div>
           <div class="step02-image-container">
             <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/f1ca7ac08c18b.png" alt="조명 이미지" />
@@ -1635,7 +1688,7 @@
         <div class="step03-card">
           <div class="step03-title-container">
             <h2>STEP <span style="font-family: Pretendard; font-weight: 900"> 03</span></h2>
-            <h3>홈스타일링, 미리 보여드려요</h3>
+            <b class="b">홈스타일링, 미리 보여드려요</b>
           </div>
           
           <section class="step03-slider">
@@ -1662,7 +1715,7 @@
         <div class="step04-card">
           <div class="step04-title-container">
             <h2>STEP <span style="font-family: Pretendard; font-weight: 900"> 04</span></h2>
-            <h3>가격비교, 대신해드려요!</h3>
+            <b class="b">가격비교, 대신해드려요!</b>
           </div>
           <div class="step04-image-container">
             <img class="step3_img" src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/5ff7cac41e49c.png" alt="조명 이미지" />
@@ -1687,14 +1740,14 @@
         <div class="step05-card">
           <div class="step05-title-container">
             <h2>STEP <span style="font-family: Pretendard; font-weight: 900"> 05</span></h2>
-            <h3>구매조건별 최저가 구매하기</h3>
+            <b class="b">구매조건별 최저가 구매하기</b>
           </div>
           <div class="step05-image-container">
             <img class="step3_img" src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/c78ff62273dd3.png" alt="조명 제품 비교 견적서" />
           </div>
           <div class="step05-content-container">
             <p>
-              아래에서 무료 쇼핑 컨시어지를 신청하시면
+              아래에서 무료 쇼핑 컨시어지를 신청시면
               <strong>가격, 배송기간, A/S 여부, 설치 여부, BNPL(할부구매), 공식수입사 여부</strong>등에 따른 최저가 쇼핑몰의 구매링크를 비교
               견적서 내에 보내드려요!
             </p>
@@ -1770,7 +1823,7 @@
                   <br>
                   다만 저희가 약 30여개 하이엔드 조명 쇼핑몰을 조사하지만 못 찾을 수도 있으니 감안해주세요. 
                   <br><br>
-                  이엔드 조명과 가구는 주문제작하는 경우도 있고 해외배송이기 때문에 어느 정도 배송기간을 생각하셔야 해요. 여유를 가지고 구매 계획을 세우시면 더 좋을 것 같아요.😊</p>
+                  엔드 조명과 가구는 주문제작하는 경우도 있고 해외배송이기 때문에 어느 정도 배송기간을 생각하셔야 해요. 여유를 가지고 구매 계획을 세우시면 더 좋을 것 같아요.😊</p>
               </div>
           </div>
           <div class="faq-item">
@@ -1786,7 +1839,7 @@
               <div class="faq-answer">
                   <p>쇼핑몰마다 달라요.<br> 수리 문제는 책임을 가리기가 어려워서 종종 실갱이를 하셔야 할지도 몰라요. 게다가 부품이 파손된 경우 디자인 조명은 해외 상품이 대다수여서 부품값도상당해요. 
                   <br><br>
-                  ��령 루이스폴센의 판텔라 플로어 램프의 조명갓은 60여만원이 넘습니다. 그리고 부품을 구하기도 쉽지 않아요.
+                  령 루이스폴센의 판텔라 플로어 램프의 조명갓은 60여만원이 넘습니다. 그리고 부품을 구하기도 쉽지 않아요.
                   <br>
                   <strong>파손이 발생하시면</strong> 쇼핑몰의 배상이나 환불을 책임져 드릴 순 없지만 수리방안을 함께 고민해드리겠습니다.<br><br>
                   화면 하단의 "무료 쇼핑 컨시어지 신청하기"버튼을 눌러서 <strong>하이쏘 쇼핑 메이트와 이야기해보세요</strong>.🙏🏻
@@ -1860,7 +1913,10 @@
       <div class="user-review">
           <div class="user-review-header">
               <h2 class="user-review-title">REVIEW</h2>
-              <h3 class="user-review-subtitle">실제 사용해보니 어떠셨나요<span style="font-family:pretendard;">?</span></h3>
+              <h3 class="user-review-subtitle">
+                실제 사용해보니
+                <br>
+                어떠셨나요<span style="font-family:pretendard;">?</span></h3>
           </div>
           <div class="user-review-card-container">
               <div class="user-review-card">
@@ -1870,7 +1926,7 @@
                               src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/8cf79987efdea.png">
                       </div>
                       <div class="user-author-details">
-                          <span class="user-author-name">빨간 각도기</span><br>
+                          <span class="user-author-name">빨간 각도기</span>
                           <span class="user-author-tag">#건축#설계</span>
                       </div>
                   </div>
@@ -1885,7 +1941,7 @@
                               src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/d7d79a771d65a.png">
                       </div>
                       <div class="user-author-details">
-                          <span class="user-author-name">케냐리아</span><br>
+                          <span class="user-author-name">케냐리아</span>
                           <span class="user-author-tag">#웹툰작가</span>
                       </div>
                   </div>
@@ -1903,7 +1959,7 @@
                               src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/ea5aec3afffb5.png">
                       </div>
                       <div class="user-author-details">
-                          <span class="user-author-name">Devnaya</span><br>
+                          <span class="user-author-name">Devnaya</span>
                           <span class="user-author-tag">#프리랜서 #개발자</span>
                       </div>
                   </div>
