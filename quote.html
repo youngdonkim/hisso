@@ -6,6 +6,7 @@
     <title>하이쏘 최저갸 비교견적서</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script> -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
     <style>
       html {
         scroll-behavior: smooth;
@@ -17,6 +18,13 @@
         box-sizing: border-box;
       }
 
+      @font-face {
+        font-family: "NEXON Lv1 Gothic OTF";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
       body {
         margin: 0;
         padding: 0;
@@ -25,6 +33,7 @@
         align-items: center;
         justify-content: center;
         max-width: 500px;
+        min-width: 320px; /* 최소 너비 설정 */
         margin: 0 auto;
         font-family: "NEXON Lv1 Gothic OTF", sans-serif;
       }
@@ -91,13 +100,14 @@
         height: 100%;
         background-color: white;
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-        transition: 0.3s ease;
-        padding-top: 60px; /* 내브 바와 겹치지 않도록 패딩 */
+        transition: transform 0.3s ease;
+        padding-top: 60px;
         z-index: 1001;
+        transform: translateX(-100%); /* 화면 밖으로 숨김 */
       }
 
       .side-menu.open {
-        left: 0; /* 메뉴를 열면 화면에 나타남 */
+        transform: translateX(0); /* 메뉴를 열면 화면에 나타남 */
       }
 
       .side-menu a {
@@ -121,28 +131,35 @@
         cursor: pointer;
       }
 
-      .mo-container {
-        max-width: 460px;
-        min-width: 350px;
+      main {
+        width: 100%;
+        max-width: 500px;
+        min-width: 320px;
+        margin: 0 auto;
+        padding: 20px; /* 필요에 따라 패딩 추가 */
+      }
 
+      .container {
+        max-width: 100%; /* 부모 요소의 너비에 맞춤 */
+        min-width: 320px; /* 최소 너비 설정 */
         padding: 68px 20px 20px 20px;
         display: flex;
         flex-direction: column;
       }
 
-      .mo-container p {
+      .container p {
         margin-bottom: 10px;
       }
 
-      .mo-header,
-      .mo-subheader,
-      .mo-goodbye {
+      .header,
+      .subheader,
+      .goodbye {
         display: flex;
         flex-direction: column;
         margin-bottom: 10px;
       }
 
-      .mo-goodbye {
+      .goodbye {
         color: var(--Gray-red4, #888);
         font-size: 15px;
         font-style: normal;
@@ -150,7 +167,7 @@
         line-height: 160%;
       }
 
-      .mo-goodbye span {
+      .goodbye span {
         color: var(--BI-color-main1, #ff4081);
 
         font-size: 15px;
@@ -160,7 +177,7 @@
         text-decoration-line: underline;
       }
 
-      .mo-header {
+      .header {
         font-family: Montserrat;
         font-size: 24px;
         font-weight: 800;
@@ -171,11 +188,11 @@
         flex-direction: column;
       }
 
-      .mo-header .mo-highlight {
+      .header .highlight {
         color: #ff5e80;
       }
 
-      .mo-highlight {
+      .highlight {
         font-family: Montserrat;
         font-size: 24px;
         font-weight: 800;
@@ -183,7 +200,7 @@
         text-align: left;
       }
 
-      .mo-subheader {
+      .subheader {
         margin-top: 10px;
 
         color: #888888;
@@ -195,7 +212,7 @@
         text-align: left;
       }
 
-      .mo-content {
+      .content {
         margin-top: 20px;
 
         color: #888888;
@@ -209,7 +226,7 @@
         font-weight: 400;
       }
 
-      .mo-image-title-container {
+      .image-title-container {
         text-align: left;
         margin-top: 20px;
         font-size: 18px;
@@ -219,12 +236,12 @@
         /* 16.8px */
       }
 
-      .mo-image-title {
+      .image-title {
         font-weight: bold;
         margin-bottom: 5px;
       }
 
-      .mo-image-divider {
+      .image-divider {
         width: 100%;
         height: 1px;
         background-color: #000;
@@ -232,19 +249,19 @@
         margin-bottom: 15px;
       }
 
-      .mo-image-container {
+      .image-container {
         text-align: center;
         margin-top: 20px;
         margin-bottom: 20px;
       }
 
-      .mo-product-image {
+      .product-image {
         max-width: 100%;
         height: auto;
         border-radius: 4px;
       }
 
-      .mo-table-container {
+      .table-container {
         margin-top: 20px;
         overflow-x: auto;
         display: flex;
@@ -274,7 +291,7 @@
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
       }
 
-      .mo-footer {
+      .footer {
         margin-top: 20px;
         font-size: 16px;
         color: #777;
@@ -282,11 +299,11 @@
         margin-bottom: 20px;
       }
 
-      .mo-highlight {
+      .highlight {
         color: #ff5e80;
       }
 
-      .mo-white-background {
+      .white-background {
         background-color: #fff;
         padding: 20px;
         border-radius: 4px;
@@ -295,13 +312,13 @@
         margin-bottom: 20px;
       }
 
-      .mo-vertical-line {
+      .vertical-line {
         border-left: 1px solid #ccc;
         height: 50px;
         margin: 20px 0;
       }
 
-      .mo-custom-header {
+      .custom-header {
         margin-bottom: 10px;
 
         color: #090909;
@@ -313,7 +330,7 @@
         /* 22.4px */
       }
 
-      .mo-custom-content {
+      .custom-content {
         margin-top: 10px;
 
         margin-bottom: 20px;
@@ -327,7 +344,7 @@
         /* 22.4px */
       }
 
-      .mo-white-background .mo-custom-button {
+      .white-background .custom-button {
         display: inline-block;
         padding: 10px 20px;
         margin: 10px 0;
@@ -348,7 +365,7 @@
         /* 24px */
       }
 
-      .mo-separator {
+      .separator {
         text-align: center;
         margin: 20px 0;
         overflow: hidden;
@@ -356,7 +373,7 @@
         flex-direction: column;
       }
 
-      .mo-separator-text {
+      .separator-text {
         font-size: 18px;
         margin-top: 10px;
         color: #888;
@@ -374,14 +391,14 @@
         margin-right: 2px;
       }
 
-      .mo-qna-container {
+      .qna-container {
         display: flex;
         justify-content: center;
         background-color: #f2f2f2;
         width: 100%;
       }
 
-      .mo-qna {
+      .qna {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -391,7 +408,7 @@
         margin-bottom: 80px;
       }
 
-      .mo-qna-title-container {
+      .qna-title-container {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -399,7 +416,7 @@
         align-items: center;
       }
 
-      .mo-qna-title {
+      .qna-title {
         margin-top: 80px;
         color: var(--BI-color-main1, #ff4081);
         text-align: center;
@@ -412,7 +429,7 @@
         letter-spacing: -0.32px;
       }
 
-      .mo-qna-subtitle {
+      .qna-subtitle {
         margin-bottom: 20px;
         color: var(--Black-red, #111);
         text-align: center;
@@ -424,7 +441,7 @@
         letter-spacing: -1.4px;
       }
 
-      .mo-qna-item {
+      .qna-item {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -436,7 +453,7 @@
         margin-bottom: 24px;
       }
 
-      .mo-qna-question {
+      .qna-question {
         width: 100%;
         padding: 16px;
         border: none;
@@ -458,7 +475,7 @@
         letter-spacing: -0.4px;
       }
 
-      .mo-qna-answer {
+      .qna-answer {
         display: none;
         padding: 15px;
         background-color: #fff;
@@ -469,11 +486,11 @@
         color: #888;
       }
 
-      .mo-arrow {
+      .arrow {
         transition: transform 0.3s ease;
       }
 
-      .mo-qna-question.mo-active .mo-arrow {
+      .qna-question.active .arrow {
         transform: rotate(90deg);
       }
 
@@ -701,17 +718,17 @@
       </div>
     </nav>
     <main>
-      <div class="mo-container">
-        <div class="mo-header">
+      <div class="container">
+        <div class="header">
           <div>
-            <span class="mo-highlight">Tolomeo</span>
+            <span class="highlight">Tolomeo</span>
             <span style="margin-left: -5px">님을 위한</span>
           </div>
           구매조건별<br />
           최저가 비교 견적 제안<br />
         </div>
 
-        <p class="mo-content">
+        <p class="content">
           요청하신
           <span style="color: #888; font-size: 16px; font-style: normal; font-weight: 800; line-height: 160%"
             >Artemide Tolomeo Mega Floor Lamp 42 파이+ 갓(양피지) + 디머</span
@@ -721,23 +738,23 @@
         <p style="font-size: 14px; color: #888888">
           * 약 30여개의 하이엔드 조명 쇼핑몰의 견적을 비교해서 구매조건별 최저가만을 선별했습니다.
         </p>
-        <div class="mo-white-background">
-          <div class="mo-image-title-container">
-            <div class="mo-image-title">
+        <div class="white-background">
+          <div class="image-title-container">
+            <div class="image-title">
               Artemide Tolomeo<br />
               Mega Floor Lamp_42
             </div>
-            <div class="mo-image-divider"></div>
+            <div class="image-divider"></div>
           </div>
-          <div class="mo-image-container">
+          <div class="image-container">
             <img
               class="product_img"
               src="https://img.ssfshop.com/cmd/LB_750x1000/src/https://img.ssfshop.com/goods/LIFE/22/12/07/GQJP22120783802_0_ORGINL_20221207174315289.jpg"
               alt="Artemide Tolomeo Mega Floor Lamp"
-              class="mo-product-image"
+              class="product-image"
             />
           </div>
-          <div class="mo-table-container">
+          <div class="table-container">
             <table>
               <thead>
                 <tr>
@@ -852,7 +869,7 @@
               </p>
             </div>
 
-            <div class="mo-table-container" style="margin-top: 0">
+            <div class="table-container" style="margin-top: 0">
               <table>
                 <thead>
                   <tr>
@@ -899,29 +916,29 @@
             </a>
 
             <div style="margin: 50px 0 30px 0">
-              <p class="mo-goodbye">
+              <p class="goodbye">
                 하이쏘는 고객님의 구매 여정에 함께하는 쇼핑메이트가 되면 좋겠습니다. 궁금하신 점이 있으시면 아래 "무료 쇼핑 컨시어지
                 신청하기" 버튼을 클릭하셔서 물어봐주세요.<br /><br />
               </p>
-              <p class="mo-goodbye">감사합니다.😍</p>
+              <p class="goodbye">감사합니다.😍</p>
             </div>
-            <div class="mo-image-divider"></div>
+            <div class="image-divider"></div>
           </div>
         </div>
         <div>
-          <div class="mo-qna-container">
-            <div class="mo-qna">
-              <div class="mo-qna-title-container">
-                <h1 class="mo-qna-title">check list</h1>
-                <h2 class="mo-qna-subtitle" style="margin-top: 0">구매 전 <br />꼭 체크해보세요!</h2>
+          <div class="qna-container">
+            <div class="qna">
+              <div class="qna-title-container">
+                <h1 class="qna-title">check list</h1>
+                <h2 class="qna-subtitle" style="margin-top: 0">구매 전 <br />꼭 체크해보세요!</h2>
               </div>
 
-              <div class="mo-qna-item">
-                <button class="mo-qna-question">
+              <div class="qna-item">
+                <button class="qna-question">
                   서울/경기 아닌데 설치를 해주는 곳이 있나요? <br />
-                  <span class="mo-arrow">></span>
+                  <span class="arrow">></span>
                 </button>
-                <div class="mo-qna-answer">
+                <div class="qna-answer">
                   <p>
                     숨고같은 사이트를 찾아보면 있기도 하구요. 000같은 전문 설치 업체도 있습니다. 대략 00만원이면 기사님이 출장 오셔서
                     설치해주십니다. 종종 비싼 펜던트 조명은 설치경험 없는 분들에게 맡기면 고생하기도 하니 가급적 사용자 리뷰가 있는 업체나
@@ -931,12 +948,12 @@
                 </div>
               </div>
 
-              <div class="mo-qna-item">
-                <button class="mo-qna-question">
+              <div class="qna-item">
+                <button class="qna-question">
                   컬러나 재질에 따라 가격이 다른가요? <br />
-                  <span class="mo-arrow">></span>
+                  <span class="arrow">></span>
                 </button>
-                <div class="mo-qna-answer">
+                <div class="qna-answer">
                   <p>
                     하이엔드 조명은 컬러에 따라 가격차가 많이 나요. 특히 황동, 알루미늄, 합성수지 등등 재질은 더 많은 가격차가 있으니 어떤
                     브랜드 제품을 사시기로 하셨더라도 옵션별 가격차를 꼭 확인해보시는 것이 좋아요. 또 옵션별로 파는 곳이 다르니 원하는
@@ -944,13 +961,13 @@
                   </p>
                 </div>
               </div>
-              <div class="mo-qna-item">
-                <button class="mo-qna-question">
+              <div class="qna-item">
+                <button class="qna-question">
                   디머/조광기 vs on/off 스위치. <br />
                   어느걸 살까?
-                  <span class="mo-arrow">></span>
+                  <span class="arrow">></span>
                 </button>
-                <div class="mo-qna-answer">
+                <div class="qna-answer">
                   <p>
                     조명의 밝기와 분위기를 취향에 따라 조절하고 싶으시다면<br />
                     디머(조광기)가 달린 조명등을 선택하거나 기존의 on/off 스위치에 스마트 전구를 사용하는 두 가지 방법이 있어요.
@@ -962,21 +979,21 @@
                   </p>
                 </div>
               </div>
-              <div class="mo-qna-item">
-                <button class="mo-qna-question">
+              <div class="qna-item">
+                <button class="qna-question">
                   갓의 사이즈는 최종 체크하셨나요?
-                  <span class="mo-arrow">></span>
+                  <span class="arrow">></span>
                 </button>
-                <div class="mo-qna-answer">
+                <div class="qna-answer">
                   <p>
                     조명 갓(shade)에 따라서 가격차가 나는 것도 있지만 우리 집에 들여놓았을 때 적절한 불빛과 크기인지 다시 한 번
                     생각해보시는게 사고 나서 후회하는 것보다 좋으니 꼭 한 번 더 체크해보세요.🛋️
                   </p>
                 </div>
               </div>
-              <div class="mo-qna-item">
-                <button class="mo-qna-question">전구선택은 어느게 좋을까요? <span class="mo-arrow">></span></button>
-                <div class="mo-qna-answer">
+              <div class="qna-item">
+                <button class="qna-question">전구선택은 어느게 좋을까요? <span class="arrow">></span></button>
+                <div class="qna-answer">
                   <p>
                     <strong>유럽 조명등은 LED가 기본!!</strong>
                     <br />
@@ -1048,9 +1065,9 @@
 
     <script>
       $(document).ready(function () {
-        $(".mo-qna-question").click(function () {
+        $(".qna-question").click(function () {
           // Toggle the clicked answer
-          $(this).next(".mo-qna-answer").slideToggle();
+          $(this).next(".qna-answer").slideToggle();
           $(this).toggleClass("active");
         });
       });
