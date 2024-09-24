@@ -509,30 +509,17 @@
         z-index: -2;
       }
 
-      .mo_footer-info {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-top: 30px;
-        margin-bottom: 240px;
-        color: #666;
-        font-size: 12px;
-        line-height: 1.6;
-      }
-
       .watermark {
         display: inline-flex;
         padding: 8px 36px;
         justify-content: center;
         align-items: center;
-
         position: fixed;
         margin-top: 80px;
-        margin-left: -70px;
         top: 15%;
         /* Adjust position from the top */
-        left: 55%;
-        transform: translateX(-50%) rotate(-15deg);
+
+        transform: rotate(-15deg);
         /* Rotate the text by -45 degrees */
         font-size: 2.6em;
         z-index: 1;
@@ -546,6 +533,17 @@
         line-height: 130%;
         /* 62.4px */
         border: 2px solid #ebebeb;
+      }
+
+      .mo_footer-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 240px;
+        color: #666;
+        font-size: 12px;
+        line-height: 1.6;
       }
 
       .content {
