@@ -9,21 +9,35 @@
     <!-- Slick JS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=NEXON+Lv1+Gothic+OTF+Light%7CNEXON+Lv1+Gothic+OTF%7CNEXON+Lv1+Gothic+OTF+Bold" media="all">
 
 
     
 
     <style>
       @font-face {
-        font-family: "NEXON Lv1 Gothic OTF";
-        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
-        font-weight: normal;
+        font-family: 'NEXON Lv1 Gothic OTF';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+        font-weight: 400;
         font-style: normal;
       }
+      @font-face {
+        font-family: 'NEXON Lv1 Gothic OTF LIGHT';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+     font-family: 'NEXON Lv1 Gothic OTF Bold';
+     src: url('https://youngdonkim.github.io/hisso/NEXON%20Lv1%20Gothic%20OTF%20Bold.woff') format('woff');
+     font-weight: 700;
+     font-style: normal;
+     font-display: swap;
+   }
         .spacer {
       height: 8px;
       visibility: hidden; /* 또는 opacity: 0; */
-  }
+      }
         .p {
             margin: 0;
         }
@@ -32,13 +46,14 @@
             font-size: 26px;
             letter-spacing: -0.07em;
             line-height: 130%;
-            font-family: 'NEXON Lv1 Gothic Low OTF';
+            font-family: 'NEXON Lv1 Gothic OTF';
+            font-weight: 700;
             color: #111;
             text-align: center;
         }
 
 
-        .b {
+        b {
             width: 316px;
             position: relative;
             font-size: 22px;
@@ -50,14 +65,6 @@
             text-align: left;
             align-items: center;
             margin-bottom: 12px;
-        }
-
-
-        @font-face {
-            font-family: 'NEXON Lv1 Gothic OTF';
-            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
         }
         
         * {
@@ -258,8 +265,10 @@
       .hero-title {
         width: 100%;
         padding: 26px 30px 82px 30px;
-        text-align: center;
-        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
 
       .hero-title h1 {
@@ -289,6 +298,8 @@
       /* 하이쏘 사용 가이드 */
       .service-1-container {
         display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
         width: 100%;
         background-color: #f7f7f7;
@@ -1585,10 +1596,10 @@
       <!-- 히어로 배너 타이틀 -->
       <div class="hero-title-container">
         <div class="hero-title">
-          <b class="title_maintop">
+          <div class="title_maintop" style="font-family: 'NEXON Lv1 Gothic OTF BOLD';">
             럭셔리 디자인 조명<br />
             실패없이 구매하는 법
-          </b>
+          </div>
           <p class="hero-subtitle">"조명 추천부터 최저가 구매까지"</p>
         </div>
       </div>
@@ -1634,11 +1645,11 @@
             </defs>
           </svg>
           <div class="spacer"></div> <!-- 새로 추가된 여백용 div -->
-          <b class="title_maintop">
+          <div class="title_maintop">
             구매여정에 맞는<br />
-            <span style="font-weight: bolder">쇼핑 컨시어지 서비스를</span><br />
+            <span>쇼핑 컨시어지 서비스를</span><br />
             신청해보세요!
-          </b>
+          </>
         </div>
       </div>
 
