@@ -24,7 +24,7 @@
       @font-face {
         font-family: 'NEXON Lv1 Gothic OTF LIGHT';
         src: url('/NEXON Lv1 Gothic OTF Light.woff') format('woff');
-        font-weight: 300;
+        font-weight: 400;
         font-style: normal;
       }
       @font-face {
@@ -158,20 +158,36 @@
         }
 
         .side-menu.open {
-            left: 0px; /* 메뉴를 열면 화면에 나타남 */
+        left: 0px; /* 메뉴를 열면 화면에 나타남 */
+    }
+        .side-menu-content{
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          margin-top: 16px;
         }
-
         .side-menu a {
             display: block;
             padding: 15px 20px;
             text-decoration: none;
             color: #333;
             font-size: 18px;
-            transition: background 0.3s ease;
+            transition: background 0.1s ease;
+            cursor: pointer;
+            transition: transform 0.1s ease;
         }
 
         .side-menu a:hover {
-            background-color: #f0f0f0;
+            background-color: #ffffff;
+            color: #ff2e82;
+            transform: translateX(5px); /* 오른쪽으로 튕기는 효과 */
+
+        }
+        .side-menu-content a:active {
+            background-color: #ffffff;
+            color: #8c1847;
+            transform: scale(0.98);
         }
 
         .close-btn {
@@ -180,6 +196,12 @@
             right: 20px;
             font-size: 24px;
             cursor: pointer;
+        }
+
+        .side-menu-content a:active {
+            background-color: #ffffff;
+            color: #8c1847;
+            transform: scale(0.98);
         }
 
       /* 히어로 배너 슬라이더 */
@@ -312,7 +334,7 @@
         /* 수직 정렬 */
         justify-content: start;
         width: 92%;
-        padding: 60px 20px 20px 20px;
+        padding: 40px 20px 20px 20px;
         background-color: #f7f7f7;
         margin-top: 40px;
         margin-bottom: 40px;
@@ -1266,7 +1288,7 @@
             font-size: 18px;
             font-weight: bold;
             color: #fff;
-            margin-right: 15px;
+            margin-right: 8px;
         }
 
         .user-author-details {
@@ -1347,7 +1369,13 @@
             justify-content: center;
             width: 100%;
         }
+        .right-panel_content p {
+            margin-bottom: 14px;
+        }
 
+        .right-panel_content h2 {
+            margin-bottom: 6px;
+        }
         .hisso-section {
             display: flex;
             align-items: center;
@@ -1355,12 +1383,13 @@
             padding: 40px 30px;
             width: 92%;
             height: 700px;
-            border-radius: 18px;
+            border-radius: 32px;
             background: url('https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/db80b0092ef40.png') lightgray 50% / cover no-repeat;
 
             background-size: cover;
             margin-top: 80px;
             margin-bottom: 80px;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.15);
         }
 
         .right-panel {
@@ -1408,12 +1437,13 @@
         }
 
         .right-panel ul {
-            list-style: none;
-            padding: 0;
+            list-style-type: none;
+            padding-left: 0;
         }
 
         .right-panel ul li {
-
+            display: flex;
+            align-items: center;
             margin-bottom: 10px;
             color: #fff;
             text-align: left;
@@ -1422,31 +1452,30 @@
             letter-spacing: -0.4px;
             font-size: 14px;
             line-height: 29.4px;
-            font-size: 14px;
         }
 
-        .home_styling {
-            letter-spacing: -0.8px !important;
-
+        .right-panel ul li img {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            flex-shrink: 0;
         }
-
 
         .right-panel ul li strong {
+            font-weight: bold;
             color: #fff;
-
             font-size: 14px;
-            font-weight: 700;
             line-height: 29.4px;
             letter-spacing: -0.4px;
-
         }
+        
 
         /* 하이쏘 푸터 */
         .footer {
         width: 100%;
         background-color: #f2f2f2;
         text-align: center;
-        padding: 60px 0 20px 0;
+        padding: 80px 0 20px 0;
         }
 
         .footer-nav {
@@ -1456,9 +1485,9 @@
 
         .footer-nav a {
         
-            margin: 0 20px 10px 20px;
+            margin: 0 20px 18px 20px;
             text-decoration: none;
-            color: #333;
+            color: #676767;
             font-weight: bold;
         }
 
@@ -2002,8 +2031,7 @@
                               취향을 고려한 <strong>조명 추천</strong> 👍</li>
                           <li><img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/04e3752d04abb.png" alt="Checkmark">
                               가까운 지역 <strong>쇼룸 안내</strong> 🔔</li>
-                          <li class="home_styling"><img
-                                  src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/04e3752d04abb.png" alt="Checkmark">
+                          <li><img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/04e3752d04abb.png" alt="Checkmark">
                               내 방에 해보는 <strong>홈 스타일링 미리보기</strong> 👀</li>
                           <li><img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/04e3752d04abb.png" alt="Checkmark">
                               구매조건별 <strong>최저가 비교견적</strong> 🏷️</li>
@@ -2041,9 +2069,13 @@
     <!-- 사이드 메뉴 -->
     <div id="sideMenu" class="side-menu">
         <a href="#" class="close-btn" onclick="toggleMenu()">&times;</a>
-        <a href="#">쇼룸찾기</a>
-        <a href="#">조명추천 리포트 샘플</a>
-        <a href="#">비교견적 리포트 샘플</a>
+    
+        <div class="side-menu-content">
+          <a href="https://hisso.co.kr/showrooms">쇼룸찾기</a>
+          <a href="https://hisso.co.kr/lighting-recommendations">조명추천 리포트 샘플</a>
+          <a href="https://hisso.co.kr/quote">비교견적 리포트 샘플</a>
+        </div>
+        
     </div>
 
     <!-- CTA -->
