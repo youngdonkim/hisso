@@ -86,7 +86,7 @@
       .side-menu {
         position: fixed;
         top: 0;
-        left: -250px; /* 기본으로는 화면 밖에 숨겨둠 */
+        left: -270px; /* 기본으로는 화면 밖에 숨겨둠 */
         width: 250px;
         height: 100%;
         background-color: white;
@@ -97,20 +97,35 @@
       }
 
       .side-menu.open {
-        left: 0; /* 메뉴를 열면 화면에 나타남 */
+        left: 0px; /* 메뉴를 열면 화면에 나타남 */
       }
-
+      .side-menu-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin-top: 16px;
+      }
       .side-menu a {
         display: block;
         padding: 15px 20px;
         text-decoration: none;
         color: #333;
         font-size: 18px;
-        transition: background 0.3s ease;
+        transition: background 0.1s ease;
+        cursor: pointer;
+        transition: transform 0.1s ease;
       }
 
       .side-menu a:hover {
-        background-color: #f0f0f0;
+        background-color: #ffffff;
+        color: #ff2e82;
+        transform: translateX(5px); /* 오른쪽으로 튕기는 효과 */
+      }
+      .side-menu-content a:active {
+        background-color: #ffffff;
+        color: #8c1847;
+        transform: scale(0.98);
       }
 
       .close-btn {
@@ -121,12 +136,10 @@
         cursor: pointer;
       }
 
-      .container_mo {
-        padding: 24px 20px 200px 20px;
-        max-width: 1200px;
-        margin: auto;
-        margin-top: 48px;
-        z-index: 1;
+      .side-menu-content a:active {
+        background-color: #ffffff;
+        color: #8c1847;
+        transform: scale(0.98);
       }
 
       /* [검색 스타일 */
@@ -1223,9 +1236,12 @@
     <!-- 사이드 메뉴 -->
     <div id="sideMenu" class="side-menu">
       <a href="#" class="close-btn" onclick="toggleMenu()">&times;</a>
-      <a href="https://hisso.co.kr/showrooms">쇼룸찾기</a>
-          <a href="https://hisso.co.kr/lighting-recommendations">조명추천 리포트 샘플</a>
-          <a href="https://hisso.co.kr/quote">비교견적 리포트 샘플</a
+
+      <div class="side-menu-content">
+        <a href="https://hisso.co.kr/showrooms">쇼룸찾기</a>
+        <a href="https://hisso.co.kr/lighting-recommendations">조명추천 리포트 샘플</a>
+        <a href="https://hisso.co.kr/quote">비교견적 리포트 샘플</a>
+      </div>
     </div>
 
     <!-- CTA -->
