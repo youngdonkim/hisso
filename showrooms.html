@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>하이쏘 쇼룸찾기</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
     <style>
       @font-face {
         font-family: "NEXON Lv1 Gothic OTF";
@@ -27,6 +28,34 @@
         justify-content: center;
         max-width: 500px;
         margin: 0 auto;
+        padding-top: 48px;
+      }
+      @font-face {
+        font-family: "NEXON Lv1 Gothic OTF";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "NEXON Lv1 Gothic OTF LIGHT";
+        src: url("/NEXON Lv1 Gothic OTF Light.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "NEXON Lv1 Gothic OTF BOLD";
+        src: url("/NEXON Lv1 Gothic OTF Bold.woff");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      main {
+        padding: 0 20px;
+      }
+
+      .container {
+        margin-top: 48px;
       }
 
       /* 상단 고정 내브 바 */
@@ -232,24 +261,24 @@
         line-height: 160%;
       }
 
-      #clear_btn_mo {
+      #clear_btn {
         padding-right: 6px;
         margin-right: 5px;
         border-right: 1px solid rgb(215, 213, 213);
       }
 
-      #clear_btn_mo svg {
+      #clear_btn svg {
         width: 12px;
         height: 12px;
       }
 
-      .search-bar input:not(:focus):placeholder-shown + #clear_btn_mo svg {
+      .search-bar input:not(:focus):placeholder-shown + #clear_btn svg {
         width: 12px;
         height: 12px;
       }
 
-      .search-bar input:focus + #clear_btn_mo svg,
-      .search-bar input:not(:placeholder-shown) + #clear_btn_mo svg {
+      .search-bar input:focus + #clear_btn svg,
+      .search-bar input:not(:placeholder-shown) + #clear_btn svg {
         width: 12px;
         height: 12px;
       }
@@ -534,7 +563,7 @@
         box-shadow: 0px 4px 11.9px 0px rgba(0, 0, 0, 0.2);
       }
 
-      .warning .warning_text_mo {
+      .warning .warning_text  {
         margin: 0;
         color: var(--BI-color-main1, #ff4081);
         font-family: Pretendard;
@@ -724,7 +753,7 @@
         justify-content: center;
       }
 
-      .icon_telephone_mo {
+      .icon_telephone {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -733,7 +762,7 @@
         padding: 15px;
       }
 
-      .icon_telephone_mo a {
+      .icon_telephone a {
         color: white;
       }
 
@@ -1118,11 +1147,11 @@
       </div>
     </nav>
     <main>
-      <div class="container_mo">
+      <div class="container">
         <div class="search-bar">
-          <input type="text" id="search_input_mo" placeholder="주소, 쇼룸명, 쇼룸 타입, 브랜드 검색" enterkeyhint="쇼룸 찾기" />
+          <input type="text" id="search_input " placeholder="주소, 쇼룸명, 쇼룸 타입, 브랜드 검색" enterkeyhint="쇼룸 찾기" />
           <div id="autocomplete-results" class="autocomplete-results"></div>
-          <div id="clear_btn_mo">
+          <div id="clear_btn ">
             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 12 12" fill="none">
               <path d="M1 1L11 11M11 1L1 11" stroke="#C4C4C4" stroke-width="2" />
             </svg>
@@ -1212,7 +1241,7 @@
                 align-self: center;
                 width: 100%;
               ">
-          <p class="warning_text_mo">✅ 쇼룸 방문 전, 꼭 확인해보세요!</p>
+          <p class="warning_text ">✅ 쇼룸 방문 전, 꼭 확인해보세요!</p>
           <button class="close-warning">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path d="M6 6L18 18M18 6L6 18" stroke="#8C898A" />
@@ -4887,7 +4916,7 @@
           인스타그램: "https://www.instagram.com/hm_innovad/",
           동영상: "",
           회사홈페이지: "https://www.innovad.co.kr/",
-          참고: "https://www.innovad.co.kr/bbs/sub.php?s_mode=03&s_page=showroom"
+          참고: "https://www.innovad.co.kr/bbs/sub.php?s de=03&s_page=showroom"
         },
         {
           쇼룸명: "체어파크 강남",
@@ -10323,9 +10352,9 @@
 
         // 검색 상수
         const searchBar = document.querySelector(".search-bar");
-        const searchInput = document.getElementById("search_input_mo");
+        const searchInput = document.getElementById("search_input ");
         const autocompleteResults = document.getElementById("autocomplete-results");
-        const clearBtn = document.getElementById("clear_btn_mo");
+        const clearBtn = document.getElementById("clear_btn ");
         const recommendedBox = document.getElementById("recommended");
         const keywords = document.querySelectorAll(".chips .keyword");
         const searchIconBtn = document.querySelector(".search_icon_btn");
@@ -10862,7 +10891,7 @@
                     <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/605cc0e936c44.png" alt="Naver Map" class="button_icon">자세히보기
                   </button>
                   ${result.예약_필요 ? `<div class="reservation_required">방문 전 예약 필수</div>` : ""}
-                  <div class="icon_telephone_mo">
+                  <div class="icon_telephone ">
                     <a href="tel:${result.연락처}" class="telephone">
                       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
                         <path d="M21.3813 26.2505C20.3138 26.2505 18.8143 25.8644 16.5688 24.6098C13.8383 23.0786 11.7263 21.6649 9.01049 18.9562C6.39205 16.3395 5.11783 14.6452 3.33447 11.4001C1.31979 7.73602 1.66322 5.81539 2.04713 4.99453C2.50432 4.01344 3.17916 3.42664 4.05143 2.84422C4.54687 2.51961 5.07117 2.24135 5.61768 2.01297C5.67236 1.98945 5.72322 1.96703 5.76861 1.9468C6.03932 1.82484 6.44947 1.64055 6.969 1.83742C7.31572 1.96758 7.62526 2.23391 8.10979 2.71242C9.10346 3.69242 10.4613 5.875 10.9623 6.94688C11.2986 7.6693 11.5212 8.14617 11.5217 8.68102C11.5217 9.30719 11.2067 9.79008 10.8245 10.3112C10.7528 10.4091 10.6817 10.5027 10.6128 10.5934C10.1967 11.1403 10.1053 11.2984 10.1655 11.5805C10.2874 12.1477 11.1969 13.8359 12.6915 15.3272C14.1861 16.8185 15.8256 17.6705 16.3949 17.792C16.6892 17.8548 16.8505 17.7597 17.4149 17.3287C17.4958 17.267 17.5789 17.203 17.6659 17.139C18.2488 16.7053 18.7093 16.3985 19.3207 16.3985H19.324C19.8561 16.3985 20.3117 16.6293 21.0663 17.0099C22.0507 17.5065 24.2989 18.8469 25.2849 19.8416C25.7646 20.3251 26.032 20.6335 26.1627 20.9797C26.3596 21.5009 26.1742 21.9094 26.0533 22.1828C26.0331 22.2282 26.0106 22.278 25.9871 22.3332C25.7569 22.8787 25.477 23.4019 25.151 23.8962C24.5696 24.7657 23.9806 25.4389 22.9974 25.8966C22.4925 26.1355 21.9399 26.2565 21.3813 26.2505Z" fill="#FF4081"/>
@@ -11279,7 +11308,7 @@
                     <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/605cc0e936c44.png" alt="Naver Map" class="button_icon">자세히보기
                   </button>
                   ${result.예약_필요 ? `<div class="reservation_required">방문 전 예약 필수</div>` : ""}
-                  <div class="icon_telephone_mo">
+                  <div class="icon_telephone ">
                     <a href="tel:${result.연락처}" class="telephone">
                       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
                         <path d="M21.3813 26.2505C20.3138 26.2505 18.8143 25.8644 16.5688 24.6098C13.8383 23.0786 11.7263 21.6649 9.01049 18.9562C6.39205 16.3395 5.11783 14.6452 3.33447 11.4001C1.31979 7.73602 1.66322 5.81539 2.04713 4.99453C2.50432 4.01344 3.17916 3.42664 4.05143 2.84422C4.54687 2.51961 5.07117 2.24135 5.61768 2.01297C5.67236 1.98945 5.72322 1.96703 5.76861 1.9468C6.03932 1.82484 6.44947 1.64055 6.969 1.83742C7.31572 1.96758 7.62526 2.23391 8.10979 2.71242C9.10346 3.69242 10.4613 5.875 10.9623 6.94688C11.2986 7.6693 11.5212 8.14617 11.5217 8.68102C11.5217 9.30719 11.2067 9.79008 10.8245 10.3112C10.7528 10.4091 10.6817 10.5027 10.6128 10.5934C10.1967 11.1403 10.1053 11.2984 10.1655 11.5805C10.2874 12.1477 11.1969 13.8359 12.6915 15.3272C14.1861 16.8185 15.8256 17.6705 16.3949 17.792C16.6892 17.8548 16.8505 17.7597 17.4149 17.3287C17.4958 17.267 17.5789 17.203 17.6659 17.139C18.2488 16.7053 18.7093 16.3985 19.3207 16.3985H19.324C19.8561 16.3985 20.3117 16.6293 21.0663 17.0099C22.0507 17.5065 24.2989 18.8469 25.2849 19.8416C25.7646 20.3251 26.032 20.6335 26.1627 20.9797C26.3596 21.5009 26.1742 21.9094 26.0533 22.1828C26.0331 22.2282 26.0106 22.278 25.9871 22.3332C25.7569 22.8787 25.477 23.4019 25.151 23.8962C24.5696 24.7657 23.9806 25.4389 22.9974 25.8966C22.4925 26.1355 21.9399 26.2565 21.3813 26.2505Z" fill="#FF4081"/>
