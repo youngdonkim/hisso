@@ -210,7 +210,7 @@
         font-weight: 900;
         line-height: 130%;
         /* 62.4px */
-        border: 2px solid #ebebeb;
+        border: 2px solid rgba(0, 0, 0, 0.05);
       }
 
       .body_container {
@@ -654,7 +654,7 @@
 
     <!-- CTA -->
     <div class="floCtaPc_container" id="cta-button">
-      <a style="text-decoration: none" href="https://43l86.channel.io" class="floCtaPc">
+      <a style="text-decoration: none" href="https://43l86.channel.io/workflows/686208" class="floCtaPc">
         <div class="floCtaPcwidth">
           <svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="icn_talk">
@@ -672,11 +672,12 @@
           </svg>
           <span class="badge"></span>
           <!-- 뱃지를 표시할 공간   -->
-          <div class="cta_text">무료 쇼핑 컨시어지 신청하기</div>
+          <div class="cta_text">쇼핑메이트와 톡하기</div>
         </div>
       </a>
     </div>
 
+    <!-- FAQ 버튼 -->
     <script>
       function toggleMenu() {
         const sideMenu = document.getElementById("sideMenu");
@@ -690,7 +691,6 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         var ctaButton = document.getElementById("cta-button");
-
         setTimeout(function () {
           ctaButton.classList.add("show_cta");
         }, 1000); // 1000ms = 1초
