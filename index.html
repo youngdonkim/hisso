@@ -481,24 +481,24 @@
       }
 
       /* 구매여정 step 02 */
-      .step02-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-radius: 38px;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-        width: 92%;
-        margin-bottom: 60px;
-      }
-
       .step02-container {
         display: flex;
         justify-content: center;
         width: 100%;
         background-color: #f7f7f7;
       }
+      .step02-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 38px; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        width: 92%;
+        margin-bottom: 60px;
+      }
+
+      
 
       .step02-title-container {
         display: flex;
@@ -607,7 +607,6 @@
       .step03-container {
         display: flex;
         justify-content: center;
-        align-items: center;
         width: 100%;
         background-color: #f7f7f7;
       }
@@ -616,7 +615,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
         border-radius: 38px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         background-color: #fff;
@@ -656,103 +654,25 @@
         margin-bottom: 12px;
       }
 
-      .step03-slider {
-        position: relative;
+      .step03-image-container {
+        flex: 1;
         width: 100%;
-        height: 259px;
-        cursor: pointer;
       }
 
-      .step03-slider img {
+      .step03-image-container img {
         width: 100%;
-        height: auto;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      .step03-after-img img {
-        clip-path: inset(0 0 0 50%);
-        z-index: 1;
-        width: 100%;
-        height: auto;
-      }
-
-      .step03-line_bar2 {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 10;
-        display: block;
-        width: 2px;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.3);
-      }
-
-      .step03-line_bar2 img {
-        position: absolute;
-        top: calc(100% - 10px);
-        /* 부모 요소의 하단에 위치하도록 조정 */
-        left: 50%;
-        /* 부모 요소의 가로 중앙에 위치 */
-        transform: translateX(-50%);
-        /* 가로 중앙 정렬 */
-        width: 30px;
-        /* 이미지의 너비 */
-        height: 30px;
-        /* 이미지의 높이를 자동으로 설정 */
-        z-index: 10;
-      }
-
-      .step03-txt_hero-banner-slide2 {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 100;
-        padding-top: 30%;
-      }
-
-      .step03-txt_hero-banner-slide2 span {
-        display: block;
-        padding: 10px;
-        line-height: 1;
-        border-radius: 10px;
-        background: rgba(0, 0, 0, 0.2);
-        color: #fff;
-        font-size: 12px;
+        object-fit: cover;
       }
 
       .step03-content-container {
+        flex: 1;
         padding: 20px 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
         width: 100%;
+        height: 100%;
         max-width: 80%;
-      }
-
-      .step03-content-container h2 {
-        color: #ff4081;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 130%;
-        letter-spacing: -1.4px;
-      }
-
-      .step03-content-container h3 {
-        color: #111;
-        font-size: 22px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 130%;
-        letter-spacing: -1px;
       }
 
       .step03-content-container p {
@@ -762,32 +682,9 @@
         font-weight: 400;
         line-height: 160%;
         letter-spacing: -0.8px;
+        padding-bottom: 10px;
       }
 
-      .tailored_shopping_guide_1 {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-      }
-
-      .tailored_shopping_guide_button_1 {
-        display: inline-block;
-        padding: 10px 24px;
-        margin-top: 30px;
-        font-size: 16px;
-        line-height: 25.6px;
-        font-weight: 700;
-        color: #ff4081;
-        text-decoration: none;
-        border: 1px solid #ff4081;
-        border-radius: 24px;
-        transition: background-color 0.3s, color 0.3s;
-      }
-
-      .tailored_shopping_guide_button_1:hover {
-        background-color: #ff4081;
-        color: #fff;
-      }
 
       /* 구매여정 step 04 */
       .step04-container {
@@ -912,6 +809,32 @@
 
       .step04-transparent-button:hover .chevron-icon {
         transform: translateX(4px);
+      }
+
+
+      .tailored_shopping_guide_1 {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .tailored_shopping_guide_button_1 {
+        display: inline-block;
+        padding: 10px 24px;
+        margin-top: 30px;
+        font-size: 16px;
+        line-height: 25.6px;
+        font-weight: 700;
+        color: #ff4081;
+        text-decoration: none;
+        border: 1px solid #ff4081;
+        border-radius: 24px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .tailored_shopping_guide_button_1:hover {
+        background-color: #ff4081;
+        color: #fff;
       }
 
       /* 구매여정 step 05 */
@@ -1583,7 +1506,6 @@
           </div>
         </section>
 
-
       <!-- 히어로 배너 타이틀 -->
       <div class="hero-title-container">
         <div class="hero-title">
@@ -1697,15 +1619,9 @@
             <h3>홈스타일링, 미리 보여드려요</h3>
           </div>
           
-          <section class="step03-slider">
-            <img class="step03-before-img" src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/c6deb130f8d75.png" />
-            <div class="step03-after-img">
-              <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/c88ff78c03be4.png" />
-            </div>
-            <div class="step03-line_bar2">
-              <img class="step03-arrow-img" src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/b578de9537b02.png">
-            </div>
-          </section>
+          <div class="step03-image-container">
+            <img class="step03-before-img" src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/013d9735f0d9e.png" />
+          </div>
 
           <div class="step03-content-container">
             <p>
@@ -2062,7 +1978,6 @@
 
     </main>
     
-    
     <!-- 사이드 메뉴 자바스크립트 -->
     <script>
         function toggleMenu() {
@@ -2158,108 +2073,6 @@
 
     </script>
 
-
-    <!-- 구매여정 step 03 자바스크립트 -->
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var ba = document.querySelector(".step03-slider");
-        var lineBar = document.querySelector(".step03-line_bar2");
-        var imgAfterSect = ba.querySelector(".step03-after-img img");
-        var isDragging = false;
-        var startX, startLeft;
-        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-        function handleStart(e) {
-          if (e.target.closest('.step03-slider')) {
-            isDragging = true;
-            startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
-            startLeft = parseFloat(getComputedStyle(lineBar).left);
-            if (e.type.includes('mouse')) {
-              e.preventDefault();
-            }
-          }
-        }
-
-        function handleMove(e) {
-          if (!isDragging) return;
-          var currentX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
-          var diff = currentX - startX;
-          var newLeft = startLeft + diff;
-          var parentWidth = ba.offsetWidth;
-          var p_x = (newLeft / parentWidth) * 100;
-
-          p_x = Math.max(0, Math.min(100, p_x));
-
-          imgAfterSect.style.clipPath = `inset(0 0 0 ${p_x}%)`;
-          lineBar.style.left = `${p_x}%`;
-
-          if (e.type.includes('mouse')) {
-            e.preventDefault();
-          }
-        }
-
-        function handleEnd(e) {
-          if (!isDragging) return;
-          isDragging = false;
-          if (e.type.includes('mouse')) {
-            e.preventDefault();
-          }
-        }
-
-        function handleClick(e) {
-          if (isDragging || isMobile) return;
-          var rect = ba.getBoundingClientRect();
-          var x = e.clientX - rect.left;
-          var w_ba = ba.offsetWidth;
-          var p_x = (x / w_ba) * 100;
-
-          p_x = Math.max(0, Math.min(100, p_x));
-
-          imgAfterSect.style.clipPath = `inset(0 0 0 ${p_x}%)`;
-          lineBar.style.left = `${p_x}%`;
-        }
-
-        if (!isMobile) {
-          ba.addEventListener('mousedown', handleStart);
-          ba.addEventListener('mousemove', handleMove);
-          ba.addEventListener('mouseup', handleEnd);
-          ba.addEventListener('click', handleClick);
-          
-          lineBar.addEventListener('mousedown', handleStart);
-          document.addEventListener('mousemove', handleMove);
-          document.addEventListener('mouseup', handleEnd);
-        } else {
-          ba.addEventListener('touchstart', handleStart);
-          ba.addEventListener('touchmove', handleMove);
-          ba.addEventListener('touchend', handleEnd);
-        }
-
-        // 모바일에서 스와이프 제스처 처리
-        if (isMobile) {
-          var touchStartY;
-          document.addEventListener('touchstart', function(e) {
-            touchStartY = e.touches[0].clientY;
-          });
-          document.addEventListener('touchmove', function(e) {
-            var touchEndY = e.touches[0].clientY;
-            var diff = touchStartY - touchEndY;
-            if (Math.abs(diff) > 50 && !e.target.closest('.step03-slider')) {
-              window.scrollBy(0, diff);
-            }
-          });
-        }
-
-        // PC에서 마우스 휠 스크롤 처리
-        if (!isMobile) {
-          document.addEventListener('wheel', function(e) {
-            if (!e.target.closest('.step03-slider')) {
-              window.scrollBy(0, e.deltaY);
-            }
-          });
-        }
-      });
-    </script>
 
     <!-- FAQ 자바스크립트 -->
      <script>
