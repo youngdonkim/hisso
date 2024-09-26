@@ -12,6 +12,47 @@
 
     <style>
 
+ /* 부모 컨테이너 스타일 */
+        .floCtaPc_container {
+
+            position: relative; /* 자식 요소의 절대 위치를 위해 설정 */
+            overflow: visible; /* 오버플로우를 visible로 설정하여 이동 시 이미지가 잘리지 않게 함 */
+
+        }
+
+        /* SVG 아이콘 스타일 */
+        #icn_talk {
+            width: 80px; /* 아이콘 너비 */
+            height: 80px; /* 아이콘 높이 */
+            cursor: pointer; /* 마우스 커서 변경 */
+            transition: transform 0.3s; /* 변환 효과 전환 */
+            /* 애니메이션 설정 */
+            animation-name: moveLeftReturn;
+            animation-duration: 2s; /* 애니메이션 지속 시간 */
+            animation-delay: 2s; /* 애니메이션 지연 시간 */
+            animation-fill-mode: forwards; /* 애니메이션 종료 후 상태 유지 */
+            animation-iteration-count: 1; /* 애니메이션 반복 횟수 */
+        }
+
+        /* 애니메이션 키프레임 정의 */
+        @keyframes moveLeftReturn {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(-50px); /* 왼쪽으로 50px 이동 */
+            }
+            100% {
+                transform: translateX(0); /* 원래 위치로 돌아오기 */
+            }
+        }
+
+        /* 호버 시 애니메이션 다시 실행 (선택 사항) */
+        #icn_talk:hover {
+            animation: moveLeftReturn 2s forwards;
+        }
+
+
       @font-face {
         font-family: "NEXON Lv1 Gothic OTF";
         src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
@@ -1443,8 +1484,9 @@
 
       .floCtaPcwidth {
         display: flex;
-        justify-content: center;
+        justify-content: start;
         width: 100%;
+        padding-left: 10%;
       }
 
       .cta_text {
@@ -1577,7 +1619,7 @@
             <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/3e1e971a113e0.png" alt="조명 이미지" />
           </div>
           <div class="step01-content-container">
-            <p><strong>어떤 브랜드 제품</strong>을 사야할 지 어려우시면 쇼핑톡 서비스를 신청해보세요.</p>
+            <p>어떤 브랜드 제품을 사야할 지 어려우시면 쇼핑톡 서비스를 신청해보세요.</p>
             <div class="tailored_shopping_guide_1">
               <a href="https://hisso.co.kr/lighting-recommendations" class="comparative_quotation-link">
                 <div class="tailored_shopping_guide_button">조명추천 샘플보기<span style="margin-left: 8px">></span></div>
@@ -1625,7 +1667,7 @@
 
           <div class="step03-content-container">
             <p>
-              <strong>제품 놓을 공간 사진</strong>을 보내 주세요. <br />
+              <strong>제품 놓을 공간 사진을 보내 주세요.</strong> <br />
               아래 쇼핑톡 서비스로 신청해주시면 조명 설치 전/후의 합성 사진을 보내드려요.
             </p>
           </div>
@@ -1644,7 +1686,7 @@
           </div>
           <div class="step04-content-container">
             <p>
-              아래에서 쇼핑메이트와 톡하기를 하시면
+              아래에서 무료 쇼핑 컨시어지를 신청하시면
               <br />
               <strong>약 30여개의 주요 쇼핑몰</strong>을 조사한 뒤, 최저가 비교 견적을 알려드려요!
             </p>
@@ -1669,7 +1711,7 @@
           </div>
           <div class="step05-content-container">
             <p>
-              아래에서 쇼핑메이트와 톡하기를 하시면
+              아래에서 무료 쇼핑 컨시어지를 신청시면
               <strong>가격, 배송기간, A/S 여부, 설치 여부, BNPL(할부구매), 공식수입사 여부</strong>등에 따른 최저가 쇼핑몰의 구매링크를 비교
               견적서 내에 보내드려요!
             </p>
@@ -1704,7 +1746,7 @@
               <div class="faq-answer">
                   <p><strong>최저가 비교 견적서 내에 구매 링크🔗가 들어 있어요.</strong><br><br>
                       저희는 고객 한 분 한 분에게 맞춤형 쇼핑 서비스를 제공하려고 노력해요.
-                    "쇼핑메이트와 톡하기" 버튼을 눌러서 "최저가 비교견적받기" 메뉴를 눌러 사고싶은 상품명을 알려주세요. 구매링크가 포함된 <strong>최저가 비교 견적서</strong>를 보내드려요.<br><br>
+                    "무료 쇼핑톡 서비스 신청하기" 버튼을 눌러서 "최저가 비교견적받기" 메뉴를 눌러 사고싶은 상품명을 알려주세요. 구매링크가 포함된 <strong>최저가 비교 견적서</strong>를 보내드려요.<br><br>
 
                       <strong>이러한 방식은 고객님이 쇼핑정보 찾는 번거로움을 줄여드려요</strong><br><br>
                       일일이 여러 쇼핑몰과 쇼룸의 가격, 배송기간, 설치, AS 등의 구매조건을 비교하는 수고를 줄이시고 편리한 쇼핑을 즐기시면 좋겠습니다.🥰
@@ -1764,7 +1806,7 @@
                   령 루이스폴센의 판텔라 플로어 램프의 조명갓은 60여만원이 넘습니다. 그리고 부품을 구하기도 쉽지 않아요.
                   <br>
                   <strong>파손이 발생하시면</strong> 쇼핑몰의 배상이나 환불을 책임져 드릴 순 없지만 수리방안을 함께 고민해드리겠습니다.<br><br>
-                  화면 하단의 "쇼핑메이트와 톡하기"버튼을 눌러서 <strong>이야기해보세요</strong>.🙏🏻
+                  화면 하단의 "무료 쇼핑톡 신청하기"버튼을 눌러서 <strong>하이쏘 쇼핑 메이트와 이야기해보세요</strong>.🙏🏻
                   </p>
               </div>
           </div>
@@ -1906,13 +1948,13 @@
                       <p>럭셔리 홈퍼니싱에 관심 있는 분들을 위해<br> 콘시어지 쇼핑 서비스를 제공합니다.<br> 여러분은 쇼핑을 즐기시고, 나머지는 맡겨주세요. </p>
                       <ul>
                           <li><img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/04e3752d04abb.png" alt="Checkmark">
-                              취향을 고려한 &nbsp;<strong>조명 추천</strong> 👍</li>
+                              취향을 고려한 <strong>조명 추천</strong> 👍</li>
                           <li><img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/04e3752d04abb.png" alt="Checkmark">
-                              가까운 지역 &nbsp;<strong> 쇼룸 안내</strong> 🔔</li>
+                              가까운 지역 <strong>쇼룸 안내</strong> 🔔</li>
                           <li><img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/04e3752d04abb.png" alt="Checkmark">
-                              내 방에 해보는 &nbsp;<strong> 홈 스타일링 미리보기</strong> 👀</li>
+                              내 방에 해보는 <strong>홈 스타일링 미리보기</strong> 👀</li>
                           <li><img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/04e3752d04abb.png" alt="Checkmark">
-                              구매조건별 &nbsp;<strong> 최저가 비교견적</strong> 🏷️</li>
+                              구매조건별 <strong>최저가 비교견적</strong> 🏷️</li>
 
                       </ul>
                   </div>
@@ -1960,7 +2002,7 @@
       <div class="floCtaPc_container" id="cta-button">
           <a id="floCtaPcLink" style="text-decoration: none;" href="https://43l86.channel.io/workflows/686208" class="floCtaPc">
               <div class="floCtaPcwidth">
-                  <svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="100" height="26" viewBox="0 0 27 26" preserveAspectRatio="xMaxYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <g id="icn_talk">
                           <path id="Union" fill-rule="evenodd" clip-rule="evenodd"
                               d="M13.3417 23C19.1407 23 23.8417 18.299 23.8417 12.5C23.8417 6.70101 19.1407 2 13.3417 2C7.54275 2 2.84174 6.70101 2.84174 12.5C2.84174 14.3773 3.33438 16.1394 4.19743 17.6643L1.68092 21.3249C1.12323 22.1361 1.94992 23.1802 2.86742 22.8234L7.30998 21.0957C9.01671 22.2956 11.097 23 13.3417 23Z"
