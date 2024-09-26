@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <style>
+
       @font-face {
         font-family: "NEXON Lv1 Gothic OTF";
         src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
@@ -1629,7 +1630,7 @@
             구매여정에 맞는<br />
             <span>쇼핑 컨시어지 서비스를</span><br />
             신청해보세요!
-          </s>
+          </div>
         </div>
       </div>
 
@@ -2015,7 +2016,7 @@
     </footer>
 
     <!-- 불투명한 배경 레이어 -->
-    <div id="overlay" class="overlay"></div>
+    <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
 
     <!-- 사이드 메뉴 -->
     <div id="sideMenu" class="side-menu">
@@ -2060,6 +2061,19 @@
             sideMenu.classList.toggle("open");
             overlay.classList.toggle("show");
         }
+        // 오버레이와 닫기 버튼 클릭 시 사이드 메뉴와 오버레이를 닫기
+    document.getElementById('overlay').onclick = function() {
+        const sideMenu = document.getElementById("sideMenu");
+        sideMenu.classList.remove("open");
+        this.classList.remove("show");
+      };
+
+      document.querySelector('.close-btn').onclick = function() {
+          const sideMenu = document.getElementById("sideMenu");
+          const overlay = document.getElementById("overlay");
+          sideMenu.classList.remove("open");
+          overlay.classList.remove("show");
+      };
     </script>
 
     <!-- 히어로 배너 슬라이더 자바스크립트 -->
