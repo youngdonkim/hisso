@@ -17,29 +17,12 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>하이쏘 조명 추천 | Lighting Recommendations</title>
+    <title>조명 추천 | High end Home Furnishing Lighting Recommendations</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XY6L3GW1ET"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-XY6L3GW1ET");
-    </script>
 
     <style>
-      @font-face {
-        font-family: "NEXON Lv1 Gothic OTF";
-        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
-        font-weight: normal;
-        font-style: normal;
-      }
       @media screen and (max-width: 500px) {
         .body_container {
           padding: 0 8px;
@@ -54,16 +37,6 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-      }
-
-      body {
-        font-family: "NEXON Lv1 Gothic OTF", sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        /*max-width: 500px;*/
-        margin: 0 auto;
       }
 
       @font-face {
@@ -84,6 +57,16 @@
         font-weight: 700;
         font-style: normal;
         font-display: swap;
+      }
+
+      body {
+        font-family: "NEXON Lv1 Gothic OTF", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /*max-width: 500px;*/
+        margin: 0 auto;
       }
 
       /* 상단 고정 내브 바 */
@@ -455,7 +438,7 @@
         opacity: 1;
       }
 
-      .floCtaPc {
+      .FloatCTA {
         position: relative;
         display: flex;
         justify-content: center;
@@ -506,6 +489,44 @@
         display: none; /* 처음에는 보이지 않음 */
         white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
         overflow: hidden; /* 원 크기를 넘지 않도록 설정 */
+      }
+
+      /* 부모 컨테이너 스타일 */
+      .floCtaPc_container {
+        position: relative; /* 자식 요소의 절대 위치를 위해 설정 */
+        overflow: visible; /* 오버플로우를 visible로 설정하여 이동 시 이미지가 잘리지 않게 함 */
+      }
+
+      /* SVG 아이콘 스타일 */
+      #icn_talk {
+        width: 80px; /* 아이콘 너비 */
+        height: 80px; /* 아이콘 높이 */
+        cursor: pointer; /* 마우스 커서 변경 */
+        transition: transform 0.3s; /* 변환 효과 전환 */
+        /* 애니메이션 설정 */
+        animation-name: moveLeftReturn;
+        animation-duration: 2s; /* 애니메이션 지속 시간 */
+        animation-delay: 3s; /* 애니메이션 지연 시간 */
+        animation-fill-mode: forwards; /* 애니메이션 종료 후 상태 유지 */
+        animation-iteration-count: 1; /* 애니메이션 반복 횟수 */
+      }
+
+      /* 애니메이션 키프레임 정의 */
+      @keyframes moveLeftReturn {
+        0% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(-50px); /* 왼쪽으로 50px 이동 */
+        }
+        100% {
+          transform: translateX(0); /* 원래 위치로 돌아오기 */
+        }
+      }
+
+      /* 호버 시 애니메이션 다시 실행 (선택 사항) */
+      #icn_talk:hover {
+        animation: moveLeftReturn 2s forwards;
       }
 
       .video-container {
@@ -691,7 +712,7 @@
 
     <!-- CTA -->
     <div class="floCtaPc_container" id="cta-button">
-      <a id="floCtaPcLink" style="text-decoration: none" href="https://43l86.channel.io/workflows/686208" class="floCtaPc">
+      <a id="floCtaPcLink" style="text-decoration: none" href="https://43l86.channel.io/workflows/686208" class="FloatCTA">
         <div class="floCtaPcwidth">
           <svg
             width="74"
