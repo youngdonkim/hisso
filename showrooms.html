@@ -26,6 +26,43 @@
     </script>
 
     <style>
+      /* 부모 컨테이너 스타일 */
+        .floCtaPc_container {
+            overflow: visible; /* 오버플로우를 visible로 설정하여 이동 시 이미지가 잘리지 않게 함 */
+
+        }
+
+        /* SVG 아이콘 스타일 */
+        #icn_talk {
+            width: 80px; /* 아이콘 너비 */
+            height: 80px; /* 아이콘 높이 */
+            cursor: pointer; /* 마우스 커서 변경 */
+            transition: transform 0.3s; /* 변환 효과 전환 */
+            /* 애니메이션 설정 */
+            animation-name: moveLeftReturn;
+            animation-duration: 2s; /* 애니메이션 지속 시간 */
+            animation-delay: 3s; /* 애니메이션 지연 시간 */
+            animation-fill-mode: forwards; /* 애니메이션 종료 후 상태 유지 */
+            animation-iteration-count: 1; /* 애니메이션 반복 횟수 */
+        }
+
+        /* 애니메이션 키프레임 정의 */
+        @keyframes moveLeftReturn {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(-50px); /* 왼쪽으로 50px 이동 */
+            }
+            100% {
+                transform: translateX(0); /* 원래 위치로 돌아오기 */
+            }
+        }
+
+        /* 호버 시 애니메이션 다시 실행 (선택 사항) */
+        #icn_talk:hover {
+            animation: moveLeftReturn 2s forwards;
+        }
       * {
         margin: 0;
         padding: 0;
@@ -1100,7 +1137,7 @@
         opacity: 1;
       }
 
-      .FloatCTA {
+      .floCtaPcLink {
         position: relative;
         display: flex;
         justify-content: center;
@@ -1153,44 +1190,7 @@
         overflow: hidden; /* 원 크기를 넘지 않도록 설정 */
       }
 
-      /* 부모 컨테이너 스타일 */
-        .floCtaPc_container {
-            position: relative; /* 자식 요소의 절대 위치를 위해 설정 */
-            overflow: visible; /* 오버플로우를 visible로 설정하여 이동 시 이미지가 잘리지 않게 함 */
-
-        }
-
-        /* SVG 아이콘 스타일 */
-        #icn_talk {
-            width: 80px; /* 아이콘 너비 */
-            height: 80px; /* 아이콘 높이 */
-            cursor: pointer; /* 마우스 커서 변경 */
-            transition: transform 0.3s; /* 변환 효과 전환 */
-            /* 애니메이션 설정 */
-            animation-name: moveLeftReturn;
-            animation-duration: 2s; /* 애니메이션 지속 시간 */
-            animation-delay: 3s; /* 애니메이션 지연 시간 */
-            animation-fill-mode: forwards; /* 애니메이션 종료 후 상태 유지 */
-            animation-iteration-count: 1; /* 애니메이션 반복 횟수 */
-        }
-
-        /* 애니메이션 키프레임 정의 */
-        @keyframes moveLeftReturn {
-            0% {
-                transform: translateX(0);
-            }
-            50% {
-                transform: translateX(-50px); /* 왼쪽으로 50px 이동 */
-            }
-            100% {
-                transform: translateX(0); /* 원래 위치로 돌아오기 */
-            }
-        }
-
-        /* 호버 시 애니메이션 다시 실행 (선택 사항) */
-        #icn_talk:hover {
-            animation: moveLeftReturn 2s forwards;
-        }
+      
     </style>
   </head>
   <body>
@@ -1343,7 +1343,7 @@
 
     <!-- CTA -->
     <div class="floCtaPc_container" id="cta-button">
-      <a id="floCtaPcLink" style="text-decoration: none" href="https://43l86.channel.io/workflows/686208" class="FloatCTA">
+      <a id="floCtaPcLink" style="text-decoration: none" href="https://43l86.channel.io/workflows/686208" class="floCtaPcLink">
         <div class="floCtaPcwidth">
           <svg
             width="74"
