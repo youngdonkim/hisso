@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-KVB7DZVQ");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>최저가 비교견적서 |High End Home Furnishing Lowest Price Comparison Quote</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+    <style>
+      /* 부모 컨테이너 스타일 */
+      .floCtaPc_container {
+        overflow: visible; /* 오버플로우를 visible로 설정하여 이동 시 이미지가 잘리지 않게 함 */
+      }
+
+      /* SVG 아이콘 스타일 */
+      #icn_talk {
+        width: 80px; /* 아이콘 너비 */
+        height: 80px; /* 아이콘 높이 */
+        cursor: pointer; /* 마우스 커서 변경 */
+        transition: transform 0.3s; /* 변환 효과 전환 */
+        /* 애니메이션 설정 */
+        animation-name: moveLeftReturn;
+        animation-duration: 2s; /* 애니메이션 지속 시간 */
+        animation-delay: 3s; /* 애니메이션 지연 시간 */
+        animation-fill-mode: forwards; /* 애니메이션 종료 후 상태 유지 */
+        animation-iteration-count: 1; /* 애니메이션 반복 횟수 */
+      }
+
+      /* 애니메이션 키프레임 정의 */
+      @keyframes moveLeftReturn {
+        0% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(-50px); /* 왼쪽으로 50px 이동 */
+        }
+        100% {
+          transform: translateX(0); /* 원래 위치로 돌아오기 */
+        }
+      }
+
+      /* 호버 시 애니메이션 다시 실행 (선택 사항) */
+      #icn_talk:hover {
+        animation: moveLeftReturn 2s forwards;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 500px;
+        min-width: 320px; /* 최소 너비 설정 */
+        margin: 0 auto;
+        font-family: "NEXON Lv1 Gothic OTF", sans-serif;
+      }
+
+      @font-face {
+        font-family: "NEXON Lv1 Gothic OTF";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "NEXON Lv1 Gothic OTF LIGHT";
+        src: url("/NEXON Lv1 Gothic OTF Light.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "NEXON Lv1 Gothic OTF BOLD";
+        src: url("/NEXON Lv1 Gothic OTF Bold.woff");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      /* 상단 고정 내브 바 */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        max-width: 500px;
+        height: 48px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        display: flex;
+        justify-content: center; /* 가로 중앙 정렬 */
+        align-items: center; /* 세로 중앙 정렬 */
+      }
+
+      .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .logo img {
+        display: block;
+        width: 104px; /* 로고 이미지의 너비 */
+        height: 42px; /* 로고 이미지의 높이 */
+      }
+
+      .menu-icon {
+        position: absolute;
+        left: 0;
+        padding: 10px 40px 10px 10px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      /* 불투명 레이어 */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .overlay.show {
+        display: block;
+        opacity: 1;
+      }
+
+      /* 사이드 메뉴 */
+      .side-menu {
+        position: fixed;
+        top: 0;
+        left: -270px; /* 기본으로는 화면 밖에 숨겨둠 */
+        width: 250px;
+        height: 100%;
+        background-color: white;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        transition: 0.3s ease;
+        padding-top: 60px; /* 내브 바와 겹치지 않도록 패딩 */
+        z-index: 1001;
+      }
+
+      .side-menu.open {
+        left: 0px; /* 메뉴를 열면 화면에 나타남 */
+      }
+      .side-menu-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin-top: 16px;
+      }
+      .side-menu a {
+        display: block;
+        padding: 15px 20px;
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        transition: background 0.1s ease;
+        cursor: pointer;
+        transition: transform 0.1s ease;
+      }
+
+      .side-menu a:hover {
+        background-color: #ffffff;
+        color: #ff2e82;
+        transform: translateX(5px); /* 오른쪽으로 튕기는 효과 */
+      }
+      .side-menu-content a:active {
+        background-color: #ffffff;
+        color: #8c1847;
+        transform: scale(0.98);
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .side-menu-content a:active {
+        background-color: #ffffff;
+        color: #8c1847;
+        transform: scale(0.98);
+      }
+
+      main {
+        width: 100%;
+        max-width: 500px;
+        min-width: 320px;
+        margin: 0 auto;
+        padding: 20px 0; /* 필요에 따라 패딩 추가 */
+      }
+
+      .container {
+        max-width: 100%; /* 부모 요소의 너비에 맞춤 */
+        min-width: 320px; /* 최소 너비 설정 */
+        padding: 68px 32px 20px 32px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container p {
+        margin-bottom: 10px;
+      }
+
+      .header {
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+        margin-bottom: 10px;
+      }
+
+      .subheader,
+      .goodbye {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+      }
+
+      .goodbye {
+        color: var(--Gray-red4, #888);
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+      }
+
+      .goodbye span {
+        color: var(--BI-color-main1, #ff4081);
+
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+        text-decoration-line: underline;
+      }
+
+      .header {
+        font-family: Montserrat;
+        font-weight: 800;
+        line-height: 33.8px;
+        text-align: left;
+        font-size: 24px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header .highlight {
+        color: #ff5e80;
+      }
+
+      .highlight {
+        font-family: Montserrat;
+        font-size: 28px;
+        font-weight: 800;
+        line-height: 33.8px;
+        text-align: left;
+      }
+
+      .subheader {
+        margin-top: 10px;
+
+        color: #888888;
+        margin-bottom: 15px;
+
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 22.4px;
+        text-align: left;
+      }
+
+      .content {
+        margin-top: 20px;
+
+        color: #888888;
+        margin-bottom: 20px;
+
+        font-size: 16px;
+
+        line-height: 22.4px;
+        text-align: left;
+        font-style: normal;
+        font-weight: 400;
+      }
+
+      .image-title-container {
+        text-align: left;
+        margin-top: 20px;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+        /* 16.8px */
+      }
+
+      .image-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .image-divider {
+        width: 100%;
+        height: 1px;
+        background-color: #000;
+        margin: 0 auto;
+        margin-bottom: 15px;
+      }
+
+      .image-container {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .product-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+      }
+
+      .table-container {
+        margin-top: 20px;
+        overflow-x: auto;
+        display: flex;
+        margin-bottom: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        white-space: nowrap;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+        font-size: 17px;
+      }
+
+      th:first-child,
+      td:first-child {
+        position: sticky;
+        left: 0;
+        background-color: #f4f4f4;
+        border-right: 2px solid #ccc;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .footer {
+        margin-top: 20px;
+        font-size: 16px;
+        color: #777;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .highlight {
+        color: #ff5e80;
+      }
+
+      .white-background {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+
+      .vertical-line {
+        border-left: 1px solid #ccc;
+        height: 50px;
+        margin: 20px 0;
+      }
+
+      .custom-header {
+        margin-bottom: 10px;
+
+        color: #090909;
+        font-family: Pretendard;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 160%;
+        /* 22.4px */
+      }
+
+      .custom-content {
+        margin-top: 10px;
+
+        margin-bottom: 20px;
+
+        color: var(--Gray-red4, #888);
+        font-family: Pretendard;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+        /* 22.4px */
+      }
+
+      .white-background .custom-button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px 0;
+        color: #fff;
+        background-color: #000;
+        text-decoration: none;
+        border-radius: 2px;
+        text-align: center;
+        width: 85%;
+        max-width: 88%;
+        margin-left: auto;
+        margin-right: auto;
+
+        font-size: 19px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%;
+        /* 24px */
+      }
+
+      .separator {
+        text-align: center;
+        margin: 20px 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .separator-text {
+        font-size: 18px;
+        margin-top: 10px;
+        color: #888;
+        text-align: left;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+        /* 22.4px */
+      }
+
+      .mo_numbering {
+        display: inline;
+        border: 1px solid #000;
+        padding: 2px 8px;
+        margin-right: 2px;
+      }
+
+      .qna-container {
+        display: flex;
+        justify-content: center;
+        background-color: #f2f2f2;
+        width: 100%;
+      }
+
+      .qna {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 92%;
+        padding: 20px;
+        margin-bottom: 80px;
+      }
+
+      .qna-title-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .qna-title {
+        margin-top: 80px;
+        color: var(--BI-color-main1, #ff4081);
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 16px !important;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 140%;
+        /* 22.4px */
+        letter-spacing: -0.32px;
+      }
+
+      .qna-subtitle {
+        margin-bottom: 20px;
+        color: var(--Black-red, #111);
+        text-align: center;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        /* 31.2px */
+        letter-spacing: -1.4px;
+      }
+
+      .qna-item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 12px 16px;
+        align-items: flex-start;
+        flex-shrink: 0;
+        border-radius: 26px;
+        background: #fff;
+        margin-bottom: 24px;
+      }
+
+      .qna-question {
+        width: 100%;
+        padding: 16px;
+        border: none;
+        background-color: #fff;
+        text-align: left;
+        font-weight: 400;
+        cursor: pointer;
+        outline: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #000;
+        font-style: normal;
+        line-height: 140%;
+        letter-spacing: -0.4px;
+        font-size: 16px;
+        font-style: normal;
+        line-height: 140%;
+        letter-spacing: -0.4px;
+      }
+
+      .qna-answer {
+        display: none;
+        padding: 15px;
+        background-color: #fff;
+        border-top: 1px solid #eee;
+        font-size: 16px;
+        line-height: 160%;
+        text-align: justify;
+        color: #888;
+      }
+
+      .arrow {
+        transition: transform 0.3s ease;
+      }
+
+      .qna-question.active .arrow {
+        transform: rotate(90deg);
+      }
+
+      .watermark_bg_color {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        width: 500px;
+        height: 100vh;
+        background-color: #f7f7f7;
+        z-index: -2;
+      }
+
+      .watermark {
+        display: inline-flex;
+        padding: 8px 36px;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        margin-top: 80px;
+        top: 15%;
+        /* Adjust position from the top */
+
+        transform: rotate(-15deg);
+        /* Rotate the text by -45 degrees */
+        font-size: 2.6em;
+        z-index: 1;
+        white-space: nowrap;
+        pointer-events: none;
+        user-select: none;
+        color: rgba(0, 0, 0, 0.05);
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 130%;
+        /* 62.4px */
+        border: 2px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .mo_footer-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 240px;
+        color: #666;
+        font-size: 12px;
+        line-height: 1.6;
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+        /* Ensure content appears above the watermark */
+        padding: 20px;
+      }
+
+      .product_img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 20px;
+      }
+
+      .shop-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      #shop-buttons {
+        scroll-margin-top: 56px;
+      }
+
+      .shop-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        border: 2px solid #000;
+        border-radius: 16px;
+        text-decoration: none;
+        color: #000;
+        font-size: 14px;
+        transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+      }
+
+      .shop-button:hover {
+        background-color: #ff4081;
+        color: #fff;
+      }
+
+      .shop_button_tag {
+        color: #ff4081;
+      }
+
+      .shop-button:hover .shop_button_tag {
+        color: #fff;
+        /* 호버 시 색상을 변경 */
+      }
+
+      .shop-button:hover .shop_button_text {
+        color: #fff;
+        /* 호버 시 색상을 변경 */
+      }
+
+      .shop-button:active {
+        background-color: #e83771;
+        border-color: #e83771;
+        color: #fff;
+      }
+
+      .shop-button:active .shop_button_tag {
+        background-color: #e83771;
+        border-color: #e83771;
+        color: #fff;
+      }
+
+      .shop-button:active .shop_button_text {
+        background-color: #e83771;
+        border-color: #e83771;
+        color: #fff;
+      }
+
+      .shop-logo {
+        height: 40px;
+        margin-right: 16px;
+        mix-blend-mode: multiply;
+        /* 이미지와 배경이 섞이는 방식 */
+      }
+
+      .shop-button span {
+        flex-grow: 1;
+        text-align: right;
+      }
+
+      /* CTA 버튼 */
+      .floCtaPc_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 500px;
+        position: fixed;
+        bottom: -10px;
+        z-index: 999;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.7) 76%, #fff 100%);
+        transition: all 0.5s ease-in-out;
+        opacity: 0;
+      }
+
+      .floCtaPc_container.show_cta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0;
+        opacity: 1;
+      }
+
+      .floCtaPcLink {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 78%;
+        padding: 14px 0 10px 0;
+        border-radius: 12px;
+        background: #ff4081;
+        margin-bottom: 7px;
+        cursor: pointer;
+      }
+
+      .floCtaPcwidth {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding-right: 10%;
+      }
+
+      .cta_text {
+        color: #fff;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+        margin-left: 14px;
+      }
+
+      .badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: rgb(64, 63, 63);
+        color: white;
+        border-radius: 50%;
+        width: 20px; /* 원의 고정된 가로 크기 */
+        height: 20px; /* 원의 고정된 세로 크기 */
+        display: flex;
+        justify-content: center;
+        align-items: center; /* 텍스트를 중앙에 수직/수평 정렬 */
+        font-size: 12px;
+        line-height: 20px; /* 숫자를 중앙에 정확히 위치시키기 위한 line-height */
+        text-align: center;
+        padding: 0; /* 패딩 제거 */
+        margin: 0; /* 마진 제거 */
+        display: none; /* 처음에는 보이지 않음 */
+        white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+        overflow: hidden; /* 원 크기를 넘지 않도록 설정 */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KVB7DZVQ"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- 네비게이션 바 -->
+    <nav>
+      <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+      <div class="logo">
+        <a href="https://hisso.co.kr/">
+          <img src="https://cdn.imweb.me/thumbnail/20240914/4b9457f7ca91f.png" alt="하이쏘 로고" />
+        </a>
+      </div>
+    </nav>
+    <main>
+      <div class="container">
+        <!-- 비교견적서 인사 및 제목-->
+        <div class="header">
+          <div>
+            <span class="highlight">지혜</span>
+            <span style="font-family: NEXON Lv1 Gothic OTF; margin-left: -5px">님을 위한</span>
+          </div>
+          <div>
+            <span style="font-family: NEXON Lv1 Gothic OTF; margin-left: -5px">구매조건별</span><br />
+            <span style="font-family: NEXON Lv1 Gothic OTF; margin-left: -5px">최저가 비교 견적 제안</span><br />
+          </div>
+        </div>
+
+        <p class="content">
+          요청하신
+          <span style="color: #888; font-size: 16px; font-style: normal; font-weight: 800; line-height: 160%"
+            >Ingo Maurer Zettel'z 5 큰사이즈 120cm</span
+          >
+          비교 견적을 보내드립니다. <br /><br />
+        </p>
+        <p style="padding: 20px; font-size: 14px; color: #888888">
+          * 약 30여개의 하이엔드 조명 쇼핑몰의 견적을 비교해서 구매조건별 최저가만을 선별했습니다.
+        </p>
+        <div class="white-background">
+          <div class="image-title-container">
+            <div class="image-title">
+              Ingo Maurer<br />
+              Zettel'z 5 큰사이즈 120cm
+            </div>
+            <div class="image-divider"></div>
+          </div>
+          <div class="image-container">
+            <img
+              class="product_img"
+              src="https://www.ingo-maurer.com/media/max-size-default/zettelz_5_1.jpg"
+              alt="Ingo Maurer Zettel'z 5 큰사이즈 120cm"
+              class="product-image"
+            />
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>쇼핑몰</th>
+                  <th>가격 (만원)</th>
+                  <th>배송기간</th>
+                  <th>설치</th>
+                  <th>AS</th>
+                  <th>BNPL(할부)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <a href="https://www.vorblick.co.kr/goods/goods_view.php?goodsNo=1000102658">보블릭</a>
+                  </td>
+                  <td>178.5</td>
+                  <td>2개월</td>
+                  <td>직접문의</td>
+                  <td>직접문의</td>
+                  <td>월 6.25만원/36개월</td>
+                </tr>
+                <!-- <tr>
+                  <td>
+                    <a
+                      href="https://smartstore.naver.com/ohgil/products/7415251908?nl-au=1807b6b425804cf082da44bf167b987c&nl-query=Zettel%27z+6"
+                      >밀라노다</a
+                    >
+                  </td>
+                  <td>127.8</td>
+                  <td>1개월</td>
+                  <td>쇼핑몰 문의필요</td>
+                  <td>안됨</td>
+                  <td>안됨</td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+          <div
+            style="
+              color: var(--Gray-red4, #888);
+              font-family: Pretendard;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 160%;
+              margin-bottom: 12px;
+            "
+          >
+            *표를 좌우로 움직여서 비교해보세요!
+          </div>
+
+          <div class="shop-buttons" id="shop-buttons">
+            <a
+              href="https://www.vorblick.co.kr/goods/goods_view.php?goodsNo=1000102658"
+              class="shop-button"
+              style="display: flex; justify-content: space-between; align-items: center"
+            >
+              <img
+                src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/f50e596eea368.png"
+                alt="ativ 로고"
+                class="shop-logo"
+                style="display: block; width: 100px; height: auto"
+              />
+              <div style="display: flex; justify-content: space-between">
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0">
+                  <div class="shop_button_tag">#공식수입사최저가</div>
+                  <div class="shop_button_text" style="font-size: 16px"><strong>구매하러 가기</strong></div>
+                </div>
+                <p class="shop_button_text" style="margin: 0 0 0 10px; font-size: 30px">&gt;</p>
+              </div>
+            </a>
+
+            <!-- <a
+              href="https://lomad.co.kr/shop/detail?product_id=31&installment_value=36"
+              class="shop-button"
+              style="display: flex; justify-content: space-between; align-items: center"
+            >
+              <img
+                src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/23252043a5fc9.png"
+                alt="로마드 로고"
+                class="shop-logo"
+                style="display: block; width: 100px; height: auto"
+              />
+              <div style="display: flex; justify-content: space-between">
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0">
+                  <div class="shop_button_tag">#BNPL장기할부</div>
+                  <div class="shop_button_text" style="font-size: 16px"><strong>구매하러 가기</strong></div>
+                </div>
+                <p class="shop_button_text" style="margin: 0 0 0 10px; font-size: 30px">&gt;</p>
+              </div>
+            </a> -->
+            <div
+              style="
+                color: var(--Gray-red4, #888);
+                font-family: Pretendard;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 160%;
+                margin-bottom: 12px;
+              "
+            >
+              *구매 페이지로 이동하신 후 구매하고자 하는 옵션을 선택해서 가격을 살펴보세요. 가격은 환율에 따라 자주 변동되니 안내드린 가격과
+              다소 다를 수 있습니다.
+            </div>
+
+            <div style="margin-top: 50px">
+              <p
+                style="color: var(--Gray-red4, #888); font-size: 15px; font-style: normal; font-weight: 400; line-height: 160%; padding: 0"
+              >
+                * 아래 소개드리는 밀라노다 구매링크는 해외 현지 구매대행 쇼핑몰로 하이쏘가 추천하는 쇼핑몰이지만 정품여부를 비롯해서
+                하이쏘가 책임지지는 않습니다.
+              </p>
+            </div>
+
+            <div class="table-container" style="margin-top: 0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>쇼핑몰</th>
+                    <th>가격 (만원)</th>
+                    <th>배송기간</th>
+                    <th>설치</th>
+                    <th>AS</th>
+                    <th>BNPL(할부)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <a
+                        href="https://smartstore.naver.com/milanoda/products/10277305239?nl-au=19c4397906f44c34aaf3136fda8db2d3&nl-query=%EC%9E%89%EA%B3%A0%EB%A7%88%EC%9A%B0%EB%9F%AC+%EC%A0%9C%ED%8B%80%EC%A6%88"
+                        >밀라노다</a
+                      >
+                    </td>
+                    <td>127.8</td>
+                    <td>1개월</td>
+                    <td>쇼핑몰 문의필요</td>
+                    <td>안됨</td>
+                    <td>안됨</td>
+                  </tr>
+                  <tr></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <a
+              href="https://smartstore.naver.com/milanoda/products/10277305239?nl-au=19c4397906f44c34aaf3136fda8db2d3&nl-query=%EC%9E%89%EA%B3%A0%EB%A7%88%EC%9A%B0%EB%9F%AC+%EC%A0%9C%ED%8B%80%EC%A6%88"
+              class="shop-button"
+              style="display: flex; justify-content: space-between; align-items: center"
+            >
+              <img
+                src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/2d79f575037a0.png"
+                alt="밀라노다 구매 버튼"
+                class="shop-logo"
+                style="display: block; width: 100px; height: auto"
+              />
+              <div style="display: flex; justify-content: space-between">
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0">
+                  <div class="shop_button_tag">#해외현지구매대행</div>
+                  <div class="shop_button_text" style="font-size: 16px"><strong>구매하러 가기</strong></div>
+                </div>
+                <p class="shop_button_text" style="margin: 0 0 0 10px; font-size: 30px">&gt;</p>
+              </div>
+            </a>
+
+            <div style="margin: 50px 0 30px 0">
+              <p class="goodbye">
+                하이쏘는 고객님의 구매 여정에 함께하는 쇼핑메이트가 되면 좋겠습니다. 궁금하신 점이 있으시면 아래 "쇼핑메이트와 톡하기"
+                버튼을 클릭하셔서 물어봐주세요.<br /><br />
+              </p>
+              <p class="goodbye">감사합니다.😍</p>
+            </div>
+            <div class="image-divider"></div>
+          </div>
+        </div>
+        <div>
+          <div class="qna-container">
+            <div class="qna">
+              <div class="qna-title-container">
+                <h1 class="qna-title">check list</h1>
+                <h2 class="qna-subtitle" style="margin-top: 0">구매 전 <br />꼭 체크해보세요!</h2>
+              </div>
+
+              <div class="qna-item">
+                <button class="qna-question">
+                  서울/경기 아닌데 설치를 해주는 곳이 있나요? <br />
+                  <span class="arrow">></span>
+                </button>
+                <div class="qna-answer">
+                  <p>
+                    숨고같은 사이트를 찾아보면 있기도 하구요. 000같은 전문 설치 업체도 있습니다. 대략 00만원이면 기사님이 출장 오셔서
+                    설치해주십니다. 종종 비싼 펜던트 조명은 설치경험 없는 분들에게 맡기면 고생하기도 하니 가급적 사용자 리뷰가 있는 업체나
+                    기사분들에게 요청하시 것을 추천드려요. 직접 찾기 어려우시면 무료 쇼핑 콘시어지 신청하기 버튼을 눌러 하이쏘 쇼핑메이트와
+                    상담해보세요 😀
+                  </p>
+                </div>
+              </div>
+
+              <div class="qna-item">
+                <button class="qna-question">
+                  컬러나 재질에 따라 가격이 다른가요? <br />
+                  <span class="arrow">></span>
+                </button>
+                <div class="qna-answer">
+                  <p>
+                    하이엔드 조명은 컬러에 따라 가격차가 많이 나요. 특히 황동, 알루미늄, 합성수지 등등 재질은 더 많은 가격차가 있으니 어떤
+                    브랜드 제품을 사시기로 하셨더라도 옵션별 가격차를 꼭 확인해보시는 것이 좋아요. 또 옵션별로 파는 곳이 다르니 원하는
+                    옵션을 손품, 발품을 종종 팔기애 해야 합니다.😀
+                  </p>
+                </div>
+              </div>
+              <div class="qna-item">
+                <button class="qna-question">
+                  디머/조광기 vs on/off 스위치. <br />
+                  어느걸 살까?
+                  <span class="arrow">></span>
+                </button>
+                <div class="qna-answer">
+                  <p>
+                    조명의 밝기와 분위기를 취향에 따라 조절하고 싶으시다면<br />
+                    디머(조광기)가 달린 조명등을 선택하거나 기존의 on/off 스위치에 스마트 전구를 사용하는 두 가지 방법이 있어요.
+                    <br /><br />
+                    디머에 스마트 전구(LED)를 사용하는 것은 호환성 문제 때문에 작동 불량이나 손상의 가능성이 있어 권해드리지 않아요.
+                    <br /><br />
+                    그래서, 디머가 달린 조명등을 구매하실 경우에는 일반전구나 디밍용 LED 중 선택하실 수 있고, 스마트 전구를 사용하시려면 꼭
+                    on/off 스위치가 달린 조명등을 구매하시는 것을 추천드려요.🔆
+                  </p>
+                </div>
+              </div>
+              <div class="qna-item">
+                <button class="qna-question">
+                  갓의 사이즈는 최종 체크하셨나요?
+                  <span class="arrow">></span>
+                </button>
+                <div class="qna-answer">
+                  <p>
+                    조명 갓(shade)에 따라서 가격차가 나는 것도 있지만 우리 집에 들여놓았을 때 적절한 불빛과 크기인지 다시 한 번
+                    생각해보시는게 사고 나서 후회하는 것보다 좋으니 꼭 한 번 더 체크해보세요.🛋️
+                  </p>
+                </div>
+              </div>
+              <div class="qna-item">
+                <button class="qna-question">전구선택은 어느게 좋을까요? <span class="arrow">></span></button>
+                <div class="qna-answer">
+                  <p>
+                    <strong>유럽 조명등은 LED가 기본!!</strong>
+                    <br />
+                    유럽은 2010년대부터 백열전구와 할로겐 전구의 생산을 금지했고 2023년부터 CFL (삼파장/형광등) 생산을 금지했으므로 유럽
+                    모든 조명등의 설계 및 표시정격은 LED가 기준이에요.
+                    <br /><br />
+                    예를 들어, 아르떼미데 톨로메오 메가 플로어램프는 E27규격, 소비전력 21W, 최대 밝기 2100lm 정도의 LED 전구 사용을 염두에
+                    두고 디자인 되었습니다.
+                    <br /><br />
+                    한국에서 이 조명등에 맞는 전구를 찾는다면<br />
+                    E26규격, 18W, 2020lm 정도의 스펙을을 가진 오스람 LED18W 제품 중에서 색온도 2700K를 배송비 포함 4천원 정도에 사거나 15W,
+                    1600lm, 3000K 전구인데 색재현율(CRI)이 90으로 높은 수준인 루미트론 HD LED Bulb 15W를 1만원 가량에 사는 것을
+                    추천해드려요.💡
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 불투명한 배경 레이어 -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- 사이드 메뉴 -->
+    <div id="sideMenu" class="side-menu">
+      <a href="#" class="close-btn" onclick="toggleMenu()">&times;</a>
+
+      <div class="side-menu-content">
+        <a href="https://hisso.co.kr/showrooms">쇼룸찾기</a>
+        <a href="https://hisso.co.kr/lighting-recommendations">조명추천 리포트 샘플</a>
+        <a href="https://hisso.co.kr/quote">비교견적 리포트 샘플</a>
+      </div>
+    </div>
+
+    <div class="watermark_bg_color"></div>
+    <div class="watermark">SAMPLE</div>
+
+    <!-- CTA -->
+    <div class="floCtaPc_container" id="cta-button">
+      <a id="floCtaPcLink" style="text-decoration: none" href="https://43l86.channel.io/workflows/686208" class="floCtaPcLink">
+        <div class="floCtaPcwidth">
+          <svg
+            width="74"
+            height="26"
+            viewBox="0 0 27 26"
+            preserveAspectRatio="xMaxYMid meet"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="icn_talk">
+              <path
+                id="Union"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M13.3417 23C19.1407 23 23.8417 18.299 23.8417 12.5C23.8417 6.70101 19.1407 2 13.3417 2C7.54275 2 2.84174 6.70101 2.84174 12.5C2.84174 14.3773 3.33438 16.1394 4.19743 17.6643L1.68092 21.3249C1.12323 22.1361 1.94992 23.1802 2.86742 22.8234L7.30998 21.0957C9.01671 22.2956 11.097 23 13.3417 23Z"
+                fill="white"
+              />
+              <circle id="Ellipse 11" cx="8.3418" cy="12.5" r="1.5" fill="#FF4081" />
+              <circle id="Ellipse 12" cx="13.3418" cy="12.5" r="1.5" fill="#FF4081" />
+              <circle id="Ellipse 13" cx="18.3418" cy="12.5" r="1.5" fill="#FF4081" />
+            </g>
+          </svg>
+          <span class="badge"></span>
+          <!-- 뱃지를 표시할 공간 -->
+          <div class="cta_text">쇼핑메이트와 톡하기</div>
+        </div>
+      </a>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        const sideMenu = document.getElementById("sideMenu");
+        const overlay = document.getElementById("overlay");
+        sideMenu.classList.toggle("open");
+        overlay.classList.toggle("show");
+      }
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        $(".qna-question").click(function () {
+          // Toggle the clicked answer
+          $(this).next(".qna-answer").slideToggle();
+          $(this).toggleClass("active");
+        });
+      });
+    </script>
+
+    <!-- CTA -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var ctaButton = document.getElementById("cta-button");
+
+        setTimeout(function () {
+          ctaButton.classList.add("show_cta");
+        }, 1000); // 1000ms = 1초
+      });
+    </script>
+    <!-- 공휴일 체크 자바스크립트 -->
+    <script src="https://cdn.jsdelivr.net/npm/korean-holidays-js@1.1.0/dist/korean-holidays.min.js"></script>
+    <script>
+      // 한국 공휴일을 확인하기 위한 라이브러리 사용 (예: korean-holidays-js)
+      // CDN을 통해 라이브러리를 불러옵니다.
+      // 실제 사용 시 최신 라이브러리를 확인하시기 바랍니다.
+
+      //공휴일 체크 함수 (간단한 예제)
+      function isKoreanHoliday(date) {
+        const holidays = [
+          "2024-01-01", // 신정
+          "2024-02-10", // 설날 연휴 전날
+          "2024-02-11", // 설날
+          "2024-02-12", // 설날 연휴 다음 날
+          "2024-03-01", // 삼일절
+          "2024-05-05", // 어린이날
+          "2024-05-06", // 어린이날 대체공휴일
+          "2024-05-15", // 석가탄신일
+          "2024-06-06", // 현충일
+          "2024-08-15", // 광복절
+          "2024-09-17", // 추석 연휴 전날
+          "2024-09-18", // 추석
+          "2024-09-19", // 추석 연휴 다음 날
+          "2024-10-01", // 국군의날 임시공휴일
+          "2024-10-03", // 개천절
+          "2024-10-09", // 한글날
+          "2024-12-25" // 성탄절
+        ];
+
+        const formattedDate = date.toISOString().split("T")[0];
+        return holidays.includes(formattedDate);
+      }
+
+      function updateCTAButtonLink() {
+        const linkElement = document.getElementById("floCtaPcLink");
+        const now = new Date();
+
+        // 한국 시간으로 변환
+        const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+        const koreaTime = new Date(utc + 9 * 60 * 60 * 1000);
+
+        const hours = koreaTime.getHours();
+        const day = koreaTime.getDay(); // 0: 일요일, 1: 월요일, ..., 6: 토요일
+        const isWeekend = day === 0 || day === 6;
+        const isHoliday = isKoreanHoliday(koreaTime);
+
+        if (isHoliday) {
+          // 공휴일은 항상 교체된 링크 사용
+          linkElement.href = "https://43l86.channel.io/workflows/686807";
+        } else if (isWeekend) {
+          // 주말은 교체된 링크 사용
+          linkElement.href = "https://43l86.channel.io/workflows/686807";
+        } else {
+          // 평일
+          if (hours >= 10 && hours < 17) {
+            // 오전 10시부터 오후 5시까지 기존 링크 유지
+            linkElement.href = "https://43l86.channel.io/workflows/686208";
+          } else {
+            // 그 외 시간은 교체된 링크 사용
+            linkElement.href = "https://43l86.channel.io/workflows/686807";
+          }
+        }
+      }
+
+      // 페이지 로드 시 링크 업데이트
+      updateCTAButtonLink();
+
+      // 시간 변경을 실시간으로 반영하려면 일정 간격으로 업데이트
+      setInterval(updateCTAButtonLink, 60 * 1000); // 1분마다 업데이트
+    </script>
+  </body>
+</html>
