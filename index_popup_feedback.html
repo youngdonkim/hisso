@@ -1,0 +1,2456 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-KVB7DZVQ");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>하이쏘||하이엔드 홈퍼니싱 쇼핑톡 서비스</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- Slick JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <!-- 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  
+
+    <style>
+      /* 부모 컨테이너 스타일 */
+        .floCtaPc_container {
+            overflow: visible; /* 오버플로우를 visible로 설정하여 이동 시 이미지가 잘리지 않게 함 */
+
+        }
+
+        /* SVG 아이콘 스타일 */
+        #icn_talk {
+            width: 80px; /* 아이콘 너비 */
+            height: 80px; /* 아이콘 높이 */
+            cursor: pointer; /* 마우스 커서 변경 */
+            transition: transform 0.3s; /* 변환 효과 전환 */
+            /* 애니메이션 설정 */
+            animation-name: moveLeftReturn;
+            animation-duration: 2s; /* 애니메이션 지속 시간 */
+            animation-delay: 3s; /* 애니메이션 지연 시간 */
+            animation-fill-mode: forwards; /* 애니메이션 종료 후 상태 유지 */
+            animation-iteration-count: 1; /* 애니메이션 반복 횟수 */
+        }
+
+        /* 애니메이션 키프레임 정의 */
+        @keyframes moveLeftReturn {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(-50px); /* 왼쪽으로 50px 이동 */
+            }
+            100% {
+                transform: translateX(0); /* 원래 위치로 돌아오기 */
+            }
+        }
+
+        /* 호버 시 애니메이션 다시 실행 (선택 사항) */
+        #icn_talk:hover {
+            animation: moveLeftReturn 2s forwards;
+        }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      @font-face {
+        font-family: "NEXON Lv1 Gothic OTF";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "NEXON Lv1 Gothic OTF LIGHT";
+        src: url("/NEXON Lv1 Gothic OTF Light.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "NEXON Lv1 Gothic OTF BOLD";
+        src: url("/NEXON Lv1 Gothic OTF Bold.woff");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      .title_maintop {
+        position: relative;
+        font-size: 26px;
+        letter-spacing: -0.07em;
+        line-height: 130%;
+        font-family: "NEXON Lv1 Gothic OTF BOLD";
+        font-weight: 700;
+        color: #111;
+        text-align: center;
+      }
+
+      body {
+        font-family: "NEXON Lv1 Gothic OTF", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 500px;
+        margin: 0 auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      main {
+        width: 100%;
+      }
+
+      /* 상단 고정 내브 바 */
+      nav {
+        position: fixed;
+        top: 0;
+
+        width: 100%;
+        max-width: 500px;
+        height: 48px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        display: flex;
+        justify-content: center; /* 가로 중앙 정렬 */
+        align-items: center; /* 세로 중앙 정렬 */
+      }
+
+      .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .logo img {
+        display: block;
+        width: 104px; /* 로고 이미지의 너비 */
+        height: 42px; /* 로고 이미지의 높이 */
+      }
+
+      .menu-icon {
+        position: absolute;
+        left: 0;
+        padding: 10px 40px 10px 10px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      /* 불투명 레이어 */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .overlay.show {
+        display: block;
+        opacity: 1;
+      }
+
+      /* 사이드 메뉴 */
+      .side-menu {
+        position: fixed;
+        top: 0;
+        left: -270px; /* 기본으로는 화면 밖에 숨겨둠 */
+        width: 250px;
+        height: 100%;
+        background-color: white;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        transition: 0.3s ease;
+        padding-top: 60px; /* 내브 바와 겹치지 않도록 패딩 */
+        z-index: 1001;
+      }
+
+      .side-menu.open {
+        left: 0px; /* 메뉴를 열면 화면에 나타남 */
+      }
+      .side-menu-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin-top: 16px;
+      }
+      .side-menu a {
+        display: block;
+        padding: 15px 20px;
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        transition: background 0.1s ease;
+        cursor: pointer;
+        transition: transform 0.1s ease;
+      }
+
+      .side-menu a:hover {
+        background-color: #ffffff;
+        color: #ff2e82;
+        transform: translateX(5px); /* 오른쪽으로 튕기는 효과 */
+        font-size: 22px;
+      }
+      .side-menu-content a:active {
+        background-color: #ffffff;
+        color: #8c1847;
+        transform: scale(0.98);
+      }
+
+      .side-menu .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 32px;
+        cursor: pointer;
+        color: #6a6768;
+      }
+
+      .side-menu .close-btn:hover {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 34px;
+        cursor: pointer;
+      }
+
+      .side-menu-content a:active {
+        background-color: #ffffff;
+        color: #8c1847;
+        transform: scale(0.98);
+      }
+
+      /* 히어로 배너 슬라이더 */
+
+      /*.inner_ba{
+              margin-top: 48px;
+            }*/
+
+      .hero-banner-slider {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        margin-top: 48px;
+        padding-bottom: 30px;
+        cursor: pointer;
+      }
+
+      .hero-banner-slider img {
+        width: 100%;
+        height: auto;
+      }
+
+      .hero-banner-slider .after-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        clip-path: inset(0 0 0 50%);
+        z-index: 1;
+      }
+
+      .line_bar {
+        position: absolute;
+        top: 0;
+        left: calc(50% - 1px);
+        z-index: 10;
+        display: block;
+        width: 2px;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        cursor: ew-resize;
+      }
+
+      .line_bar img {
+        position: absolute;
+        bottom: calc(0% + 5px);
+        left: calc(50% - 22px);
+        width: 44px;
+        height: auto;
+      }
+
+      .txt_hero-banner-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        padding-top: 70%;
+      }
+
+      .txt_hero-banner-slide span {
+        display: block;
+        padding: 10px;
+        line-height: 1;
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.2);
+        color: #fff;
+        font-size: 14px;
+      }
+
+      /* 히어로 배너 타이틀 */
+      .hero-title-container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .hero-title {
+        width: 100%;
+        padding: 26px 30px 82px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-title h1 {
+        font-size: 26px;
+        font-weight: 700;
+        line-height: calc(1.15 * var(--current-line-height, 1.2));
+        margin-bottom: 2px;
+        letter-spacing: -0.02em; /* 자간 살짝 줄이기 */
+        word-spacing: -0.1em; /* 띄어쓰기 너비 살짝 줄이기 */
+        color: #000;
+        text-align: center;
+        font-style: normal;
+      }
+
+      .hero-subtitle {
+        color: #000;
+        font-size: 16px;
+        letter-spacing: -1.6px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 160%;
+        letter-spacing: 0.005em;
+        word-spacing: -0.1em;
+      }
+
+      /* 하이쏘 사용 가이드 */
+      .service-1-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        background-color: #f7f7f7;
+      }
+
+      .service-1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* 수직 정렬 */
+        justify-content: start;
+        width: 92%;
+        padding: 40px 20px 20px 20px;
+        background-color: #f7f7f7;
+        margin-top: 40px;
+        margin-bottom: 40px;
+      }
+
+      .service-1-title {
+        color: #ff4081;
+        font-family: Pretendard;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 140%;
+        letter-spacing: -0.4px;
+      }
+
+      .service-1-description {
+        text-align: center;
+        color: #111;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 130%;
+        padding-top: 12px;
+        letter-spacing: 0.03em;
+        word-spacing: -0.08em;
+      }
+
+      .service-1-shopping-cart-icon {
+        margin-left: 10px;
+        width: 24px;
+        height: 24px;
+      }
+
+      /* 구매여정 step 01 */
+      .step01-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: #f7f7f7;
+      }
+
+      .step01-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 38px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        width: 92%;
+        margin-bottom: 60px;
+      }
+
+      .step01-title-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 90%;
+        padding-left: 20px;
+        margin-top: 32px;
+      }
+
+      .step01-title-container h2 {
+        font-family: Montserrat;
+        font-weight: 800;
+        margin-bottom: 8px;
+        color: #ff4081;
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: -1.4px;
+      }
+
+      .step01-title-container h3 {
+        margin-top: 0;
+        color: #111;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -1px;
+        margin-bottom: 12px;
+      }
+
+      .step01-title-container h3 span {
+        font-family: Pretendard;
+        font-weight: 900;
+        font-size: 24px;
+      }
+
+      .step01-image-container {
+        width: 100%;
+      }
+
+      .step01-image-container img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .step01-content-container {
+        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 80%;
+      }
+
+      .step01-content-container p {
+        color: #888;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 160%;
+        letter-spacing: -0.8px;
+      }
+
+      .transparent-button {
+        font-size: 24px;
+        font-weight: bold;
+        color: #ff4081;
+        background-color: transparent;
+        border: none;
+        padding: 10px 0;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+      }
+
+      .chevron-icon {
+        margin-left: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      .transparent-button:hover .chevron-icon {
+        transform: translateX(4px);
+      }
+
+      .tailored_shopping_guide_1 {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .tailored_shopping_guide_button {
+        display: inline-block;
+        padding: 10px 44px;
+        margin-top: 30px;
+        font-size: 16px;
+        line-height: 25.6px;
+        font-weight: 700;
+        color: #ff4081;
+        text-decoration: none;
+        border: 1px solid #ff4081;
+        border-radius: 24px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .tailored_shopping_guide_button:hover {
+        background-color: #ff4081;
+        color: #fff;
+      }
+
+      /* 구매여정 step 02 */
+      .step02-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: #f7f7f7;
+      }
+      .step02-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 38px; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        width: 92%;
+        margin-bottom: 60px;
+      }
+
+      
+
+      .step02-title-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+        width: 90%;
+        padding-left: 20px;
+        margin-top: 32px;
+      }
+
+      .step02-title-container h2 {
+        font-family: Montserrat;
+        font-weight: 800;
+        margin-bottom: 8px;
+        color: #ff4081;
+        font-size: 16px;
+        font-style: normal;
+        line-height: 1.2;
+        letter-spacing: -1.4px;
+      }
+
+      .step02-title-container h3 {
+        margin-top: 0;
+        color: #111;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -1px;
+        margin-bottom: 12px;
+      }
+
+      .step02-image-container {
+        flex: 1;
+        width: 100%;
+      }
+
+      .step02-image-container img {
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .step02-content-container {
+        flex: 1;
+        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        max-width: 80%;
+      }
+
+      .step02-content-container p {
+        color: #888;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+        letter-spacing: -0.8px;
+      }
+
+      .step02-transparent-button {
+        font-size: 24px;
+        font-weight: bold;
+        color: #ff4081;
+        background-color: transparent;
+        border: none;
+        padding: 10px 0;
+        cursor: pointer;
+        outline: none;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+      }
+
+      .step02-button-text {
+        position: relative;
+        font-size: 16px;
+        color: #ff4081;
+      }
+
+      .button-text:after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        /* Adjust this value to position the underline properly */
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: #ff4081;
+      }
+
+      .step02-chevron-icon {
+        margin-left: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      .step02-transparent-button:hover .chevron-icon {
+        transform: translateX(4px);
+      }
+
+      /* 구매여정 step 03 */
+      .step03-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: #f7f7f7;
+      }
+
+      .step03-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 38px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        width: 92%;
+        margin-bottom: 60px;
+      }
+
+      .step03-title-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+        width: 90%;
+        padding-left: 20px;
+        margin-top: 32px;
+      }
+
+      .step03-title-container h2 {
+        font-family: Montserrat;
+        font-weight: 800;
+        margin-bottom: 8px;
+        color: #ff4081;
+        font-size: 16px;
+        font-style: normal;
+        line-height: 1.2;
+        letter-spacing: -1.4px;
+      }
+
+      .step03-title-container h3 {
+        margin-top: 0;
+        color: #111;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -1px;
+        margin-bottom: 12px;
+      }
+
+      .step03-image-container {
+        flex: 1;
+        width: 100%;
+      }
+
+      .step03-image-container img {
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .step03-content-container {
+        flex: 1;
+        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        max-width: 80%;
+      }
+
+      .step03-content-container p {
+        color: #888;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+        letter-spacing: -0.8px;
+        padding-bottom: 10px;
+      }
+
+
+      /* 구매여정 step 04 */
+      .step04-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: #f7f7f7;
+      }
+
+      .step04-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 38px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        width: 92%;
+        margin-bottom: 60px;
+      }
+
+      .step04-title-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+        width: 90%;
+        padding-left: 20px;
+        margin-top: 32px;
+        margin-bottom: 0px;
+      }
+
+      .step04-title-container h2 {
+        font-family: Montserrat;
+        font-weight: 800;
+        margin-bottom: 8px;
+        color: #ff4081;
+        font-size: 16px;
+        font-style: normal;
+        line-height: 1.2;
+        letter-spacing: -1.4px;
+      }
+
+      .step04-title-container h3 {
+        margin-top: 0;
+        color: #111;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -1px;
+        margin-bottom: 12px;
+      }
+
+      .step04-image-container {
+        flex: 1;
+        width: 100%;
+        height: auto;
+        padding: 32 0 36 0;
+      }
+
+      .step04-container .step3_img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .step04-content-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px 0;
+        width: 80%;
+        height: 100%;
+      }
+
+      .step04-content-container p {
+        color: #888;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+        letter-spacing: -0.8px;
+      }
+
+      .step04-transparent-button {
+        font-size: 24px;
+        font-weight: bold;
+        color: #ff4081;
+        background-color: transparent;
+        border: none;
+        padding: 10px 0;
+        cursor: pointer;
+        outline: none;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+      }
+
+      .step04-button-text {
+        position: relative;
+        font-size: 16px;
+        color: #ff4081;
+      }
+
+      .button-text:after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        /* Adjust this value to position the underline properly */
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: #ff4081;
+      }
+
+      .step04-chevron-icon {
+        margin-left: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      .step04-transparent-button:hover .chevron-icon {
+        transform: translateX(4px);
+      }
+
+
+      .tailored_shopping_guide_1 {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .tailored_shopping_guide_button_1 {
+        display: inline-block;
+        padding: 10px 24px;
+        margin-top: 30px;
+        font-size: 16px;
+        line-height: 25.6px;
+        font-weight: 700;
+        color: #ff4081;
+        text-decoration: none;
+        border: 1px solid #ff4081;
+        border-radius: 24px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .tailored_shopping_guide_button_1:hover {
+        background-color: #ff4081;
+        color: #fff;
+      }
+
+      /* 구매여정 step 05 */
+      .step05-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: #f7f7f7;
+      }
+
+      .step05-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 38px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        width: 92%;
+        margin-bottom: 60px;
+      }
+
+      .step05-title-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+        width: 90%;
+        padding-left: 20px;
+        margin-top: 32px;
+      }
+
+      .step05-title-container h2 {
+        font-family: Montserrat;
+        font-weight: 800;
+        margin-bottom: 8px;
+        color: #ff4081;
+        font-size: 16px;
+        font-style: normal;
+        line-height: 1.2;
+        letter-spacing: -1.4px;
+      }
+
+      .step05-title-container h3 {
+        margin-top: 0;
+        color: #111;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -1px;
+        margin-bottom: 12px;
+      }
+
+      .step05-image-container {
+        flex: 1;
+        width: 100%;
+        height: auto;
+        padding: 32 0 36 0;
+      }
+
+      .step05-image-container .step3_img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .step05-content-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px 0;
+        width: 80%;
+        height: 100%;
+      }
+
+      .step05-content-container p {
+        color: #888;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+        letter-spacing: -0.8px;
+      }
+
+      .step05-transparent-button {
+        font-size: 24px;
+        font-weight: bold;
+        color: #ff4081;
+        background-color: transparent;
+        border: none;
+        padding: 10px 0;
+        cursor: pointer;
+        outline: none;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+      }
+
+      .step05-button-text {
+        position: relative;
+        font-size: 16px;
+        color: #ff4081;
+      }
+
+      .button-text:after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        /* Adjust this value to position the underline properly */
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: #ff4081;
+      }
+
+      .step05-chevron-icon {
+        margin-left: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      .step05-transparent-button:hover .chevron-icon {
+        transform: translateX(4px);
+      }
+
+      /* FAQ */
+      .faq-container {
+        display: flex;
+        justify-content: center;
+        background-color: #f2f2f2;
+        width: 100%;
+      }
+
+      .faq {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 92%;
+        padding: 20px;
+        margin-bottom: 80px;
+      }
+
+      .faq-title-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .faq-title {
+        margin-top: 80px;
+        margin-bottom: 10px;
+        color: #ff4081;
+        font-family: Pretendard;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 140%;
+
+        text-align: center;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 140%;
+        /* 22.4px */
+        letter-spacing: -0.32px;
+      }
+
+      .faq-subtitle {
+        margin-bottom: 48px;
+        font-weight: bold;
+        color: #111;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        margin-top: 0;
+
+        color: var(--Black-red, #111);
+        text-align: center;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        /* 31.2px */
+        letter-spacing: -0.8px;
+        word-spacing: -1px;
+      }
+
+      .faq-item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 12px 16px;
+        align-items: flex-start;
+        flex-shrink: 0;
+        border-radius: 26px;
+        background: #fff;
+        margin-bottom: 24px;
+      }
+
+      .faq-question {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        background-color: #fff;
+        text-align: left;
+        font-weight: 400;
+        cursor: pointer;
+        outline: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        color: #000;
+        font-style: normal;
+        line-height: 140%;
+        letter-spacing: -0.4px;
+
+        font-size: 16px;
+        font-style: normal;
+        line-height: 140%;
+        /* 25.6px */
+        letter-spacing: -0.4px;
+      }
+
+      .faq-answer {
+        display: none;
+        padding: 15px;
+        background-color: #fff;
+        border-top: 1px solid #eee;
+        font-size: 16px;
+        line-height: 160%;
+        text-align: justify;
+        color: #888;
+      }
+
+      .arrow {
+        transition: transform 0.3s ease;
+      }
+
+      .faq-question.active .arrow {
+        transform: rotate(90deg);
+      }
+
+      /* 하이쏘 유저 후기 */
+      .user-review-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: #f7f7f7;
+      }
+
+      .user-review {
+        display: flex;
+        flex-direction: column;
+        width: 92%;
+        background-color: #f7f7f7;
+        margin-top: 40px;
+        margin-bottom: 40px;
+      }
+
+      .user-review-header {
+        display: flex;
+        flex-direction: column;
+        margin-top: 60px;
+        margin-bottom: 20px;
+      }
+
+      .user-review-title {
+        margin: 0;
+        font-weight: bold;
+        color: #ff4081;
+        text-align: center;
+        font-family: Pretendard;
+
+        font-style: normal;
+        font-weight: 900;
+        line-height: 140%;
+
+        text-align: center;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 140%;
+        /* 22.4px */
+        letter-spacing: -0.32px;
+        margin-bottom: 10px;
+      }
+
+      .user-review-subtitle {
+        font-weight: bold;
+        color: #111;
+        text-align: center;
+
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        margin-bottom: 60px;
+
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        /* 31.2px */
+        letter-spacing: 0px;
+        word-spacing: -1px;
+      }
+
+      .user-review-card-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f7f7f7;
+      }
+
+      .user-review-card {
+        min-width: 304px;
+        max-width: 380px;
+        background-color: #fff;
+        padding: 48px 45px;
+        border-radius: 38px;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.15);
+        text-align: left;
+        margin-bottom: 24px;
+      }
+
+      .user-review-author {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .user-author-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        margin-right: 8px;
+      }
+
+      .user-author-details {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .user-author-name {
+        font-weight: bold;
+        font-size: 16px;
+
+        font-style: normal;
+        font-weight: 700;
+        line-height: 160%;
+        /* 25.6px */
+      }
+
+      .user-author-tag {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+        /* 22.4px */
+      }
+
+      .user-review-content {
+        color: #666;
+        text-align: justify;
+        font-family: Pretendard;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+        letter-spacing: -0.4px;
+
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+        /* 25.6px */
+        letter-spacing: -0.4px;
+      }
+
+      .user-button-container {
+        text-align: center;
+      }
+
+      .user-custom-button {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #ff4081;
+        text-decoration: none;
+        border: 1px solid #f1356d;
+        border-radius: 30px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .user-custom-button:hover {
+        background-color: #f1356d;
+        color: #fff;
+      }
+
+      .user-button-container {
+        margin: 60px 0;
+        padding: 12px 24px;
+      }
+
+      .user-button-container a {
+        color: #ff4081;
+      }
+
+      /* 하이쏘 소개 */
+      .hisso-section_container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+      .right-panel_content p {
+        margin-bottom: 14px;
+      }
+
+      .right-panel_content h2 {
+        margin-bottom: 6px;
+      }
+      .hisso-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 30px;
+        width: 92%;
+        height: 700px;
+        border-radius: 32px;
+        background: url("https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/db80b0092ef40.png") lightgray 50% / cover no-repeat;
+
+        background-size: cover;
+        margin-top: 80px;
+        margin-bottom: 80px;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.15);
+      }
+
+      .right-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+      }
+
+      .right-panel h1 {
+        font-family: Pretendard;
+        font-size: 50px;
+        font-weight: 700;
+        line-height: 60px;
+        letter-spacing: -2.4px;
+        color: #fff;
+      }
+
+      .right-panel h2 {
+        color: #fff;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        letter-spacing: -1px;
+        text-align: left;
+      }
+
+      .right-panel .highlight {
+        color: #ff4081;
+      }
+
+      .right-panel p {
+        color: #fff;
+        text-align: justify;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: -0.4px;
+
+        font-family: Pretendard;
+        font-size: 14px;
+        line-height: 19.6px;
+      }
+
+      .right-panel ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .right-panel ul li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        color: #fff;
+        text-align: left;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: -0.4px;
+        font-size: 14px;
+        line-height: 29.4px;
+      }
+
+      .right-panel ul li img {
+        width: 24px;
+        height: 24px;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+
+      .right-panel ul li strong {
+        font-weight: bold;
+        color: #fff;
+        font-size: 14px;
+        line-height: 29.4px;
+        letter-spacing: -0.4px;
+      }
+
+      /* 하이쏘 푸터 */
+      .footer {
+        width: 100%;
+        background-color: #f2f2f2;
+        text-align: center;
+        padding: 80px 0 20px 0;
+      }
+
+      .footer-nav {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .footer-nav a {
+        margin: 0 20px 18px 20px;
+        text-decoration: none;
+        color: #676767;
+        font-weight: bold;
+      }
+
+      .footer-info {
+        margin-top: 30px;
+        margin-bottom: 140px;
+        color: #666;
+        font-size: 12px;
+        line-height: 1.6;
+      }
+
+      .footer-info p {
+        margin: 5px 0;
+        color: #a4a4a4;
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 160%;
+        letter-spacing: 0.42px;
+      }
+
+      .footer-logo {
+        margin-top: 20px;
+        width: 140px;
+        height: auto;
+      }
+
+      /* CTA 버튼 애니메이션 */
+      .floCtaPc_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 500px;
+        padding: 8px 0 0 0;
+        position: fixed;
+        bottom: -10px;
+        z-index: 998;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.7) 76%, #fff 100%);
+        transition: all 0.5s ease-in-out;
+        opacity: 0;
+      }
+
+      .floCtaPc_container.show_cta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0;
+        opacity: 1;
+      }
+
+      .floCtaPcLink {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 78%;
+        padding: 14px 0 10px 0;
+        border-radius: 12px;
+        background: #ff4081;
+        margin-bottom: 7px;
+        cursor: pointer;
+      }
+
+      .floCtaPcwidth {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding-right: 10%;
+      }
+
+      .cta_text {
+        color: #fff;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+        margin-left: 14px;
+      }
+
+      .badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: rgb(64, 63, 63);
+        color: white;
+        border-radius: 50%;
+        width: 20px; /* 원의 고정된 가로 크기 */
+        height: 20px; /* 원의 고정된 세로 크기 */
+        display: flex;
+        justify-content: center;
+        align-items: center; /* 텍스트를 중앙에 수직/수평 정렬 */
+        font-size: 12px;
+        line-height: 20px; /* 숫자를 중앙에 정확히 위치시키기 위한 line-height */
+        text-align: center;
+        padding: 0; /* 패딩 제거 */
+        margin: 0; /* 마진 제거 */
+        display: none; /* 처음에는 보이지 않음 */
+        white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+        overflow: hidden; /* 원 크기를 넘지 않도록 설정 */
+      }
+
+     /* Exit Intent Overlay 스타일 */
+        #exit-intent-overlay {
+          display: none; /* 기본적으로 숨김 */
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5); /* 배경 반투명 처리 */
+          justify-content: center;
+          align-items: center;
+          z-index: 1000;
+        }
+
+        #exit-intent-overlay .overlay-content {
+          background: white;
+          padding: 30px 20px; /* 패딩을 넉넉하게 */
+          border-radius: 12px;
+          max-width: 400px; /* 최대 너비 설정 */
+          text-align: center;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+          position: relative; /* 닫기 버튼 위치 설정을 위한 relative */
+        }
+
+        #exit-intent-overlay p {
+          margin-bottom: 20px;
+          font-size: 16px;
+          line-height: 1.6;
+          color: #333; /* 글씨 색상 */
+        }
+
+        #exit-intent-overlay strong {
+          font-weight: bold;
+          color: #ff4081; /* main color */
+        }
+
+        #participate-button {
+          padding: 12px 20px;
+          background-color: #ff4081; /* main color 적용 */
+          border: none;
+          color: white;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: bold;
+          width: 100%;
+          max-width: 320px;
+          margin: 0 auto;
+        }
+
+        #participate-button:hover {
+          background-color: #e6366f;
+        }
+
+        #close-overlay-button {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          background-color: transparent;
+          border: none;
+          font-size: 24px;
+          color: #333;
+          cursor: pointer;
+        }
+
+        #close-overlay-button:hover {
+          color: #ff4081; /* hover 시 메인 컬러 적용 */
+        }
+
+    </style>
+  </head>
+
+  
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KVB7DZVQ"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- 네비게이션 바 -->
+    <nav>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+            <div class="logo">
+              <a href="#">
+                <img src="https://cdn.imweb.me/thumbnail/20240914/4b9457f7ca91f.png" alt="하이쏘 로고" >
+              </a>
+              
+            </div>
+    </nav>
+
+    <!-- 본문 -->
+    <main>
+    <!-- 히어로 배너 슬라이더 -->
+        <section class="hero-banner-slider">
+          <div class="txt_hero-banner-slide"><span>화살표를 움직여 보세요</span></div>
+          <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/c2539d2176fb1.png" />
+          <div class="after-img"><img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/b3fe722cf5883.png" /></div>
+          <div class="line_bar">
+              <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/b578de9537b02.png">
+          </div>
+        </section>
+
+      <!-- 히어로 배너 타이틀 -->
+      <div class="hero-title-container">
+        <div class="hero-title">
+          <div class="title_maintop" style="font-family: 'NEXON Lv1 Gothic OTF BOLD';">
+            럭셔리 디자인 조명<br />
+            실패없이 구매하는 법
+          </div>
+          <p class="hero-subtitle">"조명 추천부터 최저가 구매까지"</p>
+        </div>
+      </div>
+
+      <!-- 하이쏘 사용 가이드 -->
+      <div class="service-1-container">
+        <div class="service-1">
+          <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="_&#235;&#160;&#136;&#236;&#157;&#180;&#236;&#150;&#180;_1" clip-path="url(#clip0_1399_18498)">
+              <g id="Clip path group">
+                <mask id="mask0_1399_18498" style="mask-type: luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="41" height="41">
+                  <g id="clippath">
+                    <path id="Vector" d="M41 0H0V41H41V0Z" fill="white" />
+                  </g>
+                </mask>
+                <g mask="url(#mask0_1399_18498)">
+                  <g id="Group">
+                    <g id="Group_2">
+                      <path
+                        id="Vector_2"
+                        d="M15.2426 16.8343L16.6829 13.7438C17.0873 12.8766 18.32 12.8722 18.731 13.7373L20.2686 16.9792C21.4451 19.4554 23.4391 21.4494 25.9154 22.6259L29.1572 24.1636C30.0223 24.5745 30.018 25.8072 29.1507 26.2116L26.0603 27.652C23.5234 28.835 21.4862 30.8722 20.3032 33.409L18.8629 36.4995C18.4585 37.3667 17.2257 37.371 16.8148 36.506L15.2772 33.2641C14.1007 30.7879 12.1067 28.7939 9.63041 27.6174L6.38856 26.0797C5.52349 25.6688 5.52782 24.4361 6.39505 24.0317L9.48551 22.5913C12.0223 21.4083 14.0596 19.3711 15.2426 16.8343Z"
+                        fill="#FF4081"
+                      />
+                      <path
+                        id="Vector_3"
+                        d="M28.0468 12.4965L28.8316 10.6006C29.1608 9.80452 29.7127 9.79889 30.0544 10.5893L30.7962 12.3052C31.0342 12.8537 31.4316 13.2982 31.9253 13.5598L33.4696 14.384C34.181 14.7637 34.1759 15.3741 33.4595 15.7426L31.7532 16.6146C31.3987 16.7946 31.1152 17.1125 30.9532 17.5035L30.1684 19.3994C29.8392 20.1955 29.2873 20.2011 28.9456 19.4107L28.2038 17.6948C27.9658 17.1463 27.5684 16.7018 27.0747 16.4402L25.5304 15.616C24.819 15.2363 24.8241 14.6259 25.5405 14.2574L27.2468 13.3854C27.6013 13.2054 27.8848 12.8875 28.0468 12.4965Z"
+                        fill="#FF4081"
+                      />
+                      <path
+                        id="Vector_4"
+                        d="M21.1439 7.74018L21.4813 7.00703C21.7624 6.395 22.2339 6.39067 22.5259 6.99838L22.807 7.58447C23.0103 8.00619 23.3498 8.34789 23.7716 8.54902L24.3577 8.83017C24.9654 9.12213 24.961 9.59143 24.349 9.87474L23.6159 10.2121C23.3131 10.3505 23.0709 10.5949 22.9325 10.8955L22.5951 11.6287C22.3139 12.2407 21.8425 12.245 21.5505 11.6373L21.2694 11.0512C21.0661 10.6295 20.7265 10.2878 20.3048 10.0867L19.7187 9.80553C19.111 9.51357 19.1153 9.04427 19.7274 8.76096L20.4605 8.42358C20.7633 8.28517 21.0055 8.04079 21.1439 7.74018Z"
+                        fill="#FF4081"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <defs>
+              <clipPath id="clip0_1399_18498">
+                <rect width="41" height="41" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+          <div class="spacer"></div> <!-- 새로 추가된 여백용 div -->
+          <div class="title_maintop">
+            구매여정에 맞는<br />
+            <span>쇼핑톡 서비스를</span><br />
+            신청해보세요!
+          </div>
+        </div>
+      </div>
+
+      <!-- 구매여정 step 01 -->
+      <div class="step01-container">
+        <div class="step01-card">
+          <div class="step01-title-container">
+            <h2>STEP 01</h2>
+            <h3>조명, 함께 골라드려요</h3>
+          </div>
+          <div class="step01-image-container">
+            <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/3e1e971a113e0.png" alt="조명 이미지" />
+          </div>
+          <div class="step01-content-container">
+            <p>어떤 브랜드 제품을 사야할 지 어려우시면 쇼핑톡 서비스를 신청해보세요.</p>
+            <div class="tailored_shopping_guide_1">
+              <a href="https://hisso.co.kr/lighting-recommendations" class="comparative_quotation-link">
+                <div class="tailored_shopping_guide_button">조명추천 샘플보기<span style="margin-left: 8px">></span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 구매여정 step 02  -->
+      <div class="step02-container">
+        <div class="step02-card">
+          <div class="step02-title-container">
+            <h2>STEP 02</h2>
+            <h3>가까운 쇼룸을 알려드려요</h3>
+          </div>
+          <div class="step02-image-container">
+            <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/f1ca7ac08c18b.png" alt="조명 이미지" />
+          </div>
+          <div class="step02-content-container">
+            <p>
+              쇼핑톡 서비스를 이용하셔도 좋고 <br />
+              아래 "쇼룸 찾아보기"로 바로 찾아볼수도 있어요.
+            </p>
+            <div class="tailored_shopping_guide_1">
+              <a href="https://hisso.co.kr/showrooms" class="comparative_quotation-link">
+                <div class="tailored_shopping_guide_button">쇼룸 찾아보기<span style="margin-left: 8px">></span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 구매여정 step 03 -->
+      <div class="step03-container">
+        <div class="step03-card">
+          <div class="step03-title-container">
+            <h2>STEP 03</h2>
+            <h3>홈스타일링, 미리 보여드려요</h3>
+          </div>
+          
+          <div class="step03-image-container">
+            <img class="step03-before-img" src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/013d9735f0d9e.png" />
+          </div>
+
+          <div class="step03-content-container">
+            <p>
+              <strong>제품 놓을 공간 사진을 보내 주세요.</strong> <br />
+              아래 쇼핑톡 서비스로 신청해주시면 조명 설치 전/후의 합성 사진을 보내드려요.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 구매여정 step 04 -->
+      <div class="step04-container">
+        <div class="step04-card">
+          <div class="step04-title-container">
+            <h2>STEP 04</h2>
+            <h3>가격비교, 대신해드려요!</h3>
+          </div>
+          <div class="step04-image-container">
+            <img class="step3_img" src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/5ff7cac41e49c.png" alt="조명 이미지" />
+          </div>
+          <div class="step04-content-container">
+            <p>
+              아래에서 무료 쇼핑 컨시어지를 신청하시면
+              <br />
+              <strong>약 30여개의 주요 쇼핑몰</strong>을 조사한 뒤, 최저가 비교 견적을 알려드려요!
+            </p>
+            <div class="tailored_shopping_guide_1">
+              <a href="https://hisso.co.kr/quote" class="comparative_quotation-link">
+                <div class="tailored_shopping_guide_button">비교견적 샘플보기<span style="margin-left: 8px">></span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 구매여정 step 05 -->
+      <div class="step05-container">
+        <div class="step05-card">
+          <div class="step05-title-container">
+            <h2>STEP 05</h2>
+            <h3>구매조건별 최저가 구매하기</h3>
+          </div>
+          <div class="step05-image-container">
+            <img class="step3_img" src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/c78ff62273dd3.png" alt="조명 제품 비교 견적서" />
+          </div>
+          <div class="step05-content-container">
+            <p>
+              아래에서 무료 쇼핑 컨시어지를 신청시면
+              <strong>가격, 배송기간, A/S 여부, 설치 여부, BNPL(할부구매), 공식수입사 여부</strong>등에 따른 최저가 쇼핑몰의 구매링크를 비교
+              견적서 내에 보내드려요!
+            </p>
+            <div class="tailored_shopping_guide_1">
+              <a href="https://hisso.co.kr/quote#shop-buttons" class="comparative_quotation-link">
+                <div class="tailored_shopping_guide_button">구매링크 샘플보기<span style="margin-left: 8px">></span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ-->
+      <div class="faq-container">
+      <div class="faq">
+          <div class="faq-title-container">
+              <h1 class="faq-title">FAQ</h1>
+              <h2 class="faq-subtitle">자주 묻는 질문을 <br>모아봤어요</h2>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">하이쏘는 어떤 서비스인가요? <span class="arrow">></span></button>
+              <div class="faq-answer">
+                  쇼핑할 때 무엇이든 물어볼 수 있는 친구같은 <strong>쇼핑톡 서비스</strong>를 지향해요.🛍️<br><br>
+                  <p>고객님께서 쇼핑할 일이 있으실 때 <br><br>
+                      센스있게 추천해 주고, 쇼룸 방문할 때 가이드 역할도 해주고, 꼼꼼하게 구매조건을 비교해주는 쇼핑 컨시어지를 제공하려고 노력해요.
+                  </p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question"><strong>스토어가 안 보이는데 <br> 하이쏘에서 구매할 수 있나요?</strong> <span
+                      class="arrow">></span></button>
+              <div class="faq-answer">
+                  <p><strong>최저가 비교 견적서 내에 구매 링크🔗가 들어 있어요.</strong><br><br>
+                      저희는 고객 한 분 한 분에게 맞춤형 쇼핑 서비스를 제공하려고 노력해요.
+                    "무료 쇼핑톡 서비스 신청하기" 버튼을 눌러서 "최저가 비교견적받기" 메뉴를 눌러 사고싶은 상품명을 알려주세요. 구매링크가 포함된 <strong>최저가 비교 견적서</strong>를 보내드려요.<br><br>
+
+                      <strong>이러한 방식은 고객님이 쇼핑정보 찾는 번거로움을 줄여드려요</strong><br><br>
+                      일일이 여러 쇼핑몰과 쇼룸의 가격, 배송기간, 설치, AS 등의 구매조건을 비교하는 수고를 줄이시고 편리한 쇼핑을 즐기시면 좋겠습니다.🥰
+                  </p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question"><strong>최저가인가요?</strong> <span class="arrow">></span></button>
+              <div class="faq-answer">
+                  <p><strong>하이쏘는 여러 주요한 하이엔드 쇼핑몰의 구매조건을 살펴봐요. <br><br>
+                          그리고 구매조건별 최저가 비교 견적을 제안드려요.💝</strong> <br><br>
+
+                      가령 <br>
+                      <strong>A몰은</strong> 빠른 배송 비싼 가격이고, <br>
+                      <strong>B몰은</strong> 느린 배송 저렴한 가격, <br>
+                      <strong>C몰은</strong> 다 좋은데 A/S가 없고, <br>
+                      <strong>D몰은</strong> 조금 비싸지만 설치해주고,<br>
+                      <strong>E몰은</strong> 일시불로 사는 대신 할부로 사는 BNPL(buy noe pay later)을 지원하기도 해요.
+                      <br><br>
+                      <strong style="color:#FF4081">만약 당장 내일 모레에 친구 생일선물로 주고 싶다면 좀 비싸지만 배송이 빠른 A몰에서 사야합니다. <br><br>
+                          이처럼 최저가는 구매조건에 따라서 달라져요.</strong> <br>
+                  </p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">정말 정품인가요? <span class="arrow">></span></button>
+              <div class="faq-answer">
+                  <p>저희가 비교 견적서 내에 드리는 구매링크의 쇼핑몰들은 직접 확인한 <strong>신뢰도 높은 쇼핑몰</strong>의 제품을 알려드리려고 애씁니다. 
+                  <br>
+                  그러나, 저희는 고객님께 구매정보를 제공해드릴 뿐 정품 여부를 보증하지는 않습니다.🫡 
+                  </p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">빨리 배송되나요? <span class="arrow">></span></button>
+              <div class="faq-answer">
+                  <p>여러 제휴사 및 하이엔드 조명 쇼핑몰을 살펴보기 때문에 <strong>다른 곳 보다 빠르게 배송되는 곳을 찾아서 비교 견적을 보낼 수</strong> 있어요. 
+                  <br>
+                  다만 저희가 약 30여개 하이엔드 조명 쇼핑몰을 조사하지만 못 찾을 수도 있으니 감안해주세요. 
+                  <br><br>
+                  엔드 조명과 가구는 주문제작하는 경우도 있고 해외배송이기 때문에 어느 정도 배송기간을 생각하셔야 해요. 여유를 가지고 구매 계획을 세우시면 더 좋을 것 같아요.😊</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">전구는 따로 사야하나요? <span class="arrow">></span></button>
+              <div class="faq-answer">
+                  <p>비교 견적서에서 알려드린 구매링크 연결된 쇼핑몰마다 달라요.<br><br>
+                      하지만 고객님 입장에선 어떤 전구를 사야할지는 귀찮고 까다로운 문제예요. <br><br>
+                      그래서 하이쏘에서는 구매시 고객님께 전구 구매 가이드를 해드립니다. <strong>채팅 상담해주시는 담당 쇼핑 메이트와 이야기해보세요.</strong>💡</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">사용 중 조명 파손시 수리는요? <span class="arrow">></span></button>
+              <div class="faq-answer">
+                  <p>쇼핑몰마다 달라요.<br> 수리 문제는 책임을 가리기가 어려워서 종종 실갱이를 하셔야 할지도 몰라요. 게다가 부품이 파손된 경우 디자인 조명은 해외 상품이 대다수여서 부품값도상당해요. 
+                  <br><br>
+                  령 루이스폴센의 판텔라 플로어 램프의 조명갓은 60여만원이 넘습니다. 그리고 부품을 구하기도 쉽지 않아요.
+                  <br>
+                  <strong>파손이 발생하시면</strong> 쇼핑몰의 배상이나 환불을 책임져 드릴 순 없지만 수리방안을 함께 고민해드리겠습니다.<br><br>
+                  화면 하단의 "무료 쇼핑톡 신청하기"버튼을 눌러서 <strong>하이쏘 쇼핑 메이트와 이야기해보세요</strong>.🙏🏻
+                  </p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">배송비와 관세는 무료인가요? <span class="arrow">></span></button>
+              <div class="faq-answer">
+                  <p>쇼핑몰마다 정책이 달라요. 어떤 곳은 제일 가격이 싼거 같아서 들어가 보면 배송비가 있어서 결국 싸지 않네 하신 경험 있으실 거예요.
+                  <br> 
+                  저희가 비교견적을 드릴 때 가격은 배송비/관세등을 합산해서 드니 이 부분은 고려하시지 않으셔도 돼요.🚚</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">배송기간이 어떻게 되나요? <span class="arrow">></span></button>
+              <div class="faq-answer">
+                  <p>대부분의 쇼핑몰들이
+                  <br>국내재고 상품은 약 3~4일이며 
+                  <br>해외재고 상품은 약 2주이며
+                  <br>해외주문 상품은 제조사의 생산일정에 따라 3개월 이상 소요되는 경우도 있습니다. 가령 유럽의 장인들이 수제로 만드는 조명들은 이 분들이 바캉스 가시면 이 기간 동안 생산 중단되는 경우도 있어요.🫡</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <button class="faq-question">
+                  <span>백화점 vs 편집샵 vs 브랜드 쇼룸 vs 온라인 전용 쇼핑몰
+                  <br>
+                  <strong>어디가 나을까?</strong></span> <span class="mo-arrow">></span>
+              </button>
+              <div class="faq-answer">
+                  <p>
+                      눈으로 직접 보고 싶은 조명이 있으시다면 👀
+                      <br>
+                      오프라인 쇼룸을 방문하시면 좋아요. 그런데 백화점, 오프라인 편십샵, 그리고 브랜드 쇼룸
+                      각각 장단점이 있어요. 
+                      <br><br>
+                      백화점 매장 방문의 가장 큰 장점은 편리성! 
+                      <br>
+                      여러 브랜드 상품들의 디자인과 가격을 비교할 수 있고, 주차문제에
+                      신경쓸 필요도 없고 예약도 필요 없고 구경하다 지치면 식사와 휴식도 한
+                      번에 해결할 수 있으니 딱이죠. 
+                      <br><br>
+                      백화점의 두 번째 장점은 제품 가격이 비싼 대신 각종 할인이 있어요. 고객 등급에 따른 할인, 특정 카드 사용 할인, 백화점 상품권 구입으로 인한 할인 등이 있어요.
+                      하지만, 백화점은 제한된 면적 내에서 영업성과를 극대화해야 하는
+                      곳이기 대문에 대표브랜드의 대표적인 상품들만 전시되고 쇼퍼들로
+                      북적대는 경우들이 있어요. 
+                      <br><br><br>
+                      브랜드 쇼룸의 가장 큰 장점은 한 브랜드 전시제품의 다양성과 편안함! <br><br>
+                      브랜드 쇼룸은 공간에 여유가 있어서 여러 옵션이나 사이즈 상품들까지도
+                      전시됩니다. 서울 논형동 가구거리처럼 하이엔드 제품이 밀집된 곳이라면 여러 브랜드의 제품을 볼 수 있기도 합니다. 종종 지역화폐로 구매할 수 있는 곳이 있는데 10% 할인이 되는 셈입니다. 그러나 가격대가 크다면 지역화폐 충전 금액에 제한이 있으니 한계가 있습니다. 더불어 쇼룸은 예약을 해야하거나, 주차가 유료이거나 제한적인 경우도 있어요.
+                      <br><br><br>
+                      콘란, 두오모앤코 같은 대형 편집샵, 다양한 브랜드를 한 곳에서!!<br><br>
+                      전문적으로 전시를 하는 곳이라서 주기적으로 전시품이 바뀝니다. 구경하기도 좋아서 전체 브랜드를 한 번 둘러 보려면 최적입니다. 작은 편집샵들은 예약이 필수인 경우가 많으니 참고하세요.
+                      <br><br><br>
+                      그럼 온라인 전용 쇼핑몰은 어떤 때 이용하면 좋을까요?
+                      <br><br>
+                      쇼룸에 없는 옵션의 제품들을 팔기도 하고
+                      <br>
+                      아무래도 가격이 싼 경우가 많아요
+                      <br>
+                      어떤 제품을 살까 둘러보는 구매의 첫 여정과 최종 결제하는 마지막 여정에서 살펴보시면 좋을 가장 좋을 것 같아요. 이 사이 여정에는 친구에게 물어보기도 하고 온라인 리뷰를 보기도 하고 쇼룸에 가보시기도 하고 나름 쇼핑을 즐기시면 좋겠습니다. 
+
+                  </p>
+              </div>
+          </div>
+      </div>
+      </div>
+
+      <!-- 하이쏘 유저 후기 -->
+      <div class="user-review-container">
+      <div class="user-review">
+          <div class="user-review-header">
+              <h2 class="user-review-title">REVIEW</h2>
+              <h3 class="user-review-subtitle">
+                실제 사용해보니
+                <br>
+                어떠셨나요<span style="font-family:pretendard;">?</span></h3>
+          </div>
+          <div class="user-review-card-container">
+              <div class="user-review-card">
+                  <div class="user-review-author">
+                      <div class="user-author-avatar">
+                          <img class="user-author-avatar"
+                              src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/8cf79987efdea.png">
+                      </div>
+                      <div class="user-author-details">
+                          <span class="user-author-name">빨간 각도기</span>
+                          <span class="user-author-tag">#건축#설계</span>
+                      </div>
+                  </div>
+                  <div class="user-review-content">
+                      유튜브에 자주 나오는 '대세조명'이라고 불리는 베스트셀러 제품들, <br><br>다들 조명 디자인의 대표주자들이죠. 그런데, 저는 살짝 다른 디자인을 추천해요. 모순적으로 들릴 수 있지만 '심플하면서도 화려한, 익숙하지만 흔하지 않은 디자인'이랄까. <br><br>그런 제품들을 좋은 가격에 공사 일정에 맞춰 알려 주니 좋은 파트너인거죠.
+                  </div>
+              </div>
+              <div class="user-review-card">
+                  <div class="user-review-author">
+                      <div class="user-author-avatar">
+                          <img class="user-author-avatar"
+                              src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/d7d79a771d65a.png">
+                      </div>
+                      <div class="user-author-details">
+                          <span class="user-author-name">케냐리아</span>
+                          <span class="user-author-tag">#웹툰작가</span>
+                      </div>
+                  </div>
+                  <div class="user-review-content">
+                      예쁜 조명을 갖고 싶지만 색온도, 전구규격 이런 것까지 하나씩 따지기 귀찮거든요. 제가 원하는 스타일을 말하면 알아서
+                      챙겨줘서 좋았어요.<br><br>
+
+                      제가 전구를 따로 사야하냐고 물어봤더니 제품에 포함된 전구를 써보고 분위기를 바꾸고 싶으면 마트에서 어떤 규격의 전구 사면 된다고 정확히 알려주시더라구요.
+                  </div>
+              </div>
+              <div class="user-review-card">
+                  <div class="user-review-author">
+                      <div class="user-author-avatar">
+                          <img class="user-author-avatar"
+                              src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/ea5aec3afffb5.png">
+                      </div>
+                      <div class="user-author-details">
+                          <span class="user-author-name">Devnaya</span>
+                          <span class="user-author-tag">#프리랜서 #개발자</span>
+                      </div>
+                  </div>
+                  <div class="user-review-content">
+                      마음에 드는 물건 사려면 일단 엑셀로 표만드는 성격이거든요.<br><br>그런데, 명품조명은 개미지옥이더라구요. 가격이 저렴해서 들어가보면 관부가세 내거나 배송비 10만원, 중간 가격쯤 찾으니 재고 없으니 3개월 기다리던가 40만원 더 내라... 이러니 짜증이 확 나더라구요.<br><br>이제 하이쏘 최저가 비교견적 알림으로 덜 고생하게되었어요!
+                  </div>
+              </div>
+          </div>
+
+      </div>
+      </div>
+
+      <!-- 하이쏘 소개 -->
+      <div class="hisso-section_container">
+          <section class="hisso-section">
+              <div class="right-panel">
+                  <div class="right-panel_title">
+                      <h1>HISSO</h1>
+                  </div>
+                  <div class="right-panel_content">
+                      <h2>우리 <span class="highlight">하이쏘</span>는,</h2>
+                      <p>럭셔리 홈퍼니싱에 관심 있는 분들을 위해<br> 콘시어지 쇼핑 서비스를 제공합니다.<br> 여러분은 쇼핑을 즐기시고, 나머지는 맡겨주세요. </p>
+                      <ul>
+                          <li><img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/04e3752d04abb.png" alt="Checkmark">
+                              취향을 고려한 <strong>조명 추천</strong> 👍</li>
+                          <li><img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/04e3752d04abb.png" alt="Checkmark">
+                              가까운 지역 <strong>쇼룸 안내</strong> 🔔</li>
+                          <li><img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/04e3752d04abb.png" alt="Checkmark">
+                              내 방에 해보는 <strong>홈 스타일링 미리보기</strong> 👀</li>
+                          <li><img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/04e3752d04abb.png" alt="Checkmark">
+                              구매조건별 <strong>최저가 비교견적</strong> 🏷️</li>
+
+                      </ul>
+                  </div>
+
+              </div>
+          </section>
+      </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+            <div class="footer-nav">
+                <a href="https://hisso.co.kr/?mode=policy">서비스 이용약관</a>
+                <a href="#">개인정보 처리방침</a>
+                <a href="#">환불규정</a>
+                <a href="#">고객센터</a>
+            </mㅡ>
+            <div class="footer-info">
+                <p>Copyright &copy; Alliance Internet Corp. All rights reserved.</p>
+                <p>서울시 강남구 테헤란로 507, WeWork빌딩 8층<br>
+                대표이사 이정민<br>
+                통신판매업 2012-서울강남-02246<br>
+                사업자등록번호 211-88-53648</p>
+                <p>email hisso.official@gmail.com</p>
+                <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/b88efd183e56d.png" alt="Alliance Internet Logo" class="footer-logo">
+            </div>
+    </footer>
+
+    <!-- 불투명한 배경 레이어 -->
+    <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
+    <!-- 사이드 메뉴 -->
+    <div id="sideMenu" class="side-menu">
+        <a href="#" class="close-btn" onclick="toggleMenu()">&times;</a>
+    
+        <div class="side-menu-content">
+          <a href="https://hisso.co.kr/showrooms">쇼룸찾기</a>
+          <a href="https://hisso.co.kr/lighting-recommendations">조명추천 리포트 샘플</a>
+          <a href="https://hisso.co.kr/quote">비교견적 리포트 샘플</a>
+        </div>
+        
+    </div>
+
+    <!-- CTA -->
+      <div class="floCtaPc_container" id="cta-button">
+          <a id="floCtaPcLink" style="text-decoration: none;" href="https://43l86.channel.io/workflows/686208" class="floCtaPcLink">
+              <div class="floCtaPcwidth">
+                  <svg width="74" height="26" viewBox="0 0 27 26" preserveAspectRatio="xMaxYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g id="icn_talk">
+                          <path id="Union" fill-rule="evenodd" clip-rule="evenodd"
+                              d="M13.3417 23C19.1407 23 23.8417 18.299 23.8417 12.5C23.8417 6.70101 19.1407 2 13.3417 2C7.54275 2 2.84174 6.70101 2.84174 12.5C2.84174 14.3773 3.33438 16.1394 4.19743 17.6643L1.68092 21.3249C1.12323 22.1361 1.94992 23.1802 2.86742 22.8234L7.30998 21.0957C9.01671 22.2956 11.097 23 13.3417 23Z"
+                              fill="white" />
+                          <circle id="Ellipse 11" cx="8.3418" cy="12.5" r="1.5" fill="#FF4081" />
+                          <circle id="Ellipse 12" cx="13.3418" cy="12.5" r="1.5" fill="#FF4081" />
+                          <circle id="Ellipse 13" cx="18.3418" cy="12.5" r="1.5" fill="#FF4081" />         
+                      </g>
+                  </svg>
+                  <span class="badge"></span> <!-- 뱃지를 표시할 공간 -->
+                  <div class="cta_text">쇼핑메이트와 톡하기</div>
+              </div>
+          </a>
+      </div>
+
+    </main>
+
+    <!-- 타입폼 팝업 피드백 -->
+    <!-- 커스텀 안내 레이어 -->
+    <div id="exit-intent-overlay">
+    <div class="overlay-content">
+      <!-- 닫기 버튼 추가 -->
+      <button id="close-overlay-button" aria-label="닫기">&times;</button>
+      
+      <p>
+        고객님, 잠시만요🙏🏻 <br>
+        간단한 2개의 질문에 답하시면 
+        <br> <strong>5,000원 상당의 오피스콘을 보내드려요.</strong> 
+        <br><br>
+        * 단, 아래 쇼핑톡에서 서비스 신청하지 않으신 분들만 참여하실 수 있습니다.
+      </p>
+      <button id="participate-button">참여하기</button>
+    </div>
+  </div>
+
+
+    <div data-tf-live="01J9BPJMM8YKMTEP6WNG4P5R18"></div>   
+    <script>
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://embed.typeform.com/embed.js';
+      s.type = 'text/javascript';
+      s.async = true;
+      d.getElementsByTagName('head')[0].appendChild(s);
+    })();
+   </script>
+
+  
+
+  <!-- Exit Intent 및 Page Visibility 스크립트 -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('페이지 로드 완료');
+
+    var overlay = document.getElementById('exit-intent-overlay');
+    var participateButton = document.getElementById('participate-button');
+    var closeButton = document.getElementById('close-overlay-button');
+    var typeformPopup;
+
+    function showOverlay() {
+      if (localStorage.getItem('typeformPopupShown')) {
+        console.log('팝업 이미 표시됨');
+        return;
+      }
+      overlay.style.display = 'flex';
+    }
+
+    function initTypeform() {
+      if (window.typeformEmbed) {
+        console.log('Typeform 초기화 시작');
+        try {
+          typeformPopup = window.typeformEmbed.makePopup('https://mn910jdodol.typeform.com/to/CfMomzat', {
+            mode: 'popup',
+            autoClose: 0,
+            hideHeaders: true,
+            hideFooters: true,
+            onSubmit: function() {
+              console.log('Typeform 제출 완료');
+            }
+          });
+          console.log('Typeform 초기화 성공:', typeformPopup);
+        } catch (error) {
+          console.error('Typeform 초기화 중 오류 발생:', error);
+        }
+      } else {
+        console.error('Typeform 스크립트가 로드되지 않았습니다.');
+      }
+    }
+
+    function loadTypeformScript() {
+      var script = document.createElement('script');
+      script.src = 'https://embed.typeform.com/embed.js';
+      script.onload = function() {
+        console.log('Typeform 스크립트 로드 완료');
+        initTypeform();
+      };
+      script.onerror = function() {
+        console.error('Typeform 스크립트 로드 실패');
+      };
+      document.head.appendChild(script);
+    }
+
+    if (window.typeformEmbed) {
+      console.log('Typeform 이미 로드됨');
+      initTypeform();
+    } else {
+      console.log('Typeform 스크립트 로드 시작');
+      loadTypeformScript();
+    }
+
+    participateButton.addEventListener('click', function() {
+      console.log('참여하기 버튼 클릭');
+      if (typeformPopup) {
+        typeformPopup.open();
+        console.log('팝업 열기 성공');
+        localStorage.setItem('typeformPopupShown', 'true');
+        overlay.style.display = 'none';
+      } else {
+        console.error('Typeform 팝업이 초기화되지 않았습니다.');
+        initTypeform(); // 팝업이 초기화되지 않았다면 다시 초기화 시도
+      }
+    });
+
+    closeButton.addEventListener('click', function() {
+      overlay.style.display = 'none';
+    });
+
+    // 데스크톱: mouseout 이벤트 감지
+    var isDesktop = window.matchMedia("(min-width: 768px)").matches;
+    console.log('데스크톱 여부:', isDesktop);
+
+    if (isDesktop) {
+      var exitIntentDetected = false;
+      
+      document.addEventListener('mouseout', function(e) {
+        if (e.clientY <= 0 && !exitIntentDetected) {
+          console.log('데스크톱: 마우스 아웃 감지');
+          exitIntentDetected = true;
+          showOverlay();
+        }
+      });
+
+      document.addEventListener('mouseover', function() {
+        exitIntentDetected = false;
+      });
+    }
+
+    // 모바일 및 기타 환경: 페이지 가시성 변화 감지
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'hidden') {
+        console.log('페이지 가시성 변경: hidden');
+        showOverlay();
+      }
+    });
+  });
+</script>
+
+
+
+    <!-- 사이드 메뉴 자바스크립트 -->
+    <script>
+        function toggleMenu() {
+            const sideMenu = document.getElementById("sideMenu");
+            const overlay = document.getElementById("overlay");
+            sideMenu.classList.toggle("open");
+            overlay.classList.toggle("show");
+        }
+        // 오버레이와 닫기 버튼 클릭 시 사이드 메뉴와 오버레이를 닫기
+    document.getElementById('overlay').onclick = function() {
+        const sideMenu = document.getElementById("sideMenu");
+        sideMenu.classList.remove("open");
+        this.classList.remove("show");
+      };
+
+      document.querySelector('.close-btn').onclick = function() {
+          const sideMenu = document.getElementById("sideMenu");
+          const overlay = document.getElementById("overlay");
+          sideMenu.classList.remove("open");
+          overlay.classList.remove("show");
+      };
+    </script>
+
+
+<!-- 공휴일 체크 자바스크립트 -->
+ <script src="https://cdn.jsdelivr.net/npm/korean-holidays-js@1.1.0/dist/korean-holidays.min.js"></script>
+    <script>
+        // 한국 공휴일을 확인하기 위한 라이브러리 사용 (예: korean-holidays-js)
+        // CDN을 통해 라이브러리를 불러옵니다.
+        // 실제 사용 시 최신 라이브러리를 확인하시기 바랍니다.
+        
+
+        //공휴일 체크 함수 (간단한 예제)
+        function isKoreanHoliday(date) {
+            const holidays = [
+              '2024-01-01', // 신정
+              '2024-02-10', // 설날 연휴 전날
+              '2024-02-11', // 설날
+              '2024-02-12', // 설날 연휴 다음 날
+              '2024-03-01', // 삼일절
+              '2024-05-05', // 어린이날
+              '2024-05-06', // 어린이날 대체공휴일
+              '2024-05-15', // 석가탄신일
+              '2024-06-06', // 현충일
+              '2024-08-15', // 광복절
+              '2024-09-17', // 추석 연휴 전날
+              '2024-09-18', // 추석
+              '2024-09-19', // 추석 연휴 다음 날
+              '2024-10-01', // 국군의날 임시공휴일
+              '2024-10-03', // 개천절
+              '2024-10-09', // 한글날
+              '2024-12-25'  // 성탄절
+          ];
+
+            const formattedDate = date.toISOString().split('T')[0];
+            return holidays.includes(formattedDate);
+        }
+
+        function updateCTAButtonLink() {
+            const linkElement = document.getElementById('floCtaPcLink');
+            const now = new Date();
+
+            // 한국 시간으로 변환
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const koreaTime = new Date(utc + (9 * 60 * 60 * 1000));
+
+            const hours = koreaTime.getHours();
+            const day = koreaTime.getDay(); // 0: 일요일, 1: 월요일, ..., 6: 토요일
+            const isWeekend = (day === 0 || day === 6);
+            const isHoliday = isKoreanHoliday(koreaTime);
+            
+
+            if (isHoliday) {
+                // 공휴일은 항상 교체된 링크 사용
+                linkElement.href = 'https://43l86.channel.io/workflows/686807';
+            } else if (isWeekend) {
+                // 주말은 교체된 링크 사용
+                linkElement.href = 'https://43l86.channel.io/workflows/686807';
+            } else {
+                // 평일
+                if (hours >= 10 && hours < 17) {
+                    // 오전 10시부터 오후 5시까지 기존 링크 유지
+                    linkElement.href = 'https://43l86.channel.io/workflows/686208';
+                } else {
+                    // 그 외 시간은 교체된 링크 사용
+                    linkElement.href = 'https://43l86.channel.io/workflows/686807';
+                }
+            }
+        }
+
+        // 페이지 로드 시 링크 업데이트
+        updateCTAButtonLink();
+
+        // 시간 변경을 실시간으로 반영하려면 일정 간격으로 업데이트
+        setInterval(updateCTAButtonLink, 60 * 1000); // 1분마다 업데이트
+    </script>
+
+    <!-- 히어로 배너 슬라이더 자바스크립트 -->
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          var ba = document.querySelector(".hero-banner-slider");
+          var lineBar = document.querySelector(".line_bar");
+          var imgAfterSect = ba.querySelector(".after-img");
+          var isDragging = false;
+          var startX, startLeft;
+
+          function handleStart(e) {
+              if (e.target.closest('.hero-banner-slider')) {
+                  isDragging = true;
+                  startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                  startLeft = parseFloat(getComputedStyle(lineBar).left);
+            
+              }
+          }
+
+          function handleMove(e) {
+              if (!isDragging) return;
+              var currentX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+              var diff = currentX - startX;
+              var newLeft = startLeft + diff;
+              var parentWidth = ba.offsetWidth;
+              var p_x = (newLeft / parentWidth) * 100;
+
+              p_x = Math.max(0, Math.min(100, p_x));
+
+              imgAfterSect.style.clipPath = `inset(0 0 0 ${p_x}%)`;
+              lineBar.style.left = `${p_x}%`;
+
+              if (e.type.includes('mouse')) {
+                  e.preventDefault();
+              }
+          }
+
+          function handleEnd(e) {
+              if (!isDragging) return;
+              isDragging = false;
+              if (e.type.includes('mouse')) {
+                  e.preventDefault();
+              }
+          }
+
+          function handleClick(e) {
+              if (isDragging) return;
+              var rect = ba.getBoundingClientRect();
+              var x = e.clientX - rect.left;
+              var w_ba = ba.offsetWidth;
+              var p_x = (x / w_ba) * 100;
+
+              p_x = Math.max(0, Math.min(100, p_x));
+
+              imgAfterSect.style.clipPath = `inset(0 0 0 ${p_x}%)`;
+              lineBar.style.left = `${p_x}%`;
+          }
+
+          ba.addEventListener('mousedown', handleStart);
+          ba.addEventListener('touchstart', handleStart);
+
+          ba.addEventListener('mousemove', handleMove);
+          ba.addEventListener('touchmove', handleMove);
+
+          ba.addEventListener('mouseup', handleEnd);
+          ba.addEventListener('touchend', handleEnd);
+
+          ba.addEventListener('click', handleClick);
+      });
+
+    </script>
+
+
+    <!-- FAQ 자바스크립트 -->
+     <script>
+        $(document).ready(function () {
+            $('.faq-question').click(function () {
+                // Toggle the clicked answer
+                $(this).next('.faq-answer').slideToggle();
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+
+    <!-- CTA -->
+     <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var ctaButton = document.getElementById('cta-button');
+
+        setTimeout(function () {
+            ctaButton.classList.add('show_cta');
+        }, 1000);  // 1000ms = 1초
+        });
+    </script>
+  </body>
+</html>
