@@ -1214,6 +1214,75 @@
         white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
         overflow: hidden; /* 원 크기를 넘지 않도록 설정 */
       }
+
+      /* Exit Intent Overlay 스타일 */
+      #exit-intent-overlay {
+        display: none; /* 기본적으로 숨김 */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* 배경 반투명 처리 */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      #exit-intent-overlay .overlay-content {
+        background: white;
+        padding: 30px 20px; /* 패딩을 넉넉하게 */
+        border-radius: 12px;
+        max-width: 400px; /* 최대 너비 설정 */
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        position: relative; /* 닫기 버튼 위치 설정을 위한 relative */
+      }
+
+      #exit-intent-overlay p {
+        margin-bottom: 20px;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333; /* 글씨 색상 */
+      }
+
+      #exit-intent-overlay strong {
+        font-weight: bold;
+        color: #ff4081; /* main color */
+      }
+
+      #participate-button {
+        padding: 12px 20px;
+        background-color: #ff4081; /* main color 적용 */
+        border: none;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+
+      #participate-button:hover {
+        background-color: #e6366f;
+      }
+
+      #close-overlay-button {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: transparent;
+        border: none;
+        font-size: 30px;
+        color: #333;
+        cursor: pointer;
+      }
+
+      #close-overlay-button:hover {
+        color: #ff4081; /* hover 시 메인 컬러 적용 */
+      }
     </style>
   </head>
   <body>
@@ -11738,6 +11807,144 @@
 
       // 시간 변경을 실시간으로 반영하려면 일정 간격으로 업데이트
       setInterval(updateCTAButtonLink, 60 * 1000); // 1분마다 업데이트
+    </script>
+
+    <!-- 타입폼 팝업 피드백 -->
+    <!-- 커스텀 안내 레이어 -->
+    <div id="exit-intent-overlay">
+      <div class="overlay-content">
+        <!-- 닫기 버튼 추가 -->
+        <button id="close-overlay-button" aria-label="닫기">&times;</button>
+
+        <p>
+          고객님, 잠시만요🙏🏻 <br />
+          간단한 2개의 질문에 답하시면
+          <br />
+          <strong>5,000원 상당의 오피스콘을 보내드려요.</strong> <br /><br />
+          * 단, 아래 쇼핑톡에서 서비스 신청하지 않으신 분들만 참여하실 수 있습니다.
+        </p>
+        <button id="participate-button">참여하기</button>
+      </div>
+    </div>
+
+    <div data-tf-live="01J9BPJMM8YKMTEP6WNG4P5R18"></div>
+    <script>
+      (function () {
+        var d = document,
+          s = d.createElement("script");
+        s.src = "https://embed.typeform.com/embed.js";
+        s.type = "text/javascript";
+        s.async = true;
+        d.getElementsByTagName("head")[0].appendChild(s);
+      })();
+    </script>
+
+    <!-- Exit Intent 및 Page Visibility 스크립트 -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("페이지 로드 완료");
+
+        var overlay = document.getElementById("exit-intent-overlay");
+        var participateButton = document.getElementById("participate-button");
+        var closeButton = document.getElementById("close-overlay-button");
+        var typeformPopup;
+
+        function showOverlay() {
+          if (localStorage.getItem("typeformPopupShown")) {
+            console.log("팝업 이미 표시됨");
+            return;
+          }
+          overlay.style.display = "flex";
+        }
+
+        function initTypeform() {
+          if (window.typeformEmbed) {
+            console.log("Typeform 초기화 시작");
+            try {
+              typeformPopup = window.typeformEmbed.makePopup("https://mn910jdodol.typeform.com/to/CfMomzat", {
+                mode: "popup",
+                autoClose: 0,
+                hideHeaders: true,
+                hideFooters: true,
+                onSubmit: function () {
+                  console.log("Typeform 제출 완료");
+                }
+              });
+              console.log("Typeform 초기화 성공:", typeformPopup);
+            } catch (error) {
+              console.error("Typeform 초기화 중 오류 발생:", error);
+            }
+          } else {
+            console.error("Typeform 스크립트가 로드되지 않았습니다.");
+          }
+        }
+
+        function loadTypeformScript() {
+          var script = document.createElement("script");
+          script.src = "https://embed.typeform.com/embed.js";
+          script.onload = function () {
+            console.log("Typeform 스크립트 로드 완료");
+            initTypeform();
+          };
+          script.onerror = function () {
+            console.error("Typeform 스크립트 로드 실패");
+          };
+          document.head.appendChild(script);
+        }
+
+        if (window.typeformEmbed) {
+          console.log("Typeform 이미 로드됨");
+          initTypeform();
+        } else {
+          console.log("Typeform 스크립트 로드 시작");
+          loadTypeformScript();
+        }
+
+        participateButton.addEventListener("click", function () {
+          console.log("참여하기 버튼 클릭");
+          if (typeformPopup) {
+            typeformPopup.open();
+            console.log("팝업 열기 성공");
+            localStorage.setItem("typeformPopupShown", "true");
+            overlay.style.display = "none";
+          } else {
+            console.error("Typeform 팝업이 초기화되지 않았습니다.");
+            initTypeform(); // 팝업이 초기화되지 않았다면 다시 초기화 시도
+          }
+        });
+
+        closeButton.addEventListener("click", function () {
+          overlay.style.display = "none";
+        });
+
+        // 데스크톱: mouseout 이벤트 감지
+        var isDesktop = window.matchMedia("(min-width: 768px)").matches;
+        console.log("데스크톱 여부:", isDesktop);
+
+        if (isDesktop) {
+          var exitIntentDetected = false;
+
+          document.addEventListener("mouseout", function (e) {
+            if (e.clientY <= 0 && !exitIntentDetected) {
+              console.log("데스크톱: 마우스 아웃 감지");
+              exitIntentDetected = true;
+              showOverlay();
+            }
+          });
+
+          document.addEventListener("mouseover", function () {
+            exitIntentDetected = false;
+          });
+        }
+
+        // 모바일 및 기타 환경: 페이지 가시성 변화 감지
+        document.addEventListener("visibilitychange", function () {
+          if (document.visibilityState === "hidden") {
+            console.log("페이지 가시성 변경: hidden");
+            showOverlay();
+          }
+        });
+      });
     </script>
   </body>
 </html>
