@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-KVB7DZVQ");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>조명 추천 | High end Home Furnishing Lighting Recommendations</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+    <style>
+      /* 부모 컨테이너 스타일 */
+      .floCtaPc_container {
+        overflow: visible; /* 오버플로우를 visible로 설정하여 이동 시 이미지가 잘리지 않게 함 */
+      }
+      /* SVG 아이콘 스타일 */
+      #icn_talk {
+        width: 80px; /* 아이콘 너비 */
+        height: 80px; /* 아이콘 높이 */
+        cursor: pointer; /* 마우스 커서 변경 */
+        transition: transform 0.3s; /* 변환 효과 전환 */
+        /* 애니메이션 설정 */
+        animation-name: moveLeftReturn;
+        animation-duration: 2s; /* 애니메이션 지속 시간 */
+        animation-delay: 3s; /* 애니메이션 지연 시간 */
+        animation-fill-mode: forwards; /* 애니메이션 종료 후 상태 유지 */
+        animation-iteration-count: 1; /* 애니메이션 반복 횟수 */
+      }
+
+      /* 애니메이션 키프레임 정의 */
+      @keyframes moveLeftReturn {
+        0% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(-50px); /* 왼쪽으로 50px 이동 */
+        }
+        100% {
+          transform: translateX(0); /* 원래 위치로 돌아오기 */
+        }
+      }
+
+      /* 호버 시 애니메이션 다시 실행 (선택 사항) */
+      #icn_talk:hover {
+        animation: moveLeftReturn 2s forwards;
+      }
+
+      @media screen and (max-width: 500px) {
+        .body_container {
+          padding: 0 8px;
+        }
+
+        .product {
+          padding: 10px;
+        }
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      @font-face {
+        font-family: "NEXON Lv1 Gothic OTF";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "NEXON Lv1 Gothic OTF LIGHT";
+        src: url("/NEXON Lv1 Gothic OTF Light.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "NEXON Lv1 Gothic OTF BOLD";
+        src: url("/NEXON Lv1 Gothic OTF Bold.woff");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      body {
+        font-family: "NEXON Lv1 Gothic OTF", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /*max-width: 500px;*/
+        margin: 0 auto;
+      }
+
+      /* 상단 고정 내브 바 */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        max-width: 500px;
+        height: 48px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        display: flex;
+        justify-content: center; /* 가로 중앙 정렬 */
+        align-items: center; /* 세로 중앙 정렬 */
+      }
+
+      .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .logo img {
+        display: block;
+        width: 104px; /* 로고 이미지의 너비 */
+        height: 42px; /* 로고 이미지의 이 */
+      }
+
+      .menu-icon {
+        position: absolute;
+        left: 0;
+        padding: 10px 40px 10px 10px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      /* 불투명 레이어 */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .overlay.show {
+        display: block;
+        opacity: 1;
+      }
+
+      /* 사이드 메뉴 */
+      .side-menu {
+        position: fixed;
+        top: 0;
+        left: -270px; /* 기본으로는 화면 밖에 숨겨둠 */
+        width: 250px;
+        height: 100%;
+        background-color: white;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        transition: 0.3s ease;
+        padding-top: 60px; /* 내브 바와 겹치지 않도록 패딩 */
+        z-index: 1001;
+      }
+
+      .side-menu.open {
+        left: 0px; /* 메뉴를 열면 화면에 나타남 */
+      }
+      .side-menu-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin-top: 16px;
+      }
+      .side-menu a {
+        display: block;
+        padding: 15px 20px;
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        transition: background 0.1s ease;
+        cursor: pointer;
+        transition: transform 0.1s ease;
+      }
+
+      .side-menu a:hover {
+        background-color: #ffffff;
+        color: #ff2e82;
+        transform: translateX(5px); /* 오른쪽으로 튕기는 효과 */
+      }
+      .side-menu-content a:active {
+        background-color: #ffffff;
+        color: #8c1847;
+        transform: scale(0.98);
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .side-menu-content a:active {
+        background-color: #ffffff;
+        color: #8c1847;
+        transform: scale(0.98);
+      }
+
+      /* 워터마크 */
+
+      .watermark_bg_color {
+        position: fixed;
+        top: 0;
+        /*width: 500px;*/
+        height: 100vh;
+        background-color: #f7f7f7;
+        z-index: -2;
+      }
+
+      .watermark {
+        display: inline-flex;
+        padding: 8px 36px;
+        justify-content: center;
+        align-items: center;
+
+        position: fixed;
+        margin-top: 80px;
+        margin-left: -40px;
+        top: 15%;
+        /* Adjust position from the top */
+        left: 55%;
+        transform: translateX(-50%) rotate(-15deg);
+        /* Rotate the text by -45 degrees */
+        font-size: 2.6em;
+        z-index: 1;
+        white-space: nowrap;
+        pointer-events: none;
+        user-select: none;
+        color: rgba(0, 0, 0, 0.05);
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 130%;
+        /* 62.4px */
+        border: 2px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .body_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 500px;
+        min-width: 320px;
+        background-color: #f7f7f7;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 16px;
+        margin: 0 auto;
+        padding-top: 48px;
+      }
+
+      .header {
+        padding: 57px 17px 20px 17px;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .header .container {
+        width: 90%;
+        position: relative;
+        padding-bottom: 20px;
+      }
+
+      #highlight {
+        font-family: "NEXON Lv1 Gothic BOLD", sans-serif;
+        font-size: 26px;
+        line-height: 33.8px;
+        text-align: left;
+        color: #ff4081;
+      }
+
+      .header h1 {
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 1.3;
+        text-align: left;
+        margin-bottom: 60px;
+      }
+
+      /*
+      .header p {
+        font-size: 14px;
+        font-weight: 800;
+        line-height: 1.6;
+        text-align: center;
+        color: #666666;
+      }
+      */
+
+      .header p {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.8;
+        text-align: left;
+        color: #666666;
+        width: 100%;
+        max-width: 100%;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+        box-sizing: border-box;
+        text-justify: inter-word;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+      }
+
+      .container {
+        width: 100%;
+        padding: 0 16px;
+        text-align: left;
+      }
+
+      .main-content {
+        width: 100%;
+        padding: 3px 0 6px 0;
+      }
+
+      .product {
+        width: 100%;
+        background: #fff;
+        border: 1px solid #8c898a;
+        border-radius: 4px;
+        padding: 20px;
+        margin-bottom: 48px;
+        /* 마진을 px 단위로 경 */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* 음영을 px 단위로 변경 */
+        box-sizing: border-box;
+      }
+
+      .product h2 {
+        font-family: "pretendard", sans-serif;
+        font-size: 24px;
+        /* 24px으로 변경 */
+        font-weight: 900;
+        color: #000000;
+        /* 2px으로 변경 */
+        padding-bottom: 12px;
+        /* 5px으로 변경 */
+
+        line-height: 28px;
+        letter-spacing: -0.02em;
+      }
+
+      .product img {
+        width: 100%;
+        height: auto;
+
+        padding-bottom: 10px;
+      }
+
+      .product_title {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      .product h3 {
+        color: var(--Gray-red1, #333);
+        font-family: Montserrat;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 130%; /* 26px */
+        margin-bottom: 4px; /* h2와의 간격 조절 */
+      }
+
+      .product h2 {
+        color: var(--Gray-red3, #666);
+        font-family: Pretendard;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%; /* 20.8px */
+        letter-spacing: -0.4px;
+      }
+
+      .product p {
+        margin-bottom: 10px;
+        margin-top: 8px;
+        color: var(--Gray-red1, #333);
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%; /* 33.6px */
+      }
+
+      #product_price {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        font-size: 16px;
+        /* 16px으로 변경 */
+        font-weight: 800;
+        line-height: 22.4px;
+        /* 22.4px으로 변경 */
+        color: #ff4081;
+        padding-top: 10px;
+        /* 10px으로 변경 */
+        margin-top: 10px;
+        margin-bottom: 24px;
+        /* 10px으로 변경 */
+      }
+
+      #product_price .small_text {
+        color: var(--Gray-red3, #666);
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 16.8px */
+      }
+
+      .price_container {
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        margin-top: 12px;
+      }
+
+      .guide_text {
+        width: 100%;
+        text-align: right;
+        font-size: 13px;
+        color: #868686;
+      }
+
+      .product ul {
+        list-style: none;
+        padding: 0;
+        margin: 0; /* 기본 마진 제거 */
+      }
+
+      .product ul li {
+        color: var(--Gray-red3, #7c7b7b);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 150%; /* 21px */
+        margin-bottom: 4px; /* 각 리스트 아이템 사이에 4px 간격 추가 */
+      }
+
+      .product ul li:last-child {
+        margin-bottom: 0; /* 마지막 아이템의 아래 마진 제거 */
+      }
+
+      .product .video {
+        margin: 20px 0;
+      }
+
+      .product iframe {
+        width: 100%;
+        height: 200px;
+        /* 200px으로 변경 */
+      }
+
+      .additional-order {
+        text-align: center;
+        padding: 10px 0 100px 0;
+        /* 패딩을 px 단위로 변경 */
+        width: 100%;
+        margin: 0 auto;
+        color: #666666;
+      }
+
+      /* CTA 버튼 */
+      .floCtaPc_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 500px;
+        position: fixed;
+        bottom: -10px;
+        z-index: 999;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.7) 76%, #fff 100%);
+        transition: all 0.5s ease-in-out;
+        opacity: 0;
+      }
+
+      .floCtaPc_container.show_cta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0;
+        opacity: 1;
+      }
+
+      .floCtaPcLink {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 78%;
+        padding: 14px 0 10px 0;
+        border-radius: 12px;
+        background: #ff4081;
+        margin-bottom: 7px;
+        cursor: pointer;
+      }
+
+      .floCtaPcwidth {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding-right: 10%;
+      }
+
+      .cta_text {
+        color: #fff;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+        margin-left: 14px;
+      }
+
+      .badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: rgb(64, 63, 63);
+        color: white;
+        border-radius: 50%;
+        width: 20px; /* 원의 고정된 가로 크기 */
+        height: 20px; /* 원의 고정된 세로 크기 */
+        display: flex;
+        justify-content: center;
+        align-items: center; /* 텍스트를 중앙에 수직/수평 정렬 */
+        font-size: 12px;
+        line-height: 20px; /* 숫자를 중앙에 정확히 위치시키기 위한 line-height */
+        text-align: center;
+        padding: 0; /* 패딩 제거 */
+        margin: 0; /* 마진 제거 */
+        display: none; /* 처음에는 보이지 않음 */
+        white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+        overflow: hidden; /* 원 크기를 넘지 않도록 설정 */
+      }
+
+      .video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 비율 유지 */
+        height: 0;
+        overflow: hidden;
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KVB7DZVQ"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- 네비게이션 바 -->
+    <nav>
+      <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+      <div class="logo">
+        <a href="https://hisso.co.kr/">
+          <img src="https://cdn.imweb.me/thumbnail/20240914/4b9457f7ca91f.png" alt="하이쏘 로고" />
+        </a>
+      </div>
+    </nav>
+    <div class="watermark_bg_color"></div>
+    <div class="watermark">SAMPLE</div>
+    <main>
+      <div class="body_container">
+        <header class="header">
+          <div class="container">
+            <h1>
+              <span id="highlight">인테리어 관심녀</span>
+              님을 위한 <br />맞춤형 조명 제안
+            </h1>
+            <p>
+              고객님께서는 사무실 서재에 적합한 플로어 램프를 찾고 계시며, 클랙식한 동시에 실용적인 디자인을 선호하신다고 하셨습니다. 또한,
+              가격은 상관없음으로 설정하셨기에, 다양한 가격대의 유럽 럭셔리 브랜드 제품을 추천드리겠습니다. 실용성, 디자인, 품질을 모두
+              만족시키는 조명을 선정하였습니다..😊
+            </p>
+          </div>
+        </header>
+        <main class="main-content">
+          <div class="container">
+            <section class="product">
+              <div class="product_title">
+                <h3>01 Artemide</h3>
+                <h2>Tolomeo Mega Floor Black</h2>
+              </div>
+              <img src="https://cdn.eqlstore.com/goods/EQBR/21/05/07/GPA821050757458_0_ORGINL.jpg?RS=1300" alt="톨로메오 장스탠드" />
+              <p>"우아함과 기능성을 갖춘 플로어 조명"</p>
+              <ul>
+                <li>- 고급스러운 블랙 컬러 (Elegant Black Color)</li>
+                <li>- 조절 가능한 암 구조 (Adjustable Arm Structure)</li>
+                <li>- 넓은 조명 범위 (Wide Lighting Range)</li>
+                <li>- 모던한 디자인 (Modern Design)</li>
+              </ul>
+              <div id="product_price">
+                <div class="price_container">
+                  <div class="small_text">가격대</div>
+                  <div>약 1,770 만원</div>
+                </div>
+                <div class="guide_text">* * 가격 편차가 심하니 비교견적을 이용해보세요</div>
+              </div>
+              <hr />
+              <div id="video_container_0" class="video">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/HsvkouJdJbA?si=-ViKhWMjIdzzDP7M"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </section>
+            <section class="product">
+              <div class="product_title">
+                <h3>02 Louis Poulsen</h3>
+                <h2>YUH 플로어 램프(White H140cm)</h2>
+              </div>
+              <img
+                src="https://benufe.com/web/product/small/202408/af0903384481b209267789dc13cea273.jpg"
+                alt="Louis Poulsen YUH 플로어 램프(White H140cm)"
+              />
+              <p>"심플한 디자인 속 자유로운 조명 조절"</p>
+              <ul>
+                <li>- 자유로운 높이 조절 (Adjustable Height)</li>
+                <li>- 슬림한 디자인 (Sleek Design)</li>
+                <li>- 통합 LED 디밍 기능 (Integrated Dimming)</li>
+                <li>- 뛰어난 조명 분포 (Optimal Light Distribution)</li>
+              </ul>
+              <div id="product_price">
+                <div class="price_container">
+                  <div class="small_text">가격대</div>
+                  <div>133만원 이상</div>
+                </div>
+                <div class="guide_text">* 가격 편차가 심하니 비교견적을 이용해보세요</div>
+              </div>
+              <hr />
+              <div id="video_container_1" class="video">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/7oNgux0S4g8?si=f0y9owJ4OlMraI_K"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </section>
+            <section class="product">
+              <div class="product_title">
+                <h3>03 Fritz Hansen</h3>
+                <h2>Kaiser Idell 플로어 램프(White H125cm)</h2>
+              </div>
+              <img
+                src="https://image.fritzhansen.com/~/media/988ACCC077364792AB5C87091DFFEF69.ashx"
+                alt="Fritz Hansen Kaiser Idell 플로어 램프(White H125cm)"
+              />
+              <p>"바우하우스 디자인의 정수, 세련된 광택 마감"</p>
+              <ul>
+                <li>- 시대를 초월한 디자인 (Timeless Design)</li>
+                <li>- 특허받은 스위블 조인트 (Swivel Joint)</li>
+                <li>- 고급스러운 소재 (Premium Materials)</li>
+                <li>- 방향 조절 가능 (Adjustable Direction)</li>
+              </ul>
+
+              <div id="product_price">
+                <div class="price_container">
+                  <div class="small_text">가격대</div>
+                  <div>약 102만원</div>
+                </div>
+
+                <div class="guide_text">* 가격 편차가 심하니 비교견적을 이용해보세요</div>
+              </div>
+              <hr />
+              <div id="video_container_3" class="video">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/IAljkF6y4Gg?si=zf5Fl5s5GvwRFc2K"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </section>
+            <section class="product">
+              <div class="product_title">
+                <h3>04 Kartell Toobe</h3>
+                <h2>Kaiser Idell 플로어 램프(White H125cm)</h2>
+              </div>
+              <img
+                src="https://d3trhmpc56lg1h.cloudfront.net/IMG/KARTELL/PRODUCTS/HD/KAR09060B4.jpg?d=940x1197"
+                alt=" Kartell Toobe Kaiser Idell 플로어 램프(White H125cm)"
+              />
+              <p>"투명한 튜브 속 은은한 조명의 매력"</p>
+              <ul>
+                <li>- 독특한 실린더 디자인 (Unique Cylinder Design)</li>
+                <li>- 폴리카보네이트 소재 (Polycarbonate Material)</li>
+                <li>- 은은한 그라데이션 빛 (Soft Gradient Lighting)</li>
+                <li>- 세련된 모던 감각 (Modern Aesthetic)</li>
+              </ul>
+              <div id="product_price">
+                <div class="price_container">
+                  <div class="small_text">가격대</div>
+                  <div>133만원 이상</div>
+                </div>
+
+                <div class="guide_text">* 가격 편차가 심하니 비교견적을 이용해보세요</div>
+              </div>
+              <hr />
+              <!-- <div id="video_container_3" class="video">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/IAljkF6y4Gg?si=zf5Fl5s5GvwRFc2K"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div> -->
+              <div class="video_container_4_img">
+                <img
+                  src="https://d3trhmpc56lg1h.cloudfront.net/Media/KARTELL/KARTELL/Images/Commons/Extra_Padre/946-3.jpg"
+                  alt="Kartell Toobe"
+                />
+              </div>
+            </section>
+          </div>
+        </main>
+        <div class="additional-order">
+          <div class="container">
+            <p>
+              추천받은 조명이 마음에 쏙 들지 않으신가요?<br /><br />
+              아래 "쇼핑메이트와 톡하기"<br />
+              버튼을 눌러서 새롭게 요청해보세요.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 불투명한 배경 레이어 -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- 사이드 메뉴 -->
+    <div id="sideMenu" class="side-menu">
+      <a href="#" class="close-btn" onclick="toggleMenu()">&times;</a>
+
+      <div class="side-menu-content">
+        <a href="https://hisso.co.kr/showrooms">쇼룸찾기</a>
+        <a href="https://hisso.co.kr/lighting-recommendations">조명추천 리포트 샘플</a>
+        <a href="https://hisso.co.kr/quote">비교견적 리포트 샘플</a>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="floCtaPc_container" id="cta-button">
+      <a id="floCtaPcLink" style="text-decoration: none" href="https://43l86.channel.io/workflows/686208" class="floCtaPcLink">
+        <div class="floCtaPcwidth">
+          <svg
+            width="74"
+            height="26"
+            viewBox="0 0 27 26"
+            preserveAspectRatio="xMaxYMid meet"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="icn_talk">
+              <path
+                id="Union"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M13.3417 23C19.1407 23 23.8417 18.299 23.8417 12.5C23.8417 6.70101 19.1407 2 13.3417 2C7.54275 2 2.84174 6.70101 2.84174 12.5C2.84174 14.3773 3.33438 16.1394 4.19743 17.6643L1.68092 21.3249C1.12323 22.1361 1.94992 23.1802 2.86742 22.8234L7.30998 21.0957C9.01671 22.2956 11.097 23 13.3417 23Z"
+                fill="white"
+              />
+              <circle id="Ellipse 11" cx="8.3418" cy="12.5" r="1.5" fill="#FF4081" />
+              <circle id="Ellipse 12" cx="13.3418" cy="12.5" r="1.5" fill="#FF4081" />
+              <circle id="Ellipse 13" cx="18.3418" cy="12.5" r="1.5" fill="#FF4081" />
+            </g>
+          </svg>
+          <span class="badge"></span>
+          <!-- 뱃지를 표시할 공간 -->
+          <div class="cta_text">쇼핑메이트와 톡하기</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- FAQ 버튼 -->
+    <script>
+      function toggleMenu() {
+        const sideMenu = document.getElementById("sideMenu");
+        const overlay = document.getElementById("overlay");
+        sideMenu.classList.toggle("open");
+        overlay.classList.toggle("show");
+      }
+    </script>
+
+    <!-- CTA -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var ctaButton = document.getElementById("cta-button");
+        setTimeout(function () {
+          ctaButton.classList.add("show_cta");
+        }, 1000); // 1000ms = 1초
+      });
+    </script>
+  </body>
+</html>
