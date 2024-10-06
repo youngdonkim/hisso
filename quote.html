@@ -585,39 +585,22 @@
         transform: rotate(90deg);
       }
 
-      .watermark_bg_color {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        width: 500px;
-        height: 100vh;
-        background-color: #f7f7f7;
-        z-index: -2;
-      }
-
+      /* 워터마크 */
       .watermark {
-        display: inline-flex;
-        padding: 8px 36px;
-        justify-content: center;
-        align-items: center;
         position: fixed;
-        margin-top: 80px;
-        top: 15%;
+        top: 20%;
         /* Adjust position from the top */
-
-        transform: rotate(-15deg);
+        left: 50%;
+        transform: translateX(-50%) rotate(-15deg);
         /* Rotate the text by -45 degrees */
+        padding: 8px 36px;
         font-size: 2.6em;
         z-index: 1;
-        white-space: nowrap;
-        pointer-events: none;
-        user-select: none;
-        color: rgba(0, 0, 0, 0.05);
+        color: rgba(0, 0, 0, 0.06);
         font-family: Montserrat;
         font-style: normal;
         font-weight: 900;
         line-height: 130%;
-        /* 62.4px */
         border: 2px solid rgba(0, 0, 0, 0.05);
       }
 
@@ -1134,7 +1117,6 @@
       </div>
     </div>
 
-    <div class="watermark_bg_color"></div>
     <div class="watermark">SAMPLE</div>
 
     <!-- CTA -->
