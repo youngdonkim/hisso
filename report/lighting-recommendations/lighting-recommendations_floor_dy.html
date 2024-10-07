@@ -218,42 +218,21 @@
         transform: scale(0.98);
       }
 
-      /* 워터마크 */
-
-      .watermark_bg_color {
+       /* 워터마크 */
+       .watermark {
         position: fixed;
-        top: 0;
-        /*width: 500px;*/
-        height: 100vh;
-        background-color: #f7f7f7;
-        z-index: -2;
-      }
-
-      .watermark {
-        display: inline-flex;
-        padding: 8px 36px;
-        justify-content: center;
-        align-items: center;
-
-        position: fixed;
-        margin-top: 80px;
-        margin-left: -40px;
-        top: 15%;
-        /* Adjust position from the top */
-        left: 55%;
+        top: 20%;
+        left: 50%;
         transform: translateX(-50%) rotate(-15deg);
         /* Rotate the text by -45 degrees */
+        padding: 8px 36px;
         font-size: 2.6em;
         z-index: 1;
-        white-space: nowrap;
-        pointer-events: none;
-        user-select: none;
-        color: rgba(0, 0, 0, 0.05);
+        color: rgba(0, 0, 0, 0.06);
         font-family: Montserrat;
         font-style: normal;
         font-weight: 900;
         line-height: 130%;
-        /* 62.4px */
         border: 2px solid rgba(0, 0, 0, 0.05);
       }
 
@@ -583,6 +562,65 @@
         width: 100%;
         height: 100%;
       }
+
+      /* 추천 조명 더보기 버튼 */
+      .additional-product {
+        margin-top: 2em;
+        border-top: 1px solid #ccc;
+        padding-top: 1em;
+      }
+
+      .additional-product p {
+        margin-bottom: 0.5em;
+      }
+
+      .show-more-btn {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        cursor: pointer;
+        color: #ff4081;
+        margin-bottom: 1em;
+      }
+
+      .chevron-down {
+        margin-left: 5px;
+        transition: transform 0.3s ease;
+      }
+
+      .show-more-toggle {
+        display: none;
+      }
+
+      .btn-text-hide {
+        display: none;
+      }
+
+      .more-products {
+        display: none; /* 기본적으로 숨김 */
+      }
+
+      .show-more-toggle:checked + .show-more-btn .chevron-down {
+        transform: rotate(180deg);
+      }
+
+      .show-more-toggle:checked + .show-more-btn .btn-text-show {
+        display: none;
+      }
+
+      .show-more-toggle:checked + .show-more-btn .btn-text-hide {
+        display: inline;
+      }
+
+      .show-more-toggle:checked ~ .more-products {
+        display: block; /* 체크박스가 체크되면 보이게 함 */
+      }
+
+      /* SVG 색상 변경을 위한 스타일 */
+      .show-more-btn svg {
+        fill: none;
+        stroke: #ff4081;
+      }
     </style>
   </head>
   <body>
@@ -606,7 +644,6 @@
         </a>
       </div>
     </nav>
-    <div class="watermark_bg_color"></div>
     <div class="watermark">SAMPLE</div>
     <main>
       <div class="body_container">
@@ -779,12 +816,140 @@
                 />
               </div>
             </section>
+            <div class="additional-product">
+              <p>우선 추천 드린 3개에서 고르기 어려우시면 3개의 추천 조명을 더 보실 수 있어요.😀</p>
+              <input type="checkbox" id="show-more" class="show-more-toggle" />
+              <label for="show-more" class="show-more-btn">
+                <span class="btn-text-show">추천상품 더보기</span>
+                <span class="btn-text-hide">추천상품 접기</span>
+                <svg class="chevron-down" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 9L12 15L18 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </label>
+
+              <div class="more-products">
+                <section class="product">
+                  <div class="product_title">
+                    <h3>04 루이스폴센</h3>
+                    <h2>PH 3/2 Table</h2>
+                  </div>
+                  <img
+                    src="https://i.namu.wiki/i/et0l8P9_og6N1iVbcdfyg-O6g6itErrSTdvPjkAozptQrXoH4U0aHb14I-mRJpAVof4htAIF4sF-re1UxZ2m0w.webp"
+                    alt="루이스폴센 PH 3/2 Table"
+                  />
+                  <p>"과학적 설계로 완성된 부드러운 조명"</p>
+                  <ul>
+                    <li>- 눈부심 방지 (Glare-free)</li>
+                    <li>- 3중 쉐이드 시스템 (Triple-shade system)</li>
+                    <li>- 클래식 디자인 (Classic Design)</li>
+                    <li>- 고품질 소재 (High-quality materials)</li>
+                    <li>- 따뜻한 분위기 연출 (Warm ambiance)</li>
+                  </ul>
+                  <div id="product_price">
+                    <div class="price_container">
+                      <div class="small_text">가격대</div>
+                      <div>약 140만원</div>
+                    </div>
+                    <div class="guide_text">* 가격 편차가 심하니 비교견적을 이용해보세요</div>
+                  </div>
+                  <hr />
+                  <div class="video">
+                    <iframe
+                      width="560"
+                      height="315"
+                      src="https://www.youtube.com/embed/yjA2Z1JAXUI?si=ImF5vsQb9E5Nj3_W"
+                      title="YouTube video player"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      allowfullscreen
+                    ></iframe>
+                  </div>
+                </section>
+                <section class="product">
+                  <div class="product_title">
+                    <h3>05 루이스폴센</h3>
+                    <h2>PH 3/2 Table</h2>
+                  </div>
+                  <img
+                    src="https://i.namu.wiki/i/et0l8P9_og6N1iVbcdfyg-O6g6itErrSTdvPjkAozptQrXoH4U0aHb14I-mRJpAVof4htAIF4sF-re1UxZ2m0w.webp"
+                    alt="루이스폴센 PH 3/2 Table"
+                  />
+                  <p>"과학적 설계로 완성된 부드러운 조명"</p>
+                  <ul>
+                    <li>- 눈부심 방지 (Glare-free)</li>
+                    <li>- 3중 쉐이드 시스템 (Triple-shade system)</li>
+                    <li>- 클래식 디자인 (Classic Design)</li>
+                    <li>- 고품질 소재 (High-quality materials)</li>
+                    <li>- 따뜻한 분위기 연출 (Warm ambiance)</li>
+                  </ul>
+                  <div id="product_price">
+                    <div class="price_container">
+                      <div class="small_text">가격대</div>
+                      <div>약 140만원</div>
+                    </div>
+                    <div class="guide_text">* 가격 편차가 심하니 비교견적을 이용해보세요</div>
+                  </div>
+                  <hr />
+                  <div class="video">
+                    <iframe
+                      width="560"
+                      height="315"
+                      src="https://www.youtube.com/embed/yjA2Z1JAXUI?si=ImF5vsQb9E5Nj3_W"
+                      title="YouTube video player"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      allowfullscreen
+                    ></iframe>
+                  </div>
+                </section>
+                <section class="product">
+                  <div class="product_title">
+                    <h3>06 루이스폴센</h3>
+                    <h2>PH 3/2 Table</h2>
+                  </div>
+                  <img
+                    src="https://i.namu.wiki/i/et0l8P9_og6N1iVbcdfyg-O6g6itErrSTdvPjkAozptQrXoH4U0aHb14I-mRJpAVof4htAIF4sF-re1UxZ2m0w.webp"
+                    alt="루이스폴센 PH 3/2 Table"
+                  />
+                  <p>"과학적 설계로 완성된 부드러운 조명"</p>
+                  <ul>
+                    <li>- 눈부심 방지 (Glare-free)</li>
+                    <li>- 3중 쉐이드 시스템 (Triple-shade system)</li>
+                    <li>- 클래식 디자인 (Classic Design)</li>
+                    <li>- 고품질 소재 (High-quality materials)</li>
+                    <li>- 따뜻한 분위기 연출 (Warm ambiance)</li>
+                  </ul>
+                  <div id="product_price">
+                    <div class="price_container">
+                      <div class="small_text">가격대</div>
+                      <div>약 140만원</div>
+                    </div>
+                    <div class="guide_text">* 가격 편차가 심하니 비교견적을 이용해보세요</div>
+                  </div>
+                  <hr />
+                  <div class="video">
+                    <iframe
+                      width="560"
+                      height="315"
+                      src="https://www.youtube.com/embed/yjA2Z1JAXUI?si=ImF5vsQb9E5Nj3_W"
+                      title="YouTube video player"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      allowfullscreen
+                    ></iframe>
+                  </div>
+                </section>
+              </div>
+            </div>
           </div>
         </main>
         <div class="additional-order">
           <div class="container">
             <p>
-              추천받은 조명이 마음에 쏙 들지 않으신가요?<br /><br />
+              추천받은 조명 6개가 모두 마음에 쏙 들지 않으신가요?<br /><br />
               아래 "쇼핑메이트와 톡하기"<br />
               버튼을 눌러서 새롭게 요청해보세요.
             </p>
