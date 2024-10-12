@@ -742,21 +742,22 @@
       }
 
       /* CTA 버튼 */
-      .floCtaPc_container {
+      .cta_container {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
         max-width: 500px;
+        padding: 8px 0 0 0;
         position: fixed;
         bottom: -10px;
-        z-index: 999;
+        z-index: 998;
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.7) 76%, #fff 100%);
         transition: all 0.5s ease-in-out;
         opacity: 0;
       }
 
-      .floCtaPc_container.show_cta {
+      .cta_container.show_cta {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -764,13 +765,13 @@
         opacity: 1;
       }
 
-      .floCtaPcLink {
+      .cta_link_container {
         position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
         width: 78%;
-        padding: 14px 0 10px 0;
+        padding: 10px 0 10px 0;
         border-radius: 12px;
         background: #ff4081;
         margin-bottom: 7px;
@@ -786,8 +787,10 @@
       }
 
       .cta_text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: #fff;
-        text-align: center;
         font-size: 16px;
         font-style: normal;
         font-weight: 700;
