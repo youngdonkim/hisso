@@ -163,7 +163,12 @@
       }
 
       main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         width: 100%;
+        background: var(--Background-gray1, #F2F2F2);
       }
 
       /* 상단 고정 내브 바 */
@@ -462,15 +467,19 @@
           align-items: center;
       }
 
+      .menu-container .fas{
+        margin-top: 6px;
+      }
+
       .menu-item {
           text-align: center;
           background-color: white;
           border-radius: 15px;
-          padding: 20px;
+          padding: 20px 0;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           text-decoration: none;
           transition: background-color 0.3s, transform 0.3s;
-          width: 150px;
+          width: 90%;
       }
 
       .menu-item:hover {
@@ -497,7 +506,7 @@
       .menu-item h3 {
           font-size: 16px;
           color: #000;
-          margin: 10px 0;
+          margin: 10px 0 6px 0;
       }
 
       .menu-item p {
@@ -513,34 +522,51 @@
 
 
       /* 구매여정 step 01 */
-      .step01-container {
+
+      .step-container {
         display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
-        width: 100%;
-        background-color: #f7f7f7;
+        margin-bottom: 60px;
       }
 
-      .step01-card {
+      .step-card {
         display: flex;
         flex-direction: column;
         align-items: center;
         border-radius: 38px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         background-color: #fff;
-        width: 92%;
-        margin-bottom: 60px;
+        width: 88%;
+        margin: 0 10px 0 10px;
       }
 
-      .step01-title-container {
+      .step-title-container {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        width: 90%;
-        padding-left: 20px;
-        margin-top: 32px;
+        width: 84%;
+        margin-top: 26px;
       }
 
-      .step01-title-container h2 {
+      .step-description {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        width: 84%;
+   
+        margin-top: 16px;
+        color: #888;
+        font-family: "NEXON Lv1 Gothic Low OTF";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 170%; /* 27.2px */
+        letter-spacing: -0.2px;
+              }
+
+      .step-number {
         font-family: Montserrat;
         font-weight: 800;
         margin-bottom: 8px;
@@ -550,95 +576,68 @@
         letter-spacing: -1.4px;
       }
 
-      .step01-title-container h3 {
-        margin-top: 0;
-        color: #111;
-        font-size: 22px;
-        font-weight: 700;
-        line-height: 1.2;
-        letter-spacing: -1px;
-        margin-bottom: 12px;
-      }
-
-      .step01-title-container h3 span {
-        font-family: Pretendard;
-        font-weight: 900;
-        font-size: 24px;
-      }
-
-      .step01-image-container {
+      .step-image-container {
         width: 100%;
+        
       }
 
-      .step01-image-container img {
+      .step-image-container img {
         width: 100%;
         height: auto;
+        border-radius: 28px 28px 0px 0px;
         object-fit: cover;
       }
 
-      .step01-content-container {
-        padding: 20px 0;
+      .step-content-container {
+        padding: 20px 0 18px 0;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 80%;
-      }
-
-      .step01-content-container p {
-        color: #888;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 160%;
-        letter-spacing: -0.8px;
-      }
-
-      .transparent-button {
-        font-size: 24px;
-        font-weight: bold;
-        color: #ff4081;
-        background-color: transparent;
-        border: none;
-        padding: 10px 0;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-flex;
         align-items: center;
-        position: relative;
-      }
-
-      .chevron-icon {
-        margin-left: 8px;
-        transition: transform 0.3s ease;
-      }
-
-      .transparent-button:hover .chevron-icon {
-        transform: translateX(4px);
-      }
-
-      .tailored_shopping_guide_1 {
-        display: flex;
         justify-content: center;
         width: 100%;
       }
 
-      .tailored_shopping_guide_button {
+      .step-content-container a {
+        width: 90%;
+        text-align: center;
+        text-decoration: none;
+      }
+
+
+      .step-button {
         display: inline-block;
-        padding: 10px 44px;
-        margin-top: 30px;
+        width: 100%;
+        padding: 14px 44px;
+        margin-top: 10px;
         font-size: 16px;
         line-height: 25.6px;
         font-weight: 700;
         color: #ff4081;
         text-decoration: none;
         border: 1px solid #ff4081;
-        border-radius: 24px;
+        border-radius: 25px;
         transition: background-color 0.3s, color 0.3s;
       }
 
-      .tailored_shopping_guide_button:hover {
+      .step-button:hover {
         background-color: #ff4081;
         color: #fff;
       }
+
+      .step-text-link {
+        display: flex;
+        justify-content: flex-end;
+        width: 80%;
+        margin-top: 20px;
+        font-size: 14px;
+      }
+
+      .step-text-link a {
+        color: #999;
+        text-decoration: none;
+      } 
+
+
+      
 
       /* 구매여정 step 02 */
       .step02-container {
@@ -1564,84 +1563,6 @@
         height: auto;
       }
 
-      /* CTA 버튼 애니메이션 */
-      .cta_container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        max-width: 500px;
-        padding: 8px 0 0 0;
-        position: fixed;
-        bottom: -10px;
-        z-index: 998;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.7) 76%, #fff 100%);
-        transition: all 0.5s ease-in-out;
-        opacity: 0;
-      }
-
-      .cta_container.show_cta {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        bottom: 0;
-        opacity: 1;
-      }
-
-      .cta_link_container {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 78%;
-        padding: 10px 0 10px 0;
-        border-radius: 12px;
-        background: #ff4081;
-        margin-bottom: 7px;
-        cursor: pointer;
-      }
-
-      .floCtaPcwidth {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        padding-right: 10%;
-      }
-
-      .cta_text {
-        display: flex;
-        align-items: center;  
-        justify-content: center;
-        color: #fff;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 140%;
-        margin-left: 14px;
-      }
-
-      .badge {
-        position: absolute;
-        top: -5px;
-        right: -5px;
-        background-color: rgb(64, 63, 63);
-        color: white;
-        border-radius: 50%;
-        width: 20px; /* 원의 고정된 가로 크기 */
-        height: 20px; /* 원의 고정된 세로 크기 */
-        display: flex;
-        justify-content: center;
-        align-items: center; /* 텍스트를 중앙에 수직/수평 정렬 */
-        font-size: 12px;
-        line-height: 20px; /* 숫자를 중앙에 정확히 위치시키기 위한 line-height */
-        text-align: center;
-        padding: 0; /* 패딩 제거 */
-        margin: 0; /* 마진 제거 */
-        display: none; /* 처음에는 보이지 않음 */
-        white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
-        overflow: hidden; /* 원 크기를 넘지 않도록 설정 */
-      }
 
      /* Exit Intent Overlay 스타일 */
         #exit-intent-overlay {
@@ -1784,7 +1705,7 @@
         <h3>비교견적</h3>
         <p>최저가 쇼핑몰 찾기</p>
     </a>
-</div>
+      </div>
       
       <!-- 하이쏘 사용 가이드 -->
       <div class="service-1-container">
@@ -1836,119 +1757,119 @@
       </div>
 
       <!-- 구매여정 step 01 -->
-      <div class="step01-container">
-        <div class="step01-card">
-          <div class="step01-title-container">
-            <h2>STEP 01</h2>
-            <h3>조명, 함께 골라드려요</h3>
-          </div>
-          <div class="step01-image-container">
+      <div class="step-container">
+        <div class="step-card">         
+          <div class="step-image-container">
             <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/3e1e971a113e0.png" alt="조명 이미지" />
           </div>
-          <div class="step01-content-container">
-            <p>어떤 브랜드 제품을 사야할 지 어려우시면 아래 "쇼핑 서비스 신청하기"를 이용해보세요.</p>
-            <div class="tailored_shopping_guide_1">
-              <a href="https://hisso.co.kr/lighting-recommendations" class="comparative_quotation-link">
-                <div class="tailored_shopping_guide_button">조명추천 샘플보기<span style="margin-left: 8px">></span></div>
+          <div class="step-title-container">
+            <h2 class="step-number">STEP 01</h2>
+            <h3>조명, 함께 골라드려요</h3>
+          </div>
+            
+  
+          <div class="step-content-container">
+              <a href="https://mn910jdodol.typeform.com/to/GVNn0cyb" >
+                <div class="step-button">조명추천 신청</div>
               </a>
-            </div>
           </div>
         </div>
+        <div class="step-text-link">
+          <a href="https://mn910jdodol.typeform.com/to/GVNn0cyb">조명추천 리포트 샘플 >></a>
+        </div>
       </div>
+
 
       <!-- 구매여정 step 02  -->
-      <div class="step02-container">
-        <div class="step02-card">
-          <div class="step02-title-container">
-            <h2>STEP 02</h2>
+       <div class="step-container">
+        <div class="step-card">         
+          <div class="step-image-container">
+            <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/f1ca7ac08c18b.png" alt="쇼룸 지도" />
+          </div>
+          <div class="step-title-container">
+            <h2 class="step-number">STEP 02</h2>
             <h3>가까운 쇼룸을 알려드려요</h3>
           </div>
-          <div class="step02-image-container">
-            <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/f1ca7ac08c18b.png" alt="조명 이미지" />
-          </div>
-          <div class="step02-content-container">
-            <p>
-              "쇼핑 서비스 신청하기"를 이용하셔도 좋고 <br />
-              아래 "쇼룸 찾아보기"로 바로 찾아볼수도 있어요.
-            </p>
-            <div class="tailored_shopping_guide_1">
-              <a href="https://hisso.co.kr/showrooms" class="comparative_quotation-link">
-                <div class="tailored_shopping_guide_button">쇼룸 찾아보기<span style="margin-left: 8px">></span></div>
+          <div class="step-content-container">
+              <a href="https://hisso.co.kr/showrooms" >
+                <div class="step-button">쇼룸 찾아보기</div>
               </a>
-            </div>
           </div>
         </div>
-      </div>
+       </div>
+      
 
       <!-- 구매여정 step 03 -->
-      <div class="step03-container">
-        <div class="step03-card">
-          <div class="step03-title-container">
-            <h2>STEP 03</h2>
+      <div class="step-container">
+        <div class="step-card">         
+          <div class="step-image-container">
+            <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/5681605edc039.png" alt="조명 전과후 이미지" />
+          </div>
+          <div class="step-title-container">
+            <h2 class="step-number">STEP 03</h2>
             <h3>홈스타일링, 미리 보여드려요</h3>
           </div>
-          
-          <div class="step03-image-container">
-            <img class="step03-before-img" src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/013d9735f0d9e.png" />
-          </div>
-
-          <div class="step03-content-container">
-            <p>
-              <strong>제품 놓을 공간 사진을 보내 주세요.</strong> <br />
+          <div class="step-description">
+            <strong>제품 놓을 공간 사진을 보내 주세요.</strong>
               아래 "쇼핑 서비스 신청하기"를 신청하시면 조명 설치 전/후의 합성 사진을 보내드려요.
+          </div>          
+          <div class="step-content-container">
+              <a href="https://mn910jdodol.typeform.com/to/TvjYtmdt" >
+                <div class="step-button">홈스타일링 미리보기 신청</div>
+              </a>
           </div>
         </div>
+       </div>
       </div>
+        
 
       <!-- 구매여정 step 04 -->
-      <div class="step04-container">
-        <div class="step04-card">
-          <div class="step04-title-container">
-            <h2>STEP 04</h2>
+      <div class="step-container">
+        <div class="step-card">         
+          <div class="step-image-container">
+            <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/5ff7cac41e49c.png" alt="비교견적 이미지"/>
+          </div>
+          <div class="step-title-container">
+            <h2 class="step-number">STEP 04</h2>
             <h3>가격비교, 대신해드려요!</h3>
           </div>
-          <div class="step04-image-container">
-            <img class="step3_img" src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/5ff7cac41e49c.png" alt="조명 이미지" />
-          </div>
-          <div class="step04-content-container">
-            <p>
-              아래에서 무료 "쇼핑 서비스 신청하기"를 신청하시면
-              <br />
-              <strong>약 30여개의 주요 쇼핑몰</strong>을 조사한 뒤, 최저가 비교 견적을 알려드려요!
-            </p>
-            <div class="tailored_shopping_guide_1">
-              <a href="https://hisso.co.kr/quote" class="comparative_quotation-link">
-                <div class="tailored_shopping_guide_button">비교견적 샘플보기<span style="margin-left: 8px">></span></div>
+          <div class="step-description">
+            <strong>약 30여개의 주요 쇼핑몰</strong>을 조사한 뒤, 최저가 비교 견적을 알려드려요!
+          </div>          
+          <div class="step-content-container">
+              <a href="https://mn910jdodol.typeform.com/to/SNj7fbrt" >
+                <div class="step-button">비교견적 신청하기</div>
               </a>
-            </div>
           </div>
         </div>
-      </div>
+        <div class="step-text-link">
+          <a href="https://mn910jdodol.typeform.com/to/GVNn0cyb">비교견적 리포트 샘플 >></a>
+        </div>
+       </div>
+       
+
+        
 
       <!-- 구매여정 step 05 -->
-      <div class="step05-container">
-        <div class="step05-card">
-          <div class="step05-title-container">
-            <h2>STEP 05</h2>
+      <div class="step-container">
+        <div class="step-card">         
+          <div class="step-image-container">
+            <img src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/c78ff62273dd3.png" alt="조명 전과후 이미지" />
+          </div>
+          <div class="step-title-container">
+            <h2 class="step-number">STEP 05</h2>
             <h3>구매조건별 최저가 구매하기</h3>
-          </div>
-          <div class="step05-image-container">
-            <img class="step3_img" src="https://cdn.imweb.me/upload/S20240507ae9d7abf11ed7/c78ff62273dd3.png" alt="조명 제품 비교 견적서" />
-          </div>
-          <div class="step05-content-container">
-            <p>
-              아래에서 무료 "쇼핑 서비스 신청하기" 하시면
-              <strong>가격, 배송기간, A/S 여부, 설치 여부, BNPL(할부구매), 공식수입사 여부</strong>등에 따른 최저가 쇼핑몰의 구매링크를 비교
-              견적서 내에 보내드려요!
-            </p>
-            <div class="tailored_shopping_guide_1">
-              <a href="https://hisso.co.kr/quote#shop-buttons" class="comparative_quotation-link">
-                <div class="tailored_shopping_guide_button">구매링크 샘플보기<span style="margin-left: 8px">></span></div>
+          </div>        
+          <div class="step-content-container">
+              <a href="https://mn910jdodol.typeform.com/to/TvjYtmdt" >
+                <div class="step-button">구매링크 샘플보기</div>
               </a>
-            </div>
           </div>
         </div>
+       </div>
       </div>
+        
+   
 
       <!-- FAQ-->
       <div class="faq-container">
@@ -2451,7 +2372,7 @@
     </script>
 
     <!-- 공휴일 체크 자바스크립트 -->
-    <script src="https://cdn.jsdelivr.net/npm/korean-holidays-js@1.1.0/dist/korean-holidays.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/korean-holidays-js@1.1.0/dist/korean-holidays.min.js"></script>
     <script>
         // 한국 공휴일을 확인하기 위한 라이브러리 사용 (예: korean-holidays-js)
         // CDN을 통해 라이브러리를 불러옵니다.
@@ -2521,7 +2442,7 @@
 
         // 시간 변경을 실시간으로 반영하려면 일정 간격으로 업데이트
         setInterval(updateCTAButtonLink, 60 * 1000); // 1분마다 업데이트
-    </script>
+    </script> -->
 
     <!-- 히어로 배너 슬라이더 자바스크립트 -->
 
@@ -2608,7 +2529,7 @@
     </script>
 
     <!-- CTA -->
-    <script>
+    <!-- <script>
     document.addEventListener('DOMContentLoaded', function () {
       var ctaButton = document.getElementById('cta-button');
 
@@ -2616,6 +2537,6 @@
           ctaButton.classList.add('show_cta');
       }, 1000);  // 1000ms = 1초
       });
-    </script>
+    </script> -->
   </body>
 </html>
